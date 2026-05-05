@@ -2715,3 +2715,47 @@
     </script>
 </body>
 </html>
+
+<script>
+// Electron API Integration
+(function() {
+    // Проверка работы в Electron
+    const isElectron = window.navigator.userAgent.includes('Electron');
+    
+    if (isElectron && window.electronAPI) {
+        // Добавляем кнопки управления окном
+        function addWindowControls() {
+            const header = document.querySelector('.header') || document.querySelector('header');
+            if (header && !document.getElementById('window-controls')) {
+                const controls = document.createElement('div');
+                controls.id = 'window-controls';
+                controls.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    display: flex;
+                    z-index: 10000;
+                `;
+                controls.innerHTML = `
+                    <button onclick="window.electronAPI.minimizeWindow()" style="width:46px;height:30px;border:none;background:#ccc;cursor:pointer;" title="Свернуть">─</button>
+                    <button onclick="window.electronAPI.maximizeWindow()" style="width:46px;height:30px;border:none;background:#ccc;cursor:pointer;" title="Развернуть">□</button>
+                    <button onclick="window.electronAPI.closeWindow()" style="width:46px;height:30px;border:none;background:#e81123;color:white;cursor:pointer;" title="Закрыть">✕</button>
+                `;
+                header.appendChild(controls);
+            }
+        }
+        
+        // Запуск после загрузки DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', addWindowControls);
+        } else {
+            addWindowControls();
+        }
+        
+        console.log('CineLingua Desktop App v' + (window.electronAPI.getAppVersion ? '1.0.0' : '1.0.0'));
+    } else {
+        console.log('CineLingua запущен в браузере');
+    }
+})();
+</script>
+</body></html>

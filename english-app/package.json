@@ -1,0 +1,40 @@
+{
+  "name": "cinelngua",
+  "version": "1.0.0",
+  "description": "CineLingua - Learn English through movies and series",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win --x64",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "keywords": ["english", "learning", "education", "movies"],
+  "author": "CineLingua Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^36.4.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.cinelngua.app",
+    "productName": "CineLingua",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html"
+    ],
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "mac": {
+      "target": ["dmg", "zip"]
+    },
+    "linux": {
+      "target": ["AppImage", "deb"]
+    }
+  }
+}
