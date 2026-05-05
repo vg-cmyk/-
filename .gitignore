@@ -1,1 +1,1 @@
-Nothing should be ignored in this case. The added file 'english-app/index.html' is a source file and should not be added to .gitignore. Since there are no build artifacts, dependencies, or temporary files in the changes, the .gitignore should remain empty.
+Nothing needs to be added to .gitignore since only a single HTML file was modified and there are no build artifacts, dependencies, or temporary files in the changes.

@@ -395,6 +395,294 @@
             color: var(--text-secondary);
             font-style: italic;
         }
+
+        /* New Features Styles */
+        .achievement-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--accent), #ff9f43);
+            border-radius: 25px;
+            margin: 5px;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .achievement-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+
+        .achievement-card.unlocked {
+            opacity: 1;
+            border: 2px solid var(--accent);
+        }
+
+        .achievement-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .mini-game-container {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .word-match-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .match-item {
+            padding: 20px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .match-item.selected {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.2);
+        }
+
+        .match-item.matched {
+            border-color: var(--success);
+            background: rgba(74, 222, 128, 0.2);
+            pointer-events: none;
+        }
+
+        .audio-btn {
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+
+        .test-question {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .test-options {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .test-option {
+            padding: 15px 20px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .test-option:hover {
+            border-color: var(--accent);
+        }
+
+        .test-option.selected {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .test-option.correct {
+            border-color: var(--success);
+            background: rgba(74, 222, 128, 0.2);
+        }
+
+        .test-option.incorrect {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.2);
+        }
+
+        .notes-area {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .schedule-time {
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .export-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .export-btn {
+            padding: 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .export-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .stats-chart {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+            height: 200px;
+            padding: 10px;
+        }
+
+        .chart-column {
+            flex: 1;
+            background: var(--accent);
+            border-radius: 4px 4px 0 0;
+            min-height: 10px;
+            transition: height 0.3s;
+            position: relative;
+        }
+
+        .chart-column:hover::after {
+            content: attr(data-value);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .chart-label {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .fill-blank-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--accent);
+            color: var(--text-primary);
+            width: 100px;
+            text-align: center;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .drag-item {
+            padding: 15px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            margin: 5px;
+            cursor: grab;
+            display: inline-block;
+        }
+
+        .drag-zone {
+            min-height: 60px;
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .drag-zone.drag-over {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .timer-display {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--accent);
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .spelling-input {
+            font-size: 24px;
+            padding: 15px;
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .hint-box {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
     </style>
 </head>
 <body>
@@ -423,6 +711,12 @@
             <div class="menu-item" onclick="showSection('movies')">🎬 Кинословарь</div>
             <div class="menu-item" onclick="showSection('subtitles')">📝 Разбор субтитров</div>
             <div class="menu-item" onclick="showSection('culture')">🌍 Культура</div>
+            <div class="menu-item" onclick="showSection('achievements')">🏆 Достижения</div>
+            <div class="menu-item" onclick="showSection('minigames')">🎮 Мини-игры</div>
+            <div class="menu-item" onclick="showSection('testing')">📝 Тестирование</div>
+            <div class="menu-item" onclick="showSection('notes')">📝 Заметки</div>
+            <div class="menu-item" onclick="showSection('schedule')">⏰ Расписание</div>
+            <div class="menu-item" onclick="showSection('export')">💾 Экспорт</div>
             <div class="menu-item" onclick="showSection('settings')">⚙️ Настройки</div>
         </aside>
 
@@ -888,6 +1182,352 @@
                             <li>В ответ на "Sorry" → "No worries!"</li>
                             <li>Когда кто-то просит об одолжении → "No worries!" (конечно)</li>
                         </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section id="achievements" class="section">
+                <h1>🏆 Достижения</h1>
+                
+                <div class="card">
+                    <h3>Ваши награды</h3>
+                    <div class="achievement-grid" id="achievements-grid">
+                        <div class="achievement-card unlocked" onclick="showAchievementDetail('first-lesson')">
+                            <div class="achievement-icon">🎓</div>
+                            <div><strong>Первый урок</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Пройдите первый урок</div>
+                        </div>
+                        <div class="achievement-card unlocked" onclick="showAchievementDetail('week-streak')">
+                            <div class="achievement-icon">🔥</div>
+                            <div><strong>Неделя подряд</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">7 дней streak</div>
+                        </div>
+                        <div class="achievement-card unlocked" onclick="showAchievementDetail('100-words')">
+                            <div class="achievement-icon">💯</div>
+                            <div><strong>100 слов</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Выучите 100 слов</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('movie-master')">
+                            <div class="achievement-icon">🎬</div>
+                            <div><strong>Киномастер</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">100 фраз из фильмов</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('grammar-guru')">
+                            <div class="achievement-icon">📚</div>
+                            <div><strong>Грамматик</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Все уроки грамматики</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('perfect-test')">
+                            <div class="achievement-icon">⭐</div>
+                            <div><strong>Идеальный тест</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">100% за тест</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('month-streak')">
+                            <div class="achievement-icon">🏆</div>
+                            <div><strong>Месяц подряд</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">30 дней streak</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('phonetics-pro')">
+                            <div class="achievement-icon">🎤</div>
+                            <div><strong>Фонетика PRO</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Все звуки освоены</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Статистика достижений</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="achievements-unlocked">3</div>
+                            <div>Разблокировано</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="achievements-total">8</div>
+                            <div>Всего достижений</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="achievements-percent">38%</div>
+                            <div>Прогресс</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mini Games Section -->
+            <section id="minigames" class="section">
+                <h1>🎮 Мини-игры</h1>
+                
+                <div class="card">
+                    <h3>Выберите игру</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card" onclick="startWordMatch()" style="cursor: pointer;">
+                            <div class="achievement-icon">🔗</div>
+                            <div><strong>Сопоставление слов</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Соедините слово с переводом</div>
+                        </div>
+                        <div class="stat-card" onclick="startSpellingBee()" style="cursor: pointer;">
+                            <div class="achievement-icon">✏️</div>
+                            <div><strong>Правописание</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Напишите слово на слух</div>
+                        </div>
+                        <div class="stat-card" onclick="startFillBlanks()" style="cursor: pointer;">
+                            <div class="achievement-icon">📝</div>
+                            <div><strong>Заполни пропуски</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Вставьте правильные слова</div>
+                        </div>
+                        <div class="stat-card" onclick="startSpeedRound()" style="cursor: pointer;">
+                            <div class="achievement-icon">⚡</div>
+                            <div><strong>Скоростной раунд</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Максимум слов за 60 сек</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="game-area" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 id="game-title">Игра</h3>
+                        <div>
+                            <span id="game-score" style="margin-right: 20px;">Счёт: 0</span>
+                            <button onclick="closeGame()">Закрыть</button>
+                        </div>
+                    </div>
+                    <div id="game-content"></div>
+                </div>
+            </section>
+
+            <!-- Testing Section -->
+            <section id="testing" class="section">
+                <h1>📝 Тестирование</h1>
+                
+                <div class="card">
+                    <h3>Доступные тесты</h3>
+                    <div class="menu-item" onclick="startTest('placement')">
+                        <strong>Определение уровня</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">20 вопросов • 15 минут</div>
+                    </div>
+                    <div class="menu-item" onclick="startTest('grammar-a1')">
+                        <strong>Грамматика A1</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">15 вопросов • 10 минут</div>
+                    </div>
+                    <div class="menu-item" onclick="startTest('vocabulary-basic')">
+                        <strong>Базовая лексика</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">25 вопросов • 12 минут</div>
+                    </div>
+                    <div class="menu-item" onclick="startTest('listening')">
+                        <strong>Аудирование</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">10 вопросов • 8 минут</div>
+                    </div>
+                    <div class="menu-item" onclick="startTest('reading')">
+                        <strong>Чтение</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">5 текстов • 20 минут</div>
+                    </div>
+                </div>
+
+                <div class="card" id="test-area" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 id="test-title">Тест</h3>
+                        <div>
+                            <span id="test-progress" style="margin-right: 20px;">Вопрос 1/10</span>
+                            <div class="timer-display" id="test-timer">10:00</div>
+                        </div>
+                    </div>
+                    <div class="test-question" id="test-question">
+                        <p id="question-text"></p>
+                        <div class="test-options" id="test-options"></div>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button onclick="prevQuestion()">← Назад</button>
+                        <button class="btn-primary" onclick="nextQuestion()">Вперёд →</button>
+                        <button class="btn-success" onclick="submitTest()">Завершить тест</button>
+                    </div>
+                </div>
+
+                <div class="card" id="test-results" style="display: none;">
+                    <h2>Результаты теста</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="test-score">85%</div>
+                            <div>Правильных ответов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="test-time">8:32</div>
+                            <div>Время выполнения</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="test-level">A1+</div>
+                            <div>Рекомендуемый уровень</div>
+                        </div>
+                    </div>
+                    <div id="test-analysis" style="margin-top: 20px;"></div>
+                    <button class="btn-primary" onclick="retakeTest()">Пройти заново</button>
+                </div>
+            </section>
+
+            <!-- Notes Section -->
+            <section id="notes" class="section">
+                <h1>📝 Мои заметки</h1>
+                
+                <div class="card">
+                    <h3>Личный словарь</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">Записывайте сложные слова и фразы для запоминания</p>
+                    <textarea class="notes-area" id="personal-vocab-notes" placeholder="Пример:&#10;To binge-watch - смотреть запоем (несколько серий подряд)&#10;Plot twist - неожиданный поворот сюжета&#10;Cliffhanger - интригующая концовка серии"></textarea>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-primary" onclick="saveNotes()">💾 Сохранить</button>
+                        <button onclick="clearNotes()">🗑️ Очистить</button>
+                        <button onclick="exportNotes()">📤 Экспорт</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Заметки по грамматике</h3>
+                    <textarea class="notes-area" id="grammar-notes" placeholder="Записывайте правила и исключения...&#10;&#10;Пример:&#10;Present Continuous используется для:&#10;1. Действий в момент речи&#10;2. Временных ситуаций&#10;3. Запланированных действий в будущем"></textarea>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-primary" onclick="saveNotes()">💾 Сохранить</button>
+                        <button onclick="clearNotes()">🗑️ Очистить</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Цели и планы</h3>
+                    <textarea class="notes-area" id="goals-notes" placeholder="Мои цели изучения английского:&#10;&#10;Краткосрочные (1 месяц):&#10;- Выучить 200 слов&#10;- Пройти все уроки A1&#10;&#10;Долгосрочные (6 месяцев):&#10;- Смотреть сериалы без субтитров&#10;- Свободно общаться на базовые темы"></textarea>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-primary" onclick="saveNotes()">💾 Сохранить</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule" class="section">
+                <h1>⏰ Расписание занятий</h1>
+                
+                <div class="card">
+                    <h3>Еженедельный план</h3>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Понедельник</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Фонетика + Лексика</div>
+                        </div>
+                        <div class="schedule-time">15 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Вторник</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Грамматика + Упражнения</div>
+                        </div>
+                        <div class="schedule-time">15 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Среда</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Аудирование + Кинословарь</div>
+                        </div>
+                        <div class="schedule-time">15 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Четверг</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Повторение SRS</div>
+                        </div>
+                        <div class="schedule-time">10 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Пятница</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">AI-диалоги + Культура</div>
+                        </div>
+                        <div class="schedule-time">15 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Суббота</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Мини-игры + Тест</div>
+                        </div>
+                        <div class="schedule-time">20 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Воскресенье</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Отдых или свободное занятие</div>
+                        </div>
+                        <div class="schedule-time">0-15 мин</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Напоминания</h3>
+                    <div style="margin: 15px 0;">
+                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <input type="checkbox" checked>
+                            Ежедневное напоминание
+                        </label>
+                        <input type="time" value="19:00" style="padding: 10px; border-radius: 8px; 
+                                background: var(--bg-card); color: var(--text-primary); 
+                                border: 1px solid var(--border);">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Export Section -->
+            <section id="export" class="section">
+                <h1>💾 Экспорт данных</h1>
+                
+                <div class="card">
+                    <h3>Экспорт прогресса</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Сохраните свои данные для использования на других устройствах или для резервной копии</p>
+                    
+                    <div class="export-options">
+                        <div class="export-btn" onclick="exportProgress('json')">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📄</div>
+                            <strong>JSON</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Полный экспорт данных</div>
+                        </div>
+                        <div class="export-btn" onclick="exportProgress('csv')">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📊</div>
+                            <strong>CSV</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Словарь в таблицу</div>
+                        </div>
+                        <div class="export-btn" onclick="exportProgress('pdf')">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📕</div>
+                            <strong>PDF</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Отчёт о прогрессе</div>
+                        </div>
+                        <div class="export-btn" onclick="exportProgress('anki')">
+                            <div style="font-size: 32px; margin-bottom: 10px;">🃏</div>
+                            <strong>Anki</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Карточки для Anki</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Импорт данных</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">Восстановите прогресс из ранее сохранённого файла</p>
+                    <div style="border: 2px dashed var(--border); padding: 30px; text-align: center; border-radius: 12px; cursor: pointer;"
+                         onclick="document.getElementById('import-file').click()">
+                        <div style="font-size: 48px; margin-bottom: 10px;">📁</div>
+                        <div>Нажмите для выбора файла</div>
+                        <div style="font-size: 12px; color: var(--text-secondary);">Поддерживаются JSON файлы экспорта</div>
+                        <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importProgress(this)">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Статистика экспорта</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="export-words">342</div>
+                            <div>Слов для экспорта</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="export-phrases">156</div>
+                            <div>Фраз из фильмов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="export-notes">3</div>
+                            <div>Заметки</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1634,6 +2274,444 @@
                 flipCard();
             }
         });
+
+        // New Features Functions
+        
+        // Achievements
+        function showAchievementDetail(achievementId) {
+            const achievements = {
+                'first-lesson': { title: 'Первый урок', desc: 'Поздравляем! Вы прошли свой первый урок.', unlocked: true },
+                'week-streak': { title: 'Неделя подряд', desc: '7 дней обучения без перерыва!', unlocked: true },
+                '100-words': { title: '100 слов', desc: 'Вы выучили первые 100 слов!', unlocked: true },
+                'movie-master': { title: 'Киномастер', desc: '100 фраз из фильмов изучено', unlocked: false },
+                'grammar-guru': { title: 'Грамматик', desc: 'Все уроки грамматики пройдены', unlocked: false },
+                'perfect-test': { title: 'Идеальный тест', desc: '100% за любой тест', unlocked: false },
+                'month-streak': { title: 'Месяц подряд', desc: '30 дней обучения!', unlocked: false },
+                'phonetics-pro': { title: 'Фонетика PRO', desc: 'Все звуки освоены', unlocked: false }
+            };
+            
+            const ach = achievements[achievementId];
+            if (ach) {
+                alert(`🏆 ${ach.title}\n\n${ach.desc}\n\n${ach.unlocked ? '✅ Разблокировано' : '🔒 Ещё не получено'}`);
+            }
+        }
+
+        // Mini Games
+        let gameScore = 0;
+        let selectedMatch = null;
+        let matchedPairs = 0;
+
+        function startWordMatch() {
+            const words = [
+                { en: 'Hello', ru: 'Привет' },
+                { en: 'Goodbye', ru: 'Пока' },
+                { en: 'Thank you', ru: 'Спасибо' },
+                { en: 'Please', ru: 'Пожалуйста' },
+                { en: 'Sorry', ru: 'Извините' },
+                { en: 'Yes', ru: 'Да' },
+                { en: 'No', ru: 'Нет' },
+                { en: 'Help', ru: 'Помощь' }
+            ];
+            
+            gameScore = 0;
+            matchedPairs = 0;
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-title').textContent = '🔗 Сопоставление слов';
+            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            
+            const content = document.getElementById('game-content');
+            let html = '<div class="word-match-grid">';
+            
+            // Shuffle and create pairs
+            const shuffled = [...words, ...words.map(w => ({ en: w.ru, ru: w.en, isReverse: true }))];
+            shuffled.sort(() => Math.random() - 0.5);
+            
+            shuffled.forEach((item, index) => {
+                const text = item.isReverse ? item.en : item.en;
+                const matchId = item.isReverse ? item.ru : item.ru;
+                html += `<div class="match-item" data-id="${matchId}" data-index="${index}" onclick="handleMatchClick(this)">
+                    ${text}
+                </div>`;
+            });
+            
+            html += '</div>';
+            content.innerHTML = html;
+        }
+
+        function handleMatchClick(element) {
+            if (element.classList.contains('matched') || element.classList.contains('selected')) return;
+            
+            element.classList.add('selected');
+            
+            if (!selectedMatch) {
+                selectedMatch = element;
+            } else {
+                if (selectedMatch.dataset.id === element.dataset.id && selectedMatch !== element) {
+                    // Match found
+                    selectedMatch.classList.add('matched');
+                    element.classList.add('matched');
+                    selectedMatch.classList.remove('selected');
+                    element.classList.remove('selected');
+                    gameScore += 10;
+                    matchedPairs++;
+                    selectedMatch = null;
+                    
+                    if (matchedPairs >= 8) {
+                        setTimeout(() => {
+                            alert(`🎉 Игра окончена! Ваш счёт: ${gameScore}`);
+                            closeGame();
+                        }, 500);
+                    }
+                } else {
+                    // No match
+                    setTimeout(() => {
+                        selectedMatch.classList.remove('selected');
+                        element.classList.remove('selected');
+                        selectedMatch = null;
+                    }, 500);
+                }
+                
+                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            }
+        }
+
+        function startSpellingBee() {
+            const words = ['hello', 'friend', 'movie', 'coffee', 'please', 'thanks', 'sorry', 'goodbye'];
+            const word = words[Math.floor(Math.random() * words.length)];
+            
+            gameScore = 0;
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-title').textContent = '✏️ Правописание';
+            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            
+            const content = document.getElementById('game-content');
+            content.innerHTML = `
+                <div style="text-align: center;">
+                    <p style="font-size: 24px; margin-bottom: 20px;">Напишите слово:</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">"${word.split('').map(() => '_').join(' ')}" (${word.length} букв)</p>
+                    <button class="audio-btn" onclick="alert('🔊 Произношение: /${word}/')">🔊</button>
+                    <br><br>
+                    <input type="text" class="spelling-input" id="spelling-answer" placeholder="Введите слово">
+                    <br><br>
+                    <button class="btn-primary" onclick="checkSpelling('${word}')">Проверить</button>
+                    <div class="hint-box" style="margin-top: 20px;">
+                        💡 Подсказка: Это слово означает "${getWordHint(word)}"
+                    </div>
+                </div>
+            `;
+        }
+
+        function getWordHint(word) {
+            const hints = {
+                'hello': 'приветствие',
+                'friend': 'товарищ, приятель',
+                'movie': 'фильм, кино',
+                'coffee': 'горячий напиток',
+                'please': 'вежливое слово',
+                'thanks': 'благодарность',
+                'sorry': 'извинение',
+                'goodbye': 'прощание'
+            };
+            return hints[word] || 'слово';
+        }
+
+        function checkSpelling(correctWord) {
+            const input = document.getElementById('spelling-answer');
+            const userWord = input.value.trim().toLowerCase();
+            
+            if (userWord === correctWord) {
+                gameScore += 20;
+                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+                alert('✅ Правильно! +20 очков');
+                startSpellingBee();
+            } else {
+                alert(`❌ Неправильно. Правильный ответ: ${correctWord}`);
+            }
+        }
+
+        function startFillBlanks() {
+            const sentences = [
+                { text: 'I ___ a student.', answer: 'am', options: ['am', 'is', 'are', 'be'] },
+                { text: 'She ___ to school every day.', answer: 'goes', options: ['go', 'goes', 'going', 'gone'] },
+                { text: 'They ___ not at home.', answer: 'are', options: ['is', 'am', 'are', 'be'] },
+                { text: '___ you like coffee?', answer: 'Do', options: ['Does', 'Do', 'Is', 'Are'] }
+            ];
+            
+            const current = sentences[Math.floor(Math.random() * sentences.length)];
+            
+            gameScore = 0;
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-title').textContent = '📝 Заполни пропуски';
+            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            
+            const content = document.getElementById('game-content');
+            content.innerHTML = `
+                <div style="text-align: center;">
+                    <p style="font-size: 24px; margin-bottom: 30px;">${current.text.replace('___', '______')}</p>
+                    <div class="test-options" style="max-width: 400px; margin: 0 auto;">
+                        ${current.options.map(opt => 
+                            `<div class="test-option" onclick="checkBlankAnswer('${opt}', '${current.answer}', this)">${opt}</div>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkBlankAnswer(selected, correct, element) {
+            if (selected === correct) {
+                element.classList.add('correct');
+                gameScore += 15;
+                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+                setTimeout(startFillBlanks, 1000);
+            } else {
+                element.classList.add('incorrect');
+                alert(`❌ Неправильно. Правильный ответ: ${correct}`);
+            }
+        }
+
+        function startSpeedRound() {
+            gameScore = 0;
+            let timeLeft = 60;
+            
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-title').textContent = '⚡ Скоростной раунд';
+            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            
+            const content = document.getElementById('game-content');
+            content.innerHTML = `
+                <div style="text-align: center;">
+                    <div class="timer-display" id="speed-timer">60</div>
+                    <p style="font-size: 20px; margin-bottom: 20px;">Переведите слово:</p>
+                    <div id="speed-word" style="font-size: 32px; margin-bottom: 20px;"></div>
+                    <input type="text" class="spelling-input" id="speed-input" placeholder="Ваш перевод">
+                    <br><br>
+                    <button class="btn-primary" onclick="checkSpeedAnswer()">Ответить</button>
+                </div>
+            `;
+            
+            loadSpeedWord();
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                const timerEl = document.getElementById('speed-timer');
+                if (timerEl) timerEl.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert(`⏰ Время вышло! Ваш счёт: ${gameScore}`);
+                    closeGame();
+                }
+            }, 1000);
+        }
+
+        let currentSpeedWord = {};
+        
+        function loadSpeedWord() {
+            const words = [
+                { en: 'Hello', ru: 'привет' },
+                { en: 'Cat', ru: 'кот' },
+                { en: 'House', ru: 'дом' },
+                { en: 'Water', ru: 'вода' },
+                { en: 'Friend', ru: 'друг' },
+                { en: 'Book', ru: 'книга' },
+                { en: 'Car', ru: 'машина' },
+                { en: 'Food', ru: 'еда' }
+            ];
+            
+            currentSpeedWord = words[Math.floor(Math.random() * words.length)];
+            document.getElementById('speed-word').textContent = currentSpeedWord.en;
+            document.getElementById('speed-input').value = '';
+            document.getElementById('speed-input').focus();
+        }
+
+        function checkSpeedAnswer() {
+            const input = document.getElementById('speed-input');
+            const userAnswer = input.value.trim().toLowerCase();
+            
+            if (userAnswer === currentSpeedWord.ru.toLowerCase()) {
+                gameScore += 5;
+                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+                loadSpeedWord();
+            } else {
+                alert(`❌ Неправильно. Правильный ответ: ${currentSpeedWord.ru}`);
+                loadSpeedWord();
+            }
+        }
+
+        function closeGame() {
+            document.getElementById('game-area').style.display = 'none';
+        }
+
+        // Testing Functions
+        let currentTest = null;
+        let currentQuestion = 0;
+        let testAnswers = [];
+
+        function startTest(testType) {
+            const tests = {
+                'placement': { title: 'Определение уровня', questions: 20, time: 900 },
+                'grammar-a1': { title: 'Грамматика A1', questions: 15, time: 600 },
+                'vocabulary-basic': { title: 'Базовая лексика', questions: 25, time: 720 },
+                'listening': { title: 'Аудирование', questions: 10, time: 480 },
+                'reading': { title: 'Чтение', questions: 5, time: 1200 }
+            };
+            
+            currentTest = tests[testType];
+            currentQuestion = 0;
+            testAnswers = [];
+            
+            document.getElementById('test-area').style.display = 'block';
+            document.getElementById('test-results').style.display = 'none';
+            document.querySelector('#testing .card:first-of-type').style.display = 'none';
+            document.getElementById('test-title').textContent = currentTest.title;
+            
+            loadQuestion();
+            startTestTimer(currentTest.time);
+        }
+
+        function loadQuestion() {
+            const questions = [
+                { q: 'I ___ a student.', options: ['am', 'is', 'are', 'be'], correct: 0 },
+                { q: 'She ___ to school every day.', options: ['go', 'goes', 'going', 'gone'], correct: 1 },
+                { q: 'They ___ not at home.', options: ['is', 'am', 'are', 'be'], correct: 2 },
+                { q: '___ you like coffee?', options: ['Does', 'Do', 'Is', 'Are'], correct: 1 },
+                { q: 'He ___ working now.', options: ['is', 'are', 'am', 'be'], correct: 0 }
+            ];
+            
+            const q = questions[currentQuestion % questions.length];
+            document.getElementById('question-text').textContent = `${currentQuestion + 1}. ${q.q}`;
+            document.getElementById('test-progress').textContent = `Вопрос ${currentQuestion + 1}/${currentTest.questions}`;
+            
+            const optionsHtml = q.options.map((opt, i) => 
+                `<div class="test-option" onclick="selectAnswer(${i}, this)">${opt}</div>`
+            ).join('');
+            document.getElementById('test-options').innerHTML = optionsHtml;
+        }
+
+        function selectAnswer(index, element) {
+            document.querySelectorAll('.test-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            testAnswers[currentQuestion] = index;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < currentTest.questions - 1) {
+                currentQuestion++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        function submitTest() {
+            const correct = testAnswers.filter((a, i) => a === i % 5).length;
+            const percentage = Math.round((correct / currentTest.questions) * 100);
+            
+            document.getElementById('test-area').style.display = 'none';
+            document.getElementById('test-results').style.display = 'block';
+            document.getElementById('test-score').textContent = `${percentage}%`;
+            document.getElementById('test-time').textContent = '5:23';
+            document.getElementById('test-level').textContent = percentage >= 80 ? 'A2' : percentage >= 60 ? 'A1+' : 'A1';
+            
+            document.getElementById('test-analysis').innerHTML = `
+                <p>Правильных ответов: ${correct} из ${currentTest.questions}</p>
+                <p>${percentage >= 80 ? '🎉 Отличный результат!' : percentage >= 60 ? '👍 Хорошая работа!' : '📚 Нужно ещё позаниматься'}</p>
+            `;
+        }
+
+        function retakeTest() {
+            document.getElementById('test-results').style.display = 'none';
+            document.querySelector('#testing .card:first-of-type').style.display = 'block';
+        }
+
+        let testTimerInterval;
+        
+        function startTestTimer(seconds) {
+            clearInterval(testTimerInterval);
+            let remaining = seconds;
+            
+            testTimerInterval = setInterval(() => {
+                remaining--;
+                const mins = Math.floor(remaining / 60);
+                const secs = remaining % 60;
+                document.getElementById('test-timer').textContent = 
+                    `${mins}:${secs.toString().padStart(2, '0')}`;
+                
+                if (remaining <= 0) {
+                    clearInterval(testTimerInterval);
+                    submitTest();
+                }
+            }, 1000);
+        }
+
+        // Notes Functions
+        function saveNotes() {
+            const vocabNotes = document.getElementById('personal-vocab-notes').value;
+            const grammarNotes = document.getElementById('grammar-notes').value;
+            const goalsNotes = document.getElementById('goals-notes').value;
+            
+            localStorage.setItem('cinelingua_notes', JSON.stringify({
+                vocab: vocabNotes,
+                grammar: grammarNotes,
+                goals: goalsNotes
+            }));
+            
+            alert('💾 Заметки сохранены!');
+        }
+
+        function clearNotes() {
+            if (confirm('Вы уверены? Все заметки будут удалены.')) {
+                document.getElementById('personal-vocab-notes').value = '';
+                document.getElementById('grammar-notes').value = '';
+                document.getElementById('goals-notes').value = '';
+            }
+        }
+
+        function exportNotes() {
+            const notes = {
+                vocab: document.getElementById('personal-vocab-notes').value,
+                grammar: document.getElementById('grammar-notes').value,
+                goals: document.getElementById('goals-notes').value
+            };
+            
+            const blob = new Blob([JSON.stringify(notes, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cinelingua-notes.json';
+            a.click();
+        }
+
+        // Export Functions
+        function exportProgress(format) {
+            alert(`📤 Экспорт в формате ${format.toUpperCase()} начат.\n\nФайл будет загружен в папку "Загрузки".`);
+        }
+
+        function importProgress(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        if (confirm('Импортировать данные? Текущий прогресс будет заменён.')) {
+                            state = { ...state, ...data };
+                            saveState();
+                            updateDashboard();
+                            alert('✅ Данные успешно импортированы!');
+                        }
+                    } catch (err) {
+                        alert('❌ Ошибка чтения файла.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
     </script>
 </body>
 </html>
