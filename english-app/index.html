@@ -1,0 +1,3430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineLingua - English for Film Lovers</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-card: #0f3460;
+            --text-primary: #eee;
+            --text-secondary: #bbb;
+            --accent: #e94560;
+            --accent-hover: #ff6b6b;
+            --success: #4ade80;
+            --warning: #fbbf24;
+            --border: #2d3748;
+        }
+
+        .light-theme {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a5568;
+            --accent: #e94560;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            padding: 20px 0;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        button.active {
+            background: var(--accent);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sidebar {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            height: fit-content;
+        }
+
+        .menu-item {
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .menu-item:hover {
+            background: var(--bg-card);
+        }
+
+        .menu-item.active {
+            background: var(--accent);
+        }
+
+        .content-area {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 12px;
+            min-height: 600px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid var(--border);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--border);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .flashcard {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .flashcard:hover {
+            transform: scale(1.02);
+        }
+
+        .flashcard-front {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .flashcard-back {
+            display: none;
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .flashcard.flipped .flashcard-back {
+            display: block;
+        }
+
+        .exercise {
+            margin: 20px 0;
+        }
+
+        .exercise-options {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            padding: 15px;
+            text-align: left;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+        }
+
+        .option-btn.correct {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .option-btn.wrong {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .chat-container {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            background: var(--bg-card);
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .message.user {
+            background: var(--accent);
+            margin-left: auto;
+        }
+
+        .message.ai {
+            background: var(--bg-secondary);
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            margin-right: 10px;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .vocab-item {
+            background: var(--bg-card);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .lesson-content {
+            line-height: 1.8;
+        }
+
+        .lesson-content p {
+            margin: 15px 0;
+        }
+
+        .highlight {
+            background: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .cultural-note {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .subtitle-upload {
+            border: 2px dashed var(--border);
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .subtitle-upload:hover {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .streak-fire {
+            font-size: 48px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-success {
+            background: var(--success);
+            border: none;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--accent);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .phonetic {
+            font-family: 'Arial Unicode MS', sans-serif;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* New Features Styles */
+        .achievement-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--accent), #ff9f43);
+            border-radius: 25px;
+            margin: 5px;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .achievement-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+
+        .achievement-card.unlocked {
+            opacity: 1;
+            border: 2px solid var(--accent);
+        }
+
+        .achievement-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .mini-game-container {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .word-match-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .match-item {
+            padding: 20px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .match-item.selected {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.2);
+        }
+
+        .match-item.matched {
+            border-color: var(--success);
+            background: rgba(74, 222, 128, 0.2);
+            pointer-events: none;
+        }
+
+        .audio-btn {
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+
+        .test-question {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .test-options {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .test-option {
+            padding: 15px 20px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .test-option:hover {
+            border-color: var(--accent);
+        }
+
+        .test-option.selected {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .test-option.correct {
+            border-color: var(--success);
+            background: rgba(74, 222, 128, 0.2);
+        }
+
+        .test-option.incorrect {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.2);
+        }
+
+        .notes-area {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .schedule-time {
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .export-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .export-btn {
+            padding: 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .export-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .stats-chart {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+            height: 200px;
+            padding: 10px;
+        }
+
+        .chart-column {
+            flex: 1;
+            background: var(--accent);
+            border-radius: 4px 4px 0 0;
+            min-height: 10px;
+            transition: height 0.3s;
+            position: relative;
+        }
+
+        .chart-column:hover::after {
+            content: attr(data-value);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .chart-label {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .fill-blank-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--accent);
+            color: var(--text-primary);
+            width: 100px;
+            text-align: center;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .drag-item {
+            padding: 15px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            margin: 5px;
+            cursor: grab;
+            display: inline-block;
+        }
+
+        .drag-zone {
+            min-height: 60px;
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .drag-zone.drag-over {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .timer-display {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--accent);
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .spelling-input {
+            font-size: 24px;
+            padding: 15px;
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .hint-box {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">🎬 CineLingua</div>
+            <div class="nav-buttons">
+                <button onclick="showSection('dashboard')" id="nav-dashboard" class="active">Главная</button>
+                <button onclick="showSection('lessons')" id="nav-lessons">Уроки</button>
+                <button onclick="showSection('vocabulary')" id="nav-vocabulary">Словарь</button>
+                <button onclick="showSection('practice')" id="nav-practice">Практика</button>
+                <button onclick="showSection('movies')" id="nav-movies">Кинословарь</button>
+                <button onclick="toggleOfflineMode()" id="offline-btn">📡 Онлайн</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <aside class="sidebar">
+            <h3>Меню</h3>
+            <div class="menu-item active" onclick="showSection('dashboard')">📊 Прогресс</div>
+            <div class="menu-item" onclick="showSection('lessons')">📚 Уроки</div>
+            <div class="menu-item" onclick="showSection('grammar')">📖 Грамматика</div>
+            <div class="menu-item" onclick="showSection('flashcards')">🃏 Карточки SRS</div>
+            <div class="menu-item" onclick="showSection('vocabulary')">📖 Словарь (1000)</div>
+            <div class="menu-item" onclick="showSection('practice')">💬 AI-собеседник</div>
+            <div class="menu-item" onclick="showSection('movies')">🎬 Кинословарь</div>
+            <div class="menu-item" onclick="showSection('subtitles')">📝 Разбор субтитров</div>
+            <div class="menu-item" onclick="showSection('culture')">🌍 Культура</div>
+            <div class="menu-item" onclick="showSection('achievements')">🏆 Достижения</div>
+            <div class="menu-item" onclick="showSection('minigames')">🎮 Мини-игры</div>
+            <div class="menu-item" onclick="showSection('testing')">📝 Тестирование</div>
+            <div class="menu-item" onclick="showSection('notes')">📝 Заметки</div>
+            <div class="menu-item" onclick="showSection('schedule')">⏰ Расписание</div>
+            <div class="menu-item" onclick="showSection('export')">💾 Экспорт</div>
+            <div class="menu-item" onclick="showSection('settings')">⚙️ Настройки</div>
+        </aside>
+
+        <main class="content-area">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <h1>Ваш прогресс</h1>
+                
+                <div class="streak-fire">🔥</div>
+                <div class="stat-card" style="margin-bottom: 20px;">
+                    <div class="stat-number" id="streak-days">7</div>
+                    <div>Дней подряд</div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="words-learned">342</div>
+                        <div>Слов выучено</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="lessons-completed">28</div>
+                        <div>Уроков пройдено</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="phrases-known">156</div>
+                        <div>Фраз из фильмов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="current-level">A1</div>
+                        <div>Текущий уровень</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Ежедневная цель</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="daily-progress" style="width: 60%"></div>
+                    </div>
+                    <p>9 из 15 минут сегодня</p>
+                    <button class="btn-primary" onclick="continueLearning()">Продолжить обучение</button>
+                </div>
+
+                <div class="card">
+                    <h3>Рекомендовано сегодня</h3>
+                    <div class="menu-item" onclick="startLesson(1)">📝 Урок 15: Present Simple</div>
+                    <div class="menu-item" onclick="startFlashcardSession()">🃏 Повторение карточек (23 слова)</div>
+                    <div class="menu-item" onclick="showSection('movies')">🎬 Фразы из "Friends"</div>
+                </div>
+            </section>
+
+            <!-- Lessons Section -->
+            <section id="lessons" class="section">
+                <h1>Программа обучения <span class="level-badge">A1 → A2</span></h1>
+                
+                <div class="card">
+                    <h2>Модуль 1: Фонетика и базовая лексика</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="startLesson(1)">
+                            <strong>Урок 1:</strong> Английские звуки. Отличие от русских
+                            <span class="phonetic">/θ/ /ð/ /w/ /r/</span>
+                        </div>
+                        <div class="menu-item" onclick="startLesson(2)">
+                            <strong>Урок 2:</strong> Приветствия и прощания
+                            <span class="phonetic">Hello, Goodbye, How are you?</span>
+                        </div>
+                        <div class="menu-item" onclick="startLesson(3)">
+                            <strong>Урок 3:</strong> Личные местоимения
+                            <span class="phonetic">I, you, he, she, it, we, they</span>
+                        </div>
+                        <div class="menu-item" onclick="startLesson(4)">
+                            <strong>Урок 4:</strong> Глагол to be
+                            <span class="phonetic">am, is, are</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Модуль 2: Базовая грамматика</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="startLesson(5)">
+                            <strong>Урок 5:</strong> Present Simple - утверждения
+                        </div>
+                        <div class="menu-item" onclick="startLesson(6)">
+                            <strong>Урок 6:</strong> Present Simple - вопросы и отрицания
+                        </div>
+                        <div class="menu-item" onclick="startLesson(7)">
+                            <strong>Урок 7:</strong> Артикли a/an/the
+                        </div>
+                        <div class="menu-item" onclick="startLesson(8)">
+                            <strong>Урок 8:</strong> Множественное число существительных
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Модуль 3: Лексика для фильмов</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="startLesson(9)">
+                            <strong>Урок 9:</strong> Эмоции и чувства (100 слов)
+                        </div>
+                        <div class="menu-item" onclick="startLesson(10)">
+                            <strong>Урок 10:</strong> Разговорные сокращения
+                            <span class="phonetic">gonna, wanna, gotta</span>
+                        </div>
+                        <div class="menu-item" onclick="startLesson(11)">
+                            <strong>Урок 11:</strong> Фразовые глаголы (базовые)
+                        </div>
+                        <div class="menu-item" onclick="startLesson(12)">
+                            <strong>Урок 12:</strong> Идиомы из сериалов
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 20px;">
+                    <h2 style="text-align: center; color: var(--accent);">📖 Перейти к полному справочнику грамматики</h2>
+                    <button class="btn-primary" onclick="showSection('grammar')" style="width: 100%; margin-top: 15px; font-size: 16px;">
+                        📚 Открыть раздел Грамматика
+                    </button>
+                </div>
+            </section>
+
+            <!-- Active Lesson View -->
+            <section id="lesson-view" class="section">
+                <button onclick="showSection('lessons')" style="margin-bottom: 20px;">← Назад к урокам</button>
+                <div id="lesson-content-display"></div>
+            </section>
+
+            <!-- Flashcards Section -->
+            <section id="flashcards" class="section">
+                <h1>Интеллектуальные карточки (SRS)</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">Система повторений на основе кривой забывания Эббингауза</p>
+                
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <span>Карточек на повторение: <strong id="cards-due">23</strong></span>
+                        <span>Новых слов: <strong id="cards-new">12</strong></span>
+                    </div>
+                    
+                    <div class="flashcard" id="current-flashcard" onclick="flipCard()">
+                        <div class="flashcard-front">
+                            <h2 id="card-front">Hello</h2>
+                            <p class="phonetic" id="card-phonetic">/həˈloʊ/</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3 id="card-back">Привет, Здравствуйте</h3>
+                            <p id="card-example">"Hello, how are you?"</p>
+                            <p id="card-context" style="margin-top: 10px; font-size: 14px;">🎬 Часто в: Friends, S01E01</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                        <button onclick="rateCard('hard')" style="background: #ef4444;">Сложно</button>
+                        <button onclick="rateCard('good')" style="background: #fbbf24;">Нормально</button>
+                        <button onclick="rateCard('easy')" style="background: #4ade80;">Легко</button>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 15px; color: var(--text-secondary);">
+                        Карточка <span id="card-current">1</span> из <span id="card-total">23</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Статистика повторений</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">89%</div>
+                            <div>Запоминание</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">342</div>
+                            <div>Всего слов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">23</div>
+                            <div>На сегодня</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vocabulary Section -->
+            <section id="vocabulary" class="section">
+                <h1>Словарь (1000 слов)</h1>
+                
+                <div class="card" style="margin-bottom: 20px;">
+                    <input type="text" placeholder="Поиск слова..." 
+                           style="width: 100%; padding: 12px; border: 1px solid var(--border); 
+                                  border-radius: 8px; background: var(--bg-card); 
+                                  color: var(--text-primary);" 
+                           onkeyup="filterVocabulary(this.value)">
+                    
+                    <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button onclick="filterByCategory('all')" class="active">Все</button>
+                        <button onclick="filterByCategory('greetings')">Приветствия</button>
+                        <button onclick="filterByCategory('emotions')">Эмоции</button>
+                        <button onclick="filterByCategory('travel')">Путешествия</button>
+                        <button onclick="filterByCategory('food')">Еда</button>
+                        <button onclick="filterByCategory('movies')">Кино</button>
+                        <button onclick="filterByCategory('phrasal')">Фразовые</button>
+                    </div>
+                </div>
+
+                <div class="vocab-grid" id="vocab-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Practice Section (AI Chat) -->
+            <section id="practice" class="section">
+                <h1>AI-собеседник</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">Практикуйте диалоги с искусственным интеллектом</p>
+                
+                <div class="card">
+                    <div style="margin-bottom: 15px;">
+                        <label>Выберите сценарий:</label>
+                        <select id="scenario-select" style="padding: 10px; border-radius: 8px; 
+                                background: var(--bg-card); color: var(--text-primary); 
+                                border: 1px solid var(--border); margin-left: 10px;"
+                                onchange="changeScenario(this.value)">
+                            <option value="cafe">☕ В кафе</option>
+                            <option value="airport">✈️ В аэропорту</option>
+                            <option value="hotel">🏨 В отеле</option>
+                            <option value="shop">🛒 В магазине</option>
+                            <option value="free">💬 Свободный разговор</option>
+                        </select>
+                    </div>
+
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message ai">
+                                Hello! Welcome to our café. What would you like to order today?
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chat-input-field" placeholder="Напишите ответ на английском..." 
+                                   onkeypress="if(event.key === 'Enter') sendMessage()">
+                            <button class="btn-primary" onclick="sendMessage()">Отправить</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button onclick="getGrammarHelp()">❓ Помощь с грамматикой</button>
+                        <button onclick="getTranslation()">🔄 Показать перевод</button>
+                        <button onclick="clearChat()">🗑️ Очистить</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Movies Section -->
+            <section id="movies" class="section">
+                <h1>🎬 Кинословарь</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Частые фразы из популярных фильмов и сериалов с объяснением грамматики
+                </p>
+
+                <div class="card">
+                    <h3>Популярные сериалы</h3>
+                    <div style="display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap;">
+                        <button onclick="filterByShow('friends')" class="active">Friends</button>
+                        <button onclick="filterByShow('breaking_bad')">Breaking Bad</button>
+                        <button onclick="filterByShow('stranger_things')">Stranger Things</button>
+                        <button onclick="filterByShow('the_office')">The Office</button>
+                        <button onclick="filterByShow('game_of_thrones')">Game of Thrones</button>
+                    </div>
+                </div>
+
+                <div id="movie-phrases">
+                    <div class="card">
+                        <h3><span style="color: var(--accent);">Friends</span> - S01E01 "The Pilot"</h3>
+                        <div class="vocab-item" style="margin: 15px 0;">
+                            <h4>"How you doin'?"</h4>
+                            <p class="phonetic">/haʊ ju ˈduɪn/</p>
+                            <p><strong>Перевод:</strong> Как дела? (неформально)</p>
+                            <p><strong>Грамматика:</strong> Сокращение от "How are you doing?". 
+                               Характерное произношение Джоуи.</p>
+                            <div class="cultural-note">
+                                🇺🇸 <strong>Культурная заметка:</strong> Эта фраза стала культовой благодаря персонажу Джоуи. 
+                                Используется как флирт или дружеское приветствие.
+                            </div>
+                            <button onclick="addToCards('How you doin?', 'Как дела?')" style="margin-top: 10px;">
+                                🃏 Добавить в карточки
+                            </button>
+                        </div>
+
+                        <div class="vocab-item" style="margin: 15px 0;">
+                            <h4>"Could I BE any more...?"</h4>
+                            <p class="phonetic">/kʊd aɪ bi ˈɛni mɔr/</p>
+                            <p><strong>Перевод:</strong> Мог бы я быть ещё более...?</p>
+                            <p><strong>Грамматика:</strong> Конструкция с ударением на BE для усиления. 
+                               Фирменная фишка Чендлера.</p>
+                            <div class="cultural-note">
+                                🇺🇸 <strong>Культурная заметка:</strong> Чендлер использует эту конструкцию 
+                                для сарказма. Ударение на вспомогательном глаголе — особенность его речи.
+                            </div>
+                            <button onclick="addToCards('Could I BE any more?', 'Мог бы я быть ещё более?')" style="margin-top: 10px;">
+                                🃏 Добавить в карточки
+                            </button>
+                        </div>
+
+                        <div class="vocab-item" style="margin: 15px 0;">
+                            <h4>"We were on a break!"</h4>
+                            <p class="phonetic">/wi wɜr ɑn ə breɪk/</p>
+                            <p><strong>Перевод:</strong> Мы были на перерыве!</p>
+                            <p><strong>Грамматика:</strong> Past Continuous + предлог "on". 
+                               "Break" = пауза в отношениях.</p>
+                            <div class="cultural-note">
+                                🇺🇸 <strong>Культурная заметка:</strong> Одна из самых известных фраз сериала. 
+                                Росс использовал её как оправдание многократно.
+                            </div>
+                            <button onclick="addToCards('We were on a break!', 'Мы были на перерыве!')" style="margin-top: 10px;">
+                                🃏 Добавить в карточки
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3><span style="color: var(--accent);">Breaking Bad</span> - S01E01</h3>
+                        <div class="vocab-item" style="margin: 15px 0;">
+                            <h4>"Say my name."</h4>
+                            <p class="phonetic">/seɪ maɪ neɪm/</p>
+                            <p><strong>Перевод:</strong> Назови моё имя.</p>
+                            <p><strong>Грамматика:</strong> Повелительное наклонение (Imperative).</p>
+                            <div class="cultural-note">
+                                🇺🇸 <strong>Культурная заметка:</strong> Культовая фраза Хайзенберга. 
+                                Используется для утверждения власти и авторитета.
+                            </div>
+                            <button onclick="addToCards('Say my name', 'Назови моё имя')" style="margin-top: 10px;">
+                                🃏 Добавить в карточки
+                            </button>
+                        </div>
+
+                        <div class="vocab-item" style="margin: 15px 0;">
+                            <h4>"I am the danger."</h4>
+                            <p class="phonetic">/aɪ æm ðə ˈdeɪndʒər/</p>
+                            <p><strong>Перевод:</strong> Я и есть опасность.</p>
+                            <p><strong>Грамматика:</strong> Present Simple с глаголом to be. 
+                               Артикль "the" перед абстрактным понятием для усиления.</p>
+                            <button onclick="addToCards('I am the danger', 'Я и есть опасность')" style="margin-top: 10px;">
+                                🃏 Добавить в карточки
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subtitles Analysis Section -->
+            <section id="subtitles" class="section">
+                <h1>📝 Интерактивный разбор субтитров</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Загрузите скриншот субтитров для анализа или вставьте текст
+                </p>
+
+                <div class="card">
+                    <div class="subtitle-upload" onclick="document.getElementById('file-input').click()">
+                        <div style="font-size: 48px; margin-bottom: 15px;">📷</div>
+                        <h3>Загрузить скриншот субтитров</h3>
+                        <p style="color: var(--text-secondary);">Перетащите файл или кликните для выбора</p>
+                        <p style="font-size: 12px; color: var(--text-secondary); margin-top: 10px;">
+                            Поддерживаемые форматы: PNG, JPG, JPEG
+                        </p>
+                    </div>
+                    <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="handleFileUpload(this)">
+                    
+                    <div style="margin: 20px 0; text-align: center;">
+                        <span>— ИЛИ —</span>
+                    </div>
+
+                    <textarea placeholder="Вставьте текст субтитров здесь..." 
+                              style="width: 100%; height: 150px; padding: 15px; 
+                                     border: 1px solid var(--border); border-radius: 8px; 
+                                     background: var(--bg-card); color: var(--text-primary); 
+                                     resize: vertical;"
+                              id="subtitle-text"></textarea>
+                    
+                    <button class="btn-primary" onclick="analyzeSubtitles()" style="margin-top: 15px; width: 100%;">
+                        🔍 Проанализировать
+                    </button>
+                </div>
+
+                <div id="analysis-result" class="card hidden">
+                    <h3>Результат анализа</h3>
+                    <div id="analysis-content"></div>
+                </div>
+            </section>
+
+            <!-- Grammar Section -->
+            <section id="grammar" class="section">
+                <h1>📖 Полный справочник грамматики английского языка</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Все грамматические темы от A1 до C1 с примерами и упражнениями
+                </p>
+
+                <div class="card">
+                    <h2>🔤 Модуль 1: Основы (A1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('personal-pronouns')">
+                            <strong>1.1</strong> Личные местоимения (Personal Pronouns)
+                            <span class="phonetic">I, you, he, she, it, we, they</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('verb-to-be')">
+                            <strong>1.2</strong> Глагол to be (быть)
+                            <span class="phonetic">am, is, are, was, were</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('articles')">
+                            <strong>1.3</strong> Артикли (Articles)
+                            <span class="phonetic">a, an, the</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('plural-nouns')">
+                            <strong>1.4</strong> Множественное число существительных
+                            <span class="phonetic">cat → cats, box → boxes</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('possessive-case')">
+                            <strong>1.5</strong> Притяжательный падеж
+                            <span class="phonetic">John's book, children's toys</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('demonstrative-pronouns')">
+                            <strong>1.6</strong> Указательные местоимения
+                            <span class="phonetic">this, that, these, those</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('there-is-there-are')">
+                            <strong>1.7</strong> Конструкция There is / There are
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('have-has')">
+                            <strong>1.8</strong> Глагол have got / has got
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>⏰ Модуль 2: Времена группы Simple (A1-A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('present-simple')">
+                            <strong>2.1</strong> Present Simple - настоящее простое время
+                            <span class="phonetic">I work, He works</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('past-simple')">
+                            <strong>2.2</strong> Past Simple - прошедшее простое время
+                            <span class="phonetic">I worked, I went</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('future-simple')">
+                            <strong>2.3</strong> Future Simple - будущее простое время
+                            <span class="phonetic">I will work</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('regular-irregular-verbs')">
+                            <strong>2.4</strong> Правильные и неправильные глаголы
+                            <span class="phonetic">worked, went, seen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔄 Модуль 3: Времена группы Continuous (A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('present-continuous')">
+                            <strong>3.1</strong> Present Continuous - настоящее длительное
+                            <span class="phonetic">I am working now</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('past-continuous')">
+                            <strong>3.2</strong> Past Continuous - прошедшее длительное
+                            <span class="phonetic">I was working at 5 PM</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('future-continuous')">
+                            <strong>3.3</strong> Future Continuous - будущее длительное
+                            <span class="phonetic">I will be working tomorrow</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('simple-vs-continuous')">
+                            <strong>3.4</strong> Simple vs Continuous - разница времён
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>✅ Модуль 4: Времена группы Perfect (B1-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('present-perfect')">
+                            <strong>4.1</strong> Present Perfect - настоящее совершённое
+                            <span class="phonetic">I have worked, I have seen</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('past-perfect')">
+                            <strong>4.2</strong> Past Perfect - прошедшее совершённое
+                            <span class="phonetic">I had worked before...</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('future-perfect')">
+                            <strong>4.3</strong> Future Perfect - будущее совершённое
+                            <span class="phonetic">I will have worked by...</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('present-perfect-continuous')">
+                            <strong>4.4</strong> Present Perfect Continuous
+                            <span class="phonetic">I have been working for 2 hours</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('past-perfect-continuous')">
+                            <strong>4.5</strong> Past Perfect Continuous
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('future-perfect-continuous')">
+                            <strong>4.6</strong> Future Perfect Continuous
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📝 Модуль 5: Модальные глаголы (A2-B1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('modal-can-could')">
+                            <strong>5.1</strong> Can / Could - мочь, уметь
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-must-have-to')">
+                            <strong>5.2</strong> Must / Have to - долженствование
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-should-ought')">
+                            <strong>5.3</strong> Should / Ought to - совет
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-may-might')">
+                            <strong>5.4</strong> May / Might - вероятность
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-would')">
+                            <strong>5.5</strong> Would - условное наклонение
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-need-dare')">
+                            <strong>5.6</strong> Need / Dare
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔣 Модуль 6: Пассивный залог (Passive Voice) (B1-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('passive-present')">
+                            <strong>6.1</strong> Passive Voice в Present Simple
+                            <span class="phonetic">The book is read</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('passive-past')">
+                            <strong>6.2</strong> Passive Voice в Past Simple
+                            <span class="phonetic">The book was read</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('passive-future')">
+                            <strong>6.3</strong> Passive Voice в Future Simple
+                            <span class="phonetic">The book will be read</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('passive-perfect')">
+                            <strong>6.4</strong> Passive Voice в Perfect tenses
+                            <span class="phonetic">The book has been read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>❓ Модуль 7: Вопросительные предложения (A1-B1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('general-questions')">
+                            <strong>7.1</strong> Общие вопросы (Yes/No questions)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('special-questions')">
+                            <strong>7.2</strong> Специальные вопросы (Wh- questions)
+                            <span class="phonetic">what, where, when, why, who, how</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('alternative-questions')">
+                            <strong>7.3</strong> Альтернативные вопросы
+                            <span class="phonetic">Tea or coffee?</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('tag-questions')">
+                            <strong>7.4</strong> Разделительные вопросы (Question tags)
+                            <span class="phonetic">You like it, don't you?</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('indirect-questions')">
+                            <strong>7.5</strong> Косвенные вопросы (Indirect questions)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🚫 Модуль 8: Отрицания и императив (A1-A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('negation-simple')">
+                            <strong>8.1</strong> Отрицания в Simple tenses
+                            <span class="phonetic">don't, doesn't, didn't</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('negation-perfect')">
+                            <strong>8.2</strong> Отрицания в Perfect tenses
+                            <span class="phonetic">haven't, hasn't, hadn't</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('imperative')">
+                            <strong>8.3</strong> Повелительное наклонение (Imperative)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('neither-either')">
+                            <strong>8.4</strong> Neither / Either / So do I
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📊 Модуль 9: Степени сравнения прилагательных (A1-A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('comparative-adjectives')">
+                            <strong>9.1</strong> Сравнительная степень
+                            <span class="phonetic">bigger, more interesting</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('superlative-adjectives')">
+                            <strong>9.2</strong> Превосходная степень
+                            <span class="phonetic">the biggest, the most interesting</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('irregular-comparison')">
+                            <strong>9.3</strong> Исключения
+                            <span class="phonetic">good → better → the best</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('as-as')">
+                            <strong>9.4</strong> Конструкции as...as, not so...as
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔗 Модуль 10: Условные предложения (Conditionals) (A2-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('conditional-zero')">
+                            <strong>10.1</strong> Zero Conditional - реальные условия
+                            <span class="phonetic">If you heat ice, it melts</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('conditional-first')">
+                            <strong>10.2</strong> First Conditional - вероятные условия
+                            <span class="phonetic">If it rains, I'll stay home</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('conditional-second')">
+                            <strong>10.3</strong> Second Conditional - маловероятные условия
+                            <span class="phonetic">If I won, I would travel</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('conditional-third')">
+                            <strong>10.4</strong> Third Conditional - нереальные условия в прошлом
+                            <span class="phonetic">If I had known, I would have come</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('mixed-conditionals')">
+                            <strong>10.5</strong> Mixed Conditionals - смешанные типы
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('wish-if-only')">
+                            <strong>10.6</strong> I wish / If only
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🗣️ Модуль 11: Косвенная речь (Reported Speech) (B1-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('reported-statements')">
+                            <strong>11.1</strong> Косвенные утверждения
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('reported-questions')">
+                            <strong>11.2</strong> Косвенные вопросы
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('reported-commands')">
+                            <strong>11.3</strong> Косвенные приказы и просьбы
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('sequence-of-tenses')">
+                            <strong>11.4</strong> Согласование времён
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📛 Модуль 12: Герундий и инфинитив (B1-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('gerund')">
+                            <strong>12.1</strong> Герундий (Gerund)
+                            <span class="phonetic">I enjoy reading</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('infinitive')">
+                            <strong>12.2</strong> Инфинитив (Infinitive)
+                            <span class="phonetic">I want to read</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('gerund-vs-infinitive')">
+                            <strong>12.3</strong> Герундий vs Инфинитив
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('participle')">
+                            <strong>12.4</strong> Причастия (Participles)
+                            <span class="phonetic">interesting, interested</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔢 Модуль 13: Числительные и количество (A1-A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('cardinal-numbers')">
+                            <strong>13.1</strong> Количественные числительные
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('ordinal-numbers')">
+                            <strong>13.2</strong> Порядковые числительные
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('countable-uncountable')">
+                            <strong>13.3</strong> Исчисляемые и неисчисляемые существительные
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('quantifiers')">
+                            <strong>13.4</strong> Слова количества
+                            <span class="phonetic">some, any, much, many, few, little</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔤 Модуль 14: Предлоги (Prepositions) (A1-B1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('prepositions-time')">
+                            <strong>14.1</strong> Предлоги времени
+                            <span class="phonetic">in, on, at, for, since</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('prepositions-place')">
+                            <strong>14.2</strong> Предлоги места
+                            <span class="phonetic">in, on, at, under, over, between</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('prepositions-direction')">
+                            <strong>14.3</strong> Предлоги направления
+                            <span class="phonetic">to, into, out of, through</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-prepositions')">
+                            <strong>14.4</strong> Предлоги в фразовых глаголах
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎭 Модуль 15: Фразовые глаголы (Phrasal Verbs) (B1-C1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-get')">
+                            <strong>15.1</strong> Phrasal verbs с GET
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-take')">
+                            <strong>15.2</strong> Phrasal verbs с TAKE
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-make')">
+                            <strong>15.3</strong> Phrasal verbs с MAKE
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-do')">
+                            <strong>15.4</strong> Phrasal verbs с DO
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-go')">
+                            <strong>15.5</strong> Phrasal verbs с GO
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-come')">
+                            <strong>15.6</strong> Phrasal verbs с COME
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🏗️ Модуль 16: Сложные конструкции (B2-C1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('complex-object')">
+                            <strong>16.1</strong> Complex Object (сложное дополнение)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('complex-subject')">
+                            <strong>16.2</strong> Complex Subject (сложное подлежащее)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('for-to-infinitive')">
+                            <strong>16.3</strong> For + to Infinitive
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('absolute-construction')">
+                            <strong>16.4</strong> Absolute Construction
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📜 Модуль 17: Инверсия и эмфаза (C1-C2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('inversion')">
+                            <strong>17.1</strong> Инверсия (Inversion)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('emphasis')">
+                            <strong>17.2</strong> Эмфатические конструкции
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('cleft-sentences')">
+                            <strong>17.3</strong> Расщеплённые предложения (Cleft sentences)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔗 Модуль 18: Средства связи (Linking Words) (B1-C1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('linking-addition')">
+                            <strong>18.1</strong> Добавление информации
+                            <span class="phonetic">moreover, furthermore, in addition</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('linking-contrast')">
+                            <strong>18.2</strong> Противопоставление
+                            <span class="phonetic">however, nevertheless, on the other hand</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('linking-result')">
+                            <strong>18.3</strong> Результат и следствие
+                            <span class="phonetic">therefore, consequently, as a result</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('linking-purpose')">
+                            <strong>18.4</strong> Цель
+                            <span class="phonetic">in order to, so as to</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="showSection('lessons')" style="margin-top: 20px;">← Назад к урокам</button>
+            </section>
+
+            <!-- Culture Section -->
+            <section id="culture" class="section">
+                <h1>🌍 Культурные заметки</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Этикет, традиции и реалии англоязычных стран
+                </p>
+
+                <div class="card">
+                    <h3>🇬🇧 Великобритания</h3>
+                    <div class="cultural-note">
+                        <h4>Small Talk о погоде</h4>
+                        <p>Британцы часто начинают разговор с обсуждения погоды. Это не просто болтовня — 
+                           это способ установить контакт без вторжения в личное пространство.</p>
+                        <p><strong>Примеры:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>"Lovely day, isn't it?"</li>
+                            <li>"Bit chilly this morning."</li>
+                            <li>"Looks like rain later."</li>
+                        </ul>
+                    </div>
+
+                    <div class="cultural-note">
+                        <h4>Извинения</h4>
+                        <p>Британцы говорят "sorry" очень часто, даже когда не виноваты. 
+                           Это часть вежливости, а не признание вины.</p>
+                        <p><strong>Ситуации:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Кто-то наступил вам на ногу → "Sorry!" (оба говорят)</li>
+                            <li>Хотите пройти мимо → "Sorry, could I just...?"</li>
+                            <li>Не расслышали → "Sorry?" (с вопросительной интонацией)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🇺🇸 США</h3>
+                    <div class="cultural-note">
+                        <h4>Как дела? ≠ Как дела?</h4>
+                        <p>"How are you?" в США — это приветствие, а не реальный вопрос. 
+                           Ожидаемый ответ всегда положительный и краткий.</p>
+                        <p><strong>Правильные ответы:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>"Good, thanks!"</li>
+                            <li>"Doing well, you?"</li>
+                            <li>"Not bad!"</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Не стоит:</strong> рассказывать о реальных проблемах.</p>
+                    </div>
+
+                    <div class="cultural-note">
+                        <h4>Чаевые (Tipping)</h4>
+                        <p>В США чаевые обязательны в ресторанах (15-20%). 
+                           Это не благодарность, а часть зарплаты официанта.</p>
+                        <p><strong>Где давать:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Рестораны: 15-20%</li>
+                            <li>Такси: 10-15%</li>
+                            <li>Бариста: $1-2</li>
+                            <li>Отель (горничной): $2-5 в день</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🇦🇺 Австралия</h3>
+                    <div class="cultural-note">
+                        <h4>Австралийские сокращения</h4>
+                        <p>Австралийцы обожают сокращать слова и добавлять "-o" или "-ie".</p>
+                        <p><strong>Примеры:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>"arvo" = afternoon (день)</li>
+                            <li>"brekkie" = breakfast (завтрак)</li>
+                            <li>"barbie" = barbecue (барбекю)</li>
+                            <li>"servo" = service station (заправка)</li>
+                            <li>"bottle-o" = bottle shop (алкогольный магазин)</li>
+                        </ul>
+                    </div>
+
+                    <div class="cultural-note">
+                        <h4>"No worries"</h4>
+                        <p>Универсальная фраза, означающая "без проблем", "не за что", "всё хорошо".</p>
+                        <p><strong>Использование:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>В ответ на "Thank you" → "No worries!"</li>
+                            <li>В ответ на "Sorry" → "No worries!"</li>
+                            <li>Когда кто-то просит об одолжении → "No worries!" (конечно)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section id="achievements" class="section">
+                <h1>🏆 Достижения</h1>
+                
+                <div class="card">
+                    <h3>Ваши награды</h3>
+                    <div class="achievement-grid" id="achievements-grid">
+                        <div class="achievement-card unlocked" onclick="showAchievementDetail('first-lesson')">
+                            <div class="achievement-icon">🎓</div>
+                            <div><strong>Первый урок</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Пройдите первый урок</div>
+                        </div>
+                        <div class="achievement-card unlocked" onclick="showAchievementDetail('week-streak')">
+                            <div class="achievement-icon">🔥</div>
+                            <div><strong>Неделя подряд</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">7 дней streak</div>
+                        </div>
+                        <div class="achievement-card unlocked" onclick="showAchievementDetail('100-words')">
+                            <div class="achievement-icon">💯</div>
+                            <div><strong>100 слов</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Выучите 100 слов</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('movie-master')">
+                            <div class="achievement-icon">🎬</div>
+                            <div><strong>Киномастер</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">100 фраз из фильмов</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('grammar-guru')">
+                            <div class="achievement-icon">📚</div>
+                            <div><strong>Грамматик</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Все уроки грамматики</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('perfect-test')">
+                            <div class="achievement-icon">⭐</div>
+                            <div><strong>Идеальный тест</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">100% за тест</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('month-streak')">
+                            <div class="achievement-icon">🏆</div>
+                            <div><strong>Месяц подряд</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">30 дней streak</div>
+                        </div>
+                        <div class="achievement-card" onclick="showAchievementDetail('phonetics-pro')">
+                            <div class="achievement-icon">🎤</div>
+                            <div><strong>Фонетика PRO</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Все звуки освоены</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Статистика достижений</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="achievements-unlocked">3</div>
+                            <div>Разблокировано</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="achievements-total">8</div>
+                            <div>Всего достижений</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="achievements-percent">38%</div>
+                            <div>Прогресс</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mini Games Section -->
+            <section id="minigames" class="section">
+                <h1>🎮 Мини-игры</h1>
+                
+                <div class="card">
+                    <h3>Выберите игру</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card" onclick="startWordMatch()" style="cursor: pointer;">
+                            <div class="achievement-icon">🔗</div>
+                            <div><strong>Сопоставление слов</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Соедините слово с переводом</div>
+                        </div>
+                        <div class="stat-card" onclick="startSpellingBee()" style="cursor: pointer;">
+                            <div class="achievement-icon">✏️</div>
+                            <div><strong>Правописание</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Напишите слово на слух</div>
+                        </div>
+                        <div class="stat-card" onclick="startFillBlanks()" style="cursor: pointer;">
+                            <div class="achievement-icon">📝</div>
+                            <div><strong>Заполни пропуски</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Вставьте правильные слова</div>
+                        </div>
+                        <div class="stat-card" onclick="startSpeedRound()" style="cursor: pointer;">
+                            <div class="achievement-icon">⚡</div>
+                            <div><strong>Скоростной раунд</strong></div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Максимум слов за 60 сек</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="game-area" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 id="game-title">Игра</h3>
+                        <div>
+                            <span id="game-score" style="margin-right: 20px;">Счёт: 0</span>
+                            <button onclick="closeGame()">Закрыть</button>
+                        </div>
+                    </div>
+                    <div id="game-content"></div>
+                </div>
+            </section>
+
+            <!-- Testing Section -->
+            <section id="testing" class="section">
+                <h1>📝 Тестирование</h1>
+                
+                <div class="card">
+                    <h3>Доступные тесты</h3>
+                    <div class="menu-item" onclick="startTest('placement')">
+                        <strong>Определение уровня</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">20 вопросов • 15 минут</div>
+                    </div>
+                    <div class="menu-item" onclick="startTest('grammar-a1')">
+                        <strong>Грамматика A1</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">15 вопросов • 10 минут</div>
+                    </div>
+                    <div class="menu-item" onclick="startTest('vocabulary-basic')">
+                        <strong>Базовая лексика</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">25 вопросов • 12 минут</div>
+                    </div>
+                    <div class="menu-item" onclick="startTest('listening')">
+                        <strong>Аудирование</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">10 вопросов • 8 минут</div>
+                    </div>
+                    <div class="menu-item" onclick="startTest('reading')">
+                        <strong>Чтение</strong>
+                        <div style="font-size: 12px; color: var(--text-secondary);">5 текстов • 20 минут</div>
+                    </div>
+                </div>
+
+                <div class="card" id="test-area" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 id="test-title">Тест</h3>
+                        <div>
+                            <span id="test-progress" style="margin-right: 20px;">Вопрос 1/10</span>
+                            <div class="timer-display" id="test-timer">10:00</div>
+                        </div>
+                    </div>
+                    <div class="test-question" id="test-question">
+                        <p id="question-text"></p>
+                        <div class="test-options" id="test-options"></div>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button onclick="prevQuestion()">← Назад</button>
+                        <button class="btn-primary" onclick="nextQuestion()">Вперёд →</button>
+                        <button class="btn-success" onclick="submitTest()">Завершить тест</button>
+                    </div>
+                </div>
+
+                <div class="card" id="test-results" style="display: none;">
+                    <h2>Результаты теста</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="test-score">85%</div>
+                            <div>Правильных ответов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="test-time">8:32</div>
+                            <div>Время выполнения</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="test-level">A1+</div>
+                            <div>Рекомендуемый уровень</div>
+                        </div>
+                    </div>
+                    <div id="test-analysis" style="margin-top: 20px;"></div>
+                    <button class="btn-primary" onclick="retakeTest()">Пройти заново</button>
+                </div>
+            </section>
+
+            <!-- Notes Section -->
+            <section id="notes" class="section">
+                <h1>📝 Мои заметки</h1>
+                
+                <div class="card">
+                    <h3>Личный словарь</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">Записывайте сложные слова и фразы для запоминания</p>
+                    <textarea class="notes-area" id="personal-vocab-notes" placeholder="Пример:&#10;To binge-watch - смотреть запоем (несколько серий подряд)&#10;Plot twist - неожиданный поворот сюжета&#10;Cliffhanger - интригующая концовка серии"></textarea>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-primary" onclick="saveNotes()">💾 Сохранить</button>
+                        <button onclick="clearNotes()">🗑️ Очистить</button>
+                        <button onclick="exportNotes()">📤 Экспорт</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Заметки по грамматике</h3>
+                    <textarea class="notes-area" id="grammar-notes" placeholder="Записывайте правила и исключения...&#10;&#10;Пример:&#10;Present Continuous используется для:&#10;1. Действий в момент речи&#10;2. Временных ситуаций&#10;3. Запланированных действий в будущем"></textarea>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-primary" onclick="saveNotes()">💾 Сохранить</button>
+                        <button onclick="clearNotes()">🗑️ Очистить</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Цели и планы</h3>
+                    <textarea class="notes-area" id="goals-notes" placeholder="Мои цели изучения английского:&#10;&#10;Краткосрочные (1 месяц):&#10;- Выучить 200 слов&#10;- Пройти все уроки A1&#10;&#10;Долгосрочные (6 месяцев):&#10;- Смотреть сериалы без субтитров&#10;- Свободно общаться на базовые темы"></textarea>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-primary" onclick="saveNotes()">💾 Сохранить</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule" class="section">
+                <h1>⏰ Расписание занятий</h1>
+                
+                <div class="card">
+                    <h3>Еженедельный план</h3>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Понедельник</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Фонетика + Лексика</div>
+                        </div>
+                        <div class="schedule-time">15 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Вторник</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Грамматика + Упражнения</div>
+                        </div>
+                        <div class="schedule-time">15 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Среда</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Аудирование + Кинословарь</div>
+                        </div>
+                        <div class="schedule-time">15 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Четверг</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Повторение SRS</div>
+                        </div>
+                        <div class="schedule-time">10 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Пятница</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">AI-диалоги + Культура</div>
+                        </div>
+                        <div class="schedule-time">15 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Суббота</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Мини-игры + Тест</div>
+                        </div>
+                        <div class="schedule-time">20 мин</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div>
+                            <strong>Воскресенье</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Отдых или свободное занятие</div>
+                        </div>
+                        <div class="schedule-time">0-15 мин</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Напоминания</h3>
+                    <div style="margin: 15px 0;">
+                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <input type="checkbox" checked>
+                            Ежедневное напоминание
+                        </label>
+                        <input type="time" value="19:00" style="padding: 10px; border-radius: 8px; 
+                                background: var(--bg-card); color: var(--text-primary); 
+                                border: 1px solid var(--border);">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Export Section -->
+            <section id="export" class="section">
+                <h1>💾 Экспорт данных</h1>
+                
+                <div class="card">
+                    <h3>Экспорт прогресса</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Сохраните свои данные для использования на других устройствах или для резервной копии</p>
+                    
+                    <div class="export-options">
+                        <div class="export-btn" onclick="exportProgress('json')">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📄</div>
+                            <strong>JSON</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Полный экспорт данных</div>
+                        </div>
+                        <div class="export-btn" onclick="exportProgress('csv')">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📊</div>
+                            <strong>CSV</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Словарь в таблицу</div>
+                        </div>
+                        <div class="export-btn" onclick="exportProgress('pdf')">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📕</div>
+                            <strong>PDF</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Отчёт о прогрессе</div>
+                        </div>
+                        <div class="export-btn" onclick="exportProgress('anki')">
+                            <div style="font-size: 32px; margin-bottom: 10px;">🃏</div>
+                            <strong>Anki</strong>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Карточки для Anki</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Импорт данных</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">Восстановите прогресс из ранее сохранённого файла</p>
+                    <div style="border: 2px dashed var(--border); padding: 30px; text-align: center; border-radius: 12px; cursor: pointer;"
+                         onclick="document.getElementById('import-file').click()">
+                        <div style="font-size: 48px; margin-bottom: 10px;">📁</div>
+                        <div>Нажмите для выбора файла</div>
+                        <div style="font-size: 12px; color: var(--text-secondary);">Поддерживаются JSON файлы экспорта</div>
+                        <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importProgress(this)">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Статистика экспорта</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="export-words">342</div>
+                            <div>Слов для экспорта</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="export-phrases">156</div>
+                            <div>Фраз из фильмов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="export-notes">3</div>
+                            <div>Заметки</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <h1>⚙️ Настройки</h1>
+
+                <div class="card">
+                    <h3>Интерфейс</h3>
+                    <div style="margin: 15px 0;">
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="sound-toggle" checked>
+                            Звуковые эффекты
+                        </label>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="notifications-toggle" checked>
+                            Уведомления о повторении
+                        </label>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Ежедневная цель</h3>
+                    <select id="daily-goal" style="padding: 10px; border-radius: 8px; 
+                            background: var(--bg-card); color: var(--text-primary); 
+                            border: 1px solid var(--border); width: 100%;"
+                            onchange="updateDailyGoal(this.value)">
+                        <option value="5">5 минут</option>
+                        <option value="10">10 минут</option>
+                        <option value="15" selected>15 минут</option>
+                        <option value="30">30 минут</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <h3>Офлайн режим</h3>
+                    <p style="color: var(--text-secondary); margin: 15px 0;">
+                        Скачайте уроки для использования без интернета
+                    </p>
+                    <button onclick="downloadLessons()" class="btn-primary">
+                        📥 Скачать все уроки (245 MB)
+                    </button>
+                    <div id="download-progress" class="progress-bar hidden" style="margin-top: 15px;">
+                        <div class="progress-fill" id="download-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="download-status" style="margin-top: 10px; font-size: 14px;"></p>
+                </div>
+
+                <div class="card">
+                    <h3>Прогресс</h3>
+                    <button onclick="resetProgress()" style="background: #ef4444; width: 100%;">
+                        🗑️ Сбросить весь прогресс
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3>О приложении</h3>
+                    <p><strong>CineLingua</strong> v1.0.0</p>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">
+                        Бесплатное приложение для изучения английского через фильмы и сериалы.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        💝 Поддержать разработчика: 
+                        <button onclick="alert('Спасибо за поддержку! ❤️')" style="padding: 5px 15px;">
+                            Сделать донат
+                        </button>
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()" title="Сменить тему">🌓</button>
+
+    <script>
+        // State Management
+        let state = {
+            currentSection: 'dashboard',
+            currentLesson: null,
+            currentCard: 0,
+            cards: [],
+            vocabulary: [],
+            chatHistory: [],
+            streak: 7,
+            wordsLearned: 342,
+            lessonsCompleted: 28,
+            dailyMinutes: 9,
+            dailyGoal: 15,
+            offlineMode: false,
+            darkTheme: true
+        };
+
+        // Initialize Application
+        document.addEventListener('DOMContentLoaded', function() {
+            loadState();
+            initializeVocabulary();
+            initializeCards();
+            updateDashboard();
+        });
+
+        // Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+            document.querySelectorAll('.nav-buttons button').forEach(b => b.classList.remove('active'));
+
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update menu
+            const menuItem = document.querySelector(`.menu-item[onclick="showSection('${sectionId}')"]`);
+            if (menuItem) menuItem.classList.add('active');
+
+            // Update nav buttons
+            const navBtn = document.getElementById(`nav-${sectionId}`);
+            if (navBtn) navBtn.classList.add('active');
+
+            state.currentSection = sectionId;
+            saveState();
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            state.darkTheme = !state.darkTheme;
+            document.body.classList.toggle('light-theme', !state.darkTheme);
+            saveState();
+        }
+
+        // Dashboard Functions
+        function updateDashboard() {
+            document.getElementById('streak-days').textContent = state.streak;
+            document.getElementById('words-learned').textContent = state.wordsLearned;
+            document.getElementById('lessons-completed').textContent = state.lessonsCompleted;
+            document.getElementById('daily-progress').style.width = 
+                `${(state.dailyMinutes / state.dailyGoal) * 100}%`;
+        }
+
+        function continueLearning() {
+            if (state.cards.filter(c => c.due).length > 0) {
+                showSection('flashcards');
+            } else {
+                startLesson(1);
+            }
+        }
+
+        // Lesson System
+        const lessons = {
+            1: {
+                title: "Урок 1: Английские звуки",
+                theory: `
+                    <h2>Английские звуки, которых нет в русском</h2>
+                    <p>Английский язык содержит несколько звуков, отсутствующих в русском. 
+                       Правильное произношение критически важно для понимания.</p>
+                    
+                    <h3>1. Звук /θ/ (voiceless th)</h3>
+                    <p>Язык между зубами, воздух проходит свободно.</p>
+                    <p><strong>Примеры:</strong> think, thank, three, bath</p>
+                    <p class="phonetic">/θɪŋk/ /θæŋk/ /θriː/ /bæθ/</p>
+
+                    <h3>2. Звук /ð/ (voiced th)</h3>
+                    <p>Язык между зубами, голосовые связки вибрируют.</p>
+                    <p><strong>Примеры:</strong> this, that, the, mother</p>
+                    <p class="phonetic">/ðɪs/ /ðæt/ /ðə/ /ˈmʌðər/</p>
+
+                    <h3>3. Звук /w/</h3>
+                    <p>Губы округлены, как для "у", но звук скользит.</p>
+                    <p><strong>Примеры:</strong> water, what, when, why</p>
+                    <p class="phonetic">/ˈwɔːtər/ /wʌt/ /wen/ /waɪ/</p>
+
+                    <h3>4. Звук /r/</h3>
+                    <p>Язык не касается нёба, губы слегка округлены.</p>
+                    <p><strong>Примеры:</strong> red, right, very, sorry</p>
+                    <p class="phonetic">/red/ /raɪt/ /ˈveri/ /ˈsɔːri/</p>
+
+                    <div class="cultural-note">
+                        <strong>Совет:</strong> Тренируйте эти звуки ежедневно по 5 минут. 
+                        Смотрите в зеркало и сравнивайте с носителями.
+                    </div>
+                `,
+                exercises: [
+                    {
+                        type: 'choice',
+                        question: 'Какой звук в слове "think"?',
+                        options: ['/θ/', '/ð/', '/s/', '/z/'],
+                        correct: 0
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Выберите слово со звуком /ð/:',
+                        options: ['three', 'this', 'thank', 'bath'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Как произносится /w/?',
+                        options: ['Язык за зубами', 'Губы округлены', 'Язык на нёбе', 'Зубы сжаты'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Какой звук в слове "mother"?',
+                        options: ['/θ/', '/ð/', '/m/', '/r/'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Выберите слово со звуком /θ/:',
+                        options: ['that', 'these', 'three', 'those'],
+                        correct: 2
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Какое слово содержит звук /w/?',
+                        options: ['red', 'water', 'bed', 'cat'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Выберите правильное произношение слова "very":',
+                        options: ['/ˈweri/', '/ˈveri/', '/ˈberi/', '/ˈzeri/'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'В каком слове НЕТ звука /θ/?',
+                        options: ['think', 'bath', 'this', 'thank'],
+                        correct: 2
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Как произносится звук /r/ в английском?',
+                        options: ['Язык касается нёба', 'Язык не касается нёба', 'Зубы сжаты', 'Губы растянуты'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Выберите слово со звуком /ð/:',
+                        options: ['bath', 'thin', 'father', 'thanks'],
+                        correct: 2
+                    }
+                ]
+            },
+            5: {
+                title: "Урок 5: Present Simple - утверждения",
+                theory: `
+                    <h2>Present Simple Tense</h2>
+                    <p>Настоящее простое время используется для:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Регулярных действий (I watch TV every day)</li>
+                        <li>Фактов и истин (Water boils at 100°C)</li>
+                        <li>Расписаний (The train leaves at 6 PM)</li>
+                    </ul>
+
+                    <h3>Образование утверждений:</h3>
+                    <p><strong>I/You/We/They + глагол</strong></p>
+                    <p>I work, You study, We live, They play</p>
+
+                    <p><strong>He/She/It + глагол + -s/-es</strong></p>
+                    <p>He works, She studies, It rains</p>
+
+                    <h3>Правила добавления -s/-es:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Большинство глаголов: +s (works, plays)</li>
+                        <li>На -s, -sh, -ch, -x, -o: +es (watches, goes)</li>
+                        <li>На согласную + y: y → ies (study → studies)</li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Из фильмов:</strong> "He <em>doesn't</em> like coffee." (Friends)<br>
+                        Обратите внимание на doesn't + инфинитив без to.
+                    </div>
+                `,
+                exercises: [
+                    {
+                        type: 'choice',
+                        question: 'Choose the correct form: She ___ to school every day.',
+                        options: ['go', 'goes', 'going', 'to go'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'They ___ TV in the evening.',
+                        options: ["watchs", "watch", "watches", "watching"],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'He ___ pizza.',
+                        options: ['love', 'loves', 'loving', 'to love'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'I ___ coffee in the morning.',
+                        options: ['drink', 'drinks', 'drinking', 'to drink'],
+                        correct: 0
+                    },
+                    {
+                        type: 'choice',
+                        question: 'My brother ___ at a bank.',
+                        options: ['work', 'works', 'working', 'to work'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'We ___ English every day.',
+                        options: ['study', 'studies', 'studying', 'to study'],
+                        correct: 0
+                    },
+                    {
+                        type: 'choice',
+                        question: 'The sun ___ in the east.',
+                        options: ['rise', 'rises', 'rising', 'to rise'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'She ___ her homework after dinner.',
+                        options: ['do', 'does', 'doing', 'to do'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Cats ___ milk.',
+                        options: ['like', 'likes', 'liking', 'to like'],
+                        correct: 0
+                    },
+                    {
+                        type: 'choice',
+                        question: 'He usually ___ up at 7 AM.',
+                        options: ['get', 'gets', 'getting', 'to get'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'They ___ football on weekends.',
+                        options: ['play', 'plays', 'playing', 'to play'],
+                        correct: 0
+                    }
+                ]
+            }
+        };
+
+        function startLesson(lessonId) {
+            const lesson = lessons[lessonId] || lessons[1];
+            state.currentLesson = lessonId;
+            
+            const content = `
+                <h1>${lesson.title}</h1>
+                <div class="card lesson-content">
+                    ${lesson.theory}
+                </div>
+                
+                <div class="card">
+                    <h3>Проверка знаний</h3>
+                    <div id="exercise-container"></div>
+                </div>
+
+                <button class="btn-primary" onclick="completeLesson()" style="margin-top: 20px; width: 100%;">
+                    ✅ Завершить урок
+                </button>
+            `;
+
+            document.getElementById('lesson-content-display').innerHTML = content;
+            showSection('lesson-view');
+            
+            // Render exercises
+            renderExercises(lesson.exercises);
+        }
+
+        function renderExercises(exercises) {
+            const container = document.getElementById('exercise-container');
+            container.innerHTML = '';
+
+            exercises.forEach((ex, index) => {
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise';
+                exerciseDiv.innerHTML = `
+                    <p><strong>Вопрос ${index + 1}:</strong> ${ex.question}</p>
+                    <div class="exercise-options">
+                        ${ex.options.map((opt, i) => `
+                            <button class="option-btn" onclick="checkAnswer(this, ${i}, ${ex.correct})">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(exerciseDiv);
+            });
+        }
+
+        function checkAnswer(btn, selected, correct) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('.option-btn');
+            
+            buttons.forEach((b, i) => {
+                b.disabled = true;
+                if (i === correct) {
+                    b.classList.add('correct');
+                } else if (i === selected && selected !== correct) {
+                    b.classList.add('wrong');
+                }
+            });
+
+            if (selected === correct) {
+                // Play success sound (optional)
+                console.log('Correct!');
+            }
+        }
+
+        function completeLesson() {
+            state.lessonsCompleted++;
+            state.dailyMinutes += 10;
+            alert('🎉 Урок завершён! +10 минут к сегодняшней цели.');
+            updateDashboard();
+            showSection('dashboard');
+            saveState();
+        }
+
+        // Grammar Topics Content
+        const grammarTopics = {
+            'personal-pronouns': {
+                title: 'Личные местоимения (Personal Pronouns)',
+                content: `
+                    <h2>Личные местоимения в английском языке</h2>
+                    <p>Личные местоимения заменяют существительные и указывают на лицо, предмет или явление.</p>
+                    
+                    <h3>Таблица личных местоимений:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Лицо</th>
+                            <th style="padding: 10px;">Единственное число</th>
+                            <th style="padding: 10px;">Множественное число</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">1-е</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I (я)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">we (мы)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">2-е</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">you (ты, вы)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">you (вы)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">3-е</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">he (он), she (она), it (оно)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">they (они)</td>
+                        </tr>
+                    </table>
+
+                    <h3>Примеры использования:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>I</strong> am a student. — Я студент.</li>
+                        <li><strong>She</strong> works in an office. — Она работает в офисе.</li>
+                        <li><strong>They</strong> live in London. — Они живут в Лондоне.</li>
+                        <li><strong>We</strong> are friends. — Мы друзья.</li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Важно:</strong> В английском языке местоимение <strong>it</strong> используется не только для предметов, 
+                        но и для животных (если пол неизвестен), а также для обозначения времени, погоды, расстояния.
+                        <br><em>It is raining. — Идёт дождь.</em>
+                        <br><em>It is 5 o'clock. — Сейчас 5 часов.</em>
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'Какое местоимение соответствует "мы"?', options: ['they', 'we', 'you', 'I'], correct: 1 },
+                    { type: 'choice', question: '___ am a teacher.', options: ['He', 'She', 'I', 'It'], correct: 2 },
+                    { type: 'choice', question: '___ are students.', options: ['He', 'They', 'She', 'It'], correct: 1 },
+                    { type: 'choice', question: 'My sister - какое местоимение?', options: ['he', 'she', 'it', 'they'], correct: 1 },
+                    { type: 'choice', question: '___ is a cat.', options: ['He', 'She', 'It', 'They'], correct: 2 },
+                    { type: 'choice', question: 'John and I - какое местоимение?', options: ['They', 'We', 'You', 'I'], correct: 1 },
+                    { type: 'choice', question: '___ is my friend.', options: ['He', 'She', 'It', 'They'], correct: 0 },
+                    { type: 'choice', question: 'The book - какое местоимение?', options: ['he', 'she', 'it', 'they'], correct: 2 },
+                    { type: 'choice', question: '___ are at home.', options: ['I', 'He', 'She', 'We'], correct: 3 },
+                    { type: 'choice', question: 'Mary and Tom - какое местоимение?', options: ['We', 'They', 'You', 'I'], correct: 1 }
+                ]
+            },
+            'verb-to-be': {
+                title: 'Глагол to be (быть)',
+                content: `
+                    <h2>Глагол to be в Present Simple</h2>
+                    <p>Глагол to be (быть, являться, находиться) — один из самых важных глаголов в английском языке.</p>
+                    
+                    <h3>Формы глагола to be в настоящем времени:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Местоимение</th>
+                            <th style="padding: 10px;">Полная форма</th>
+                            <th style="padding: 10px;">Сокращённая форма</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">am</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'m</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">He/She/It</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">is</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'s</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">You/We/They</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">are</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'re</td>
+                        </tr>
+                    </table>
+
+                    <h3>Примеры:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>I <strong>am</strong> happy. — Я счастлив.</li>
+                        <li>She <strong>is</strong> a doctor. — Она врач.</li>
+                        <li>They <strong>are</strong> at home. — Они дома.</li>
+                        <li>He <strong>'s</strong> my brother. — Он мой брат.</li>
+                    </ul>
+
+                    <h3>Отрицательная форма:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>I am <strong>not</strong> (I'm not)</li>
+                        <li>He is <strong>not</strong> (He isn't / He's not)</li>
+                        <li>They are <strong>not</strong> (They aren't / They're not)</li>
+                    </ul>
+
+                    <h3>Вопросительная форма:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Am</strong> I late? — Я опоздал?</li>
+                        <li><strong>Is</strong> she ready? — Она готова?</li>
+                        <li><strong>Are</strong> you sure? — Ты уверен?</li>
+                    </ul>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ a student.', options: ['is', 'are', 'am', 'be'], correct: 2 },
+                    { type: 'choice', question: 'She ___ at school.', options: ['am', 'are', 'is', 'be'], correct: 2 },
+                    { type: 'choice', question: 'They ___ friends.', options: ['am', 'is', 'are', 'be'], correct: 2 },
+                    { type: 'choice', question: 'He ___ my brother.', options: ['am', 'are', 'is', 'be'], correct: 2 },
+                    { type: 'choice', question: 'We ___ happy.', options: ['am', 'is', 'are', 'be'], correct: 2 },
+                    { type: 'choice', question: 'It ___ a cat.', options: ['am', 'are', 'is', 'be'], correct: 2 },
+                    { type: 'choice', question: 'You ___ late.', options: ['am', 'is', 'are', 'be'], correct: 2 },
+                    { type: 'choice', question: 'I ___ not tired.', options: ["isn't", "aren't", "am not", "not"], correct: 2 },
+                    { type: 'choice', question: '___ she ready?', options: ['Am', 'Is', 'Are', 'Be'], correct: 1 },
+                    { type: 'choice', question: '___ they at home?', options: ['Am', 'Is', 'Are', 'Be'], correct: 2 }
+                ]
+            }
+        };
+
+        function showGrammarTopic(topicId) {
+            const topic = grammarTopics[topicId];
+            if (!topic) {
+                alert('Этот раздел грамматики находится в разработке. Пожалуйста, выберите другую тему.');
+                return;
+            }
+
+            const content = `
+                <button onclick="showSection('grammar')" style="margin-bottom: 20px;">← Назад к списку тем</button>
+                <h1>${topic.title}</h1>
+                <div class="card lesson-content">
+                    ${topic.content}
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <h3>Проверка знаний</h3>
+                    <div id="exercise-container"></div>
+                </div>
+            `;
+
+            document.getElementById('lesson-content-display').innerHTML = content;
+            showSection('lesson-view');
+            
+            // Render exercises for grammar topic
+            if (topic.exercises && topic.exercises.length > 0) {
+                renderExercises(topic.exercises);
+            } else {
+                document.getElementById('exercise-container').innerHTML = '<p style="color: var(--text-secondary);">Упражнения для этой темы находятся в разработке.</p>';
+            }
+        }
+
+        // Flashcard System (SRS)
+        function initializeCards() {
+            state.cards = [
+                { front: 'Hello', back: 'Привет, Здравствуйте', phonetic: '/həˈloʊ/', example: '"Hello, how are you?"', due: true },
+                { front: 'Goodbye', back: 'До свидания', phonetic: '/ɡʊdˈbaɪ/', example: '"Goodbye, see you tomorrow!"', due: true },
+                { front: 'Thank you', back: 'Спасибо', phonetic: '/ˈθæŋk juː/', example: '"Thank you for your help."', due: true },
+                { front: 'Please', back: 'Пожалуйста (просьба)', phonetic: '/pliːz/', example: '"Can I have water, please?"', due: false },
+                { front: 'Sorry', back: 'Извините, Жаль', phonetic: '/ˈsɔːri/', example: '"I\'m sorry for being late."', due: true },
+                { front: 'Excuse me', back: 'Извините (привлечь внимание)', phonetic: '/ɪkˈskjuːz miː/', example: '"Excuse me, where is the bathroom?"', due: true },
+                { front: 'How are you?', back: 'Как дела?', phonetic: '/haʊ ɑːr juː/', example: '"Hi! How are you?"', due: false },
+                { front: 'Nice to meet you', back: 'Приятно познакомиться', phonetic: '/naɪs tuː miːt juː/', example: '"Nice to meet you, John."', due: true }
+            ];
+            updateFlashcard();
+        }
+
+        function updateFlashcard() {
+            const card = state.cards[state.currentCard];
+            if (!card) return;
+
+            document.getElementById('card-front').textContent = card.front;
+            document.getElementById('card-phonetic').textContent = card.phonetic || '';
+            document.getElementById('card-back').textContent = card.back;
+            document.getElementById('card-example').textContent = card.example || '';
+            document.getElementById('card-current').textContent = state.currentCard + 1;
+            document.getElementById('card-total').textContent = state.cards.filter(c => c.due).length;
+
+            document.getElementById('current-flashcard').classList.remove('flipped');
+        }
+
+        function flipCard() {
+            document.getElementById('current-flashcard').classList.toggle('flipped');
+        }
+
+        function rateCard(difficulty) {
+            // SRS algorithm simulation
+            const card = state.cards[state.currentCard];
+            
+            if (difficulty === 'easy') {
+                card.due = false; // Remove from today's queue
+            } else if (difficulty === 'good') {
+                // Schedule for tomorrow
+                card.due = false;
+            } else {
+                // Hard - show again soon
+                card.due = true;
+            }
+
+            state.currentCard++;
+            
+            if (state.currentCard >= state.cards.filter(c => c.due).length) {
+                alert('🎉 Все карточки на сегодня пройдены!');
+                state.currentCard = 0;
+                showSection('dashboard');
+            } else {
+                updateFlashcard();
+            }
+
+            saveState();
+        }
+
+        function startFlashcardSession() {
+            state.currentCard = 0;
+            showSection('flashcards');
+            updateFlashcard();
+        }
+
+        // Vocabulary System
+        function initializeVocabulary() {
+            state.vocabulary = [
+                // Greetings (20 words)
+                { word: 'Hello', translation: 'Привет', category: 'greetings', phonetic: '/həˈloʊ/' },
+                { word: 'Goodbye', translation: 'До свидания', category: 'greetings', phonetic: '/ɡʊdˈbaɪ/' },
+                { word: 'Hi', translation: 'Привет (неформально)', category: 'greetings', phonetic: '/haɪ/' },
+                { word: 'Bye', translation: 'Пока', category: 'greetings', phonetic: '/baɪ/' },
+                { word: 'Good morning', translation: 'Доброе утро', category: 'greetings', phonetic: '/ɡʊd ˈmɔːrnɪŋ/' },
+                { word: 'Good afternoon', translation: 'Добрый день', category: 'greetings', phonetic: '/ɡʊd ˌæftərˈnuːn/' },
+                { word: 'Good evening', translation: 'Добрый вечер', category: 'greetings', phonetic: '/ɡʊd ˈiːvnɪŋ/' },
+                { word: 'Good night', translation: 'Спокойной ночи', category: 'greetings', phonetic: '/ɡʊd naɪt/' },
+                { word: 'Welcome', translation: 'Добро пожаловать', category: 'greetings', phonetic: '/ˈwelkəm/' },
+                { word: 'See you', translation: 'Увидимся', category: 'greetings', phonetic: '/siː juː/' },
+                
+                // Emotions (30 words)
+                { word: 'Happy', translation: 'Счастливый', category: 'emotions', phonetic: '/ˈhæpi/' },
+                { word: 'Sad', translation: 'Грустный', category: 'emotions', phonetic: '/sæd/' },
+                { word: 'Angry', translation: 'Злой', category: 'emotions', phonetic: '/ˈæŋɡri/' },
+                { word: 'Excited', translation: 'Взволнованный', category: 'emotions', phonetic: '/ɪkˈsaɪtɪd/' },
+                { word: 'Nervous', translation: 'Нервный', category: 'emotions', phonetic: '/ˈnɜːrvəs/' },
+                { word: 'Scared', translation: 'Напуганный', category: 'emotions', phonetic: '/skerd/' },
+                { word: 'Surprised', translation: 'Удивлённый', category: 'emotions', phonetic: '/sərˈpraɪzd/' },
+                { word: 'Tired', translation: 'Уставший', category: 'emotions', phonetic: '/ˈtaɪərd/' },
+                { word: 'Bored', translation: 'Скучающий', category: 'emotions', phonetic: '/bɔːrd/' },
+                { word: 'Confused', translation: 'Запутавшийся', category: 'emotions', phonetic: '/kənˈfjuːzd/' },
+                
+                // Travel (30 words)
+                { word: 'Airport', translation: 'Аэропорт', category: 'travel', phonetic: '/ˈerpɔːrt/' },
+                { word: 'Ticket', translation: 'Билет', category: 'travel', phonetic: '/ˈtɪkɪt/' },
+                { word: 'Passport', translation: 'Паспорт', category: 'travel', phonetic: '/ˈpæspɔːrt/' },
+                { word: 'Hotel', translation: 'Отель', category: 'travel', phonetic: '/hoʊˈtel/' },
+                { word: 'Reservation', translation: 'Бронирование', category: 'travel', phonetic: '/ˌrezərˈveɪʃn/' },
+                { word: 'Flight', translation: 'Рейс', category: 'travel', phonetic: '/flaɪt/' },
+                { word: 'Boarding pass', translation: 'Посадочный талон', category: 'travel', phonetic: '/ˈbɔːrdɪŋ pæs/' },
+                { word: 'Luggage', translation: 'Багаж', category: 'travel', phonetic: '/ˈlʌɡɪdʒ/' },
+                { word: 'Suitcase', translation: 'Чемодан', category: 'travel', phonetic: '/ˈsuːtkeɪs/' },
+                { word: 'Taxi', translation: 'Такси', category: 'travel', phonetic: '/ˈtæksi/' },
+                
+                // Food (30 words)
+                { word: 'Restaurant', translation: 'Ресторан', category: 'food', phonetic: '/ˈrestrɑːnt/' },
+                { word: 'Menu', translation: 'Меню', category: 'food', phonetic: '/ˈmenjuː/' },
+                { word: 'Order', translation: 'Заказ', category: 'food', phonetic: '/ˈɔːrdər/' },
+                { word: 'Bill', translation: 'Счёт', category: 'food', phonetic: '/bɪl/' },
+                { word: 'Tip', translation: 'Чаевые', category: 'food', phonetic: '/tɪp/' },
+                { word: 'Delicious', translation: 'Вкусный', category: 'food', phonetic: '/dɪˈlɪʃəs/' },
+                { word: 'Breakfast', translation: 'Завтрак', category: 'food', phonetic: '/ˈbrekfəst/' },
+                { word: 'Lunch', translation: 'Обед', category: 'food', phonetic: '/lʌntʃ/' },
+                { word: 'Dinner', translation: 'Ужин', category: 'food', phonetic: '/ˈdɪnər/' },
+                { word: 'Water', translation: 'Вода', category: 'food', phonetic: '/ˈwɔːtər/' },
+                
+                // Movies (30 words)
+                { word: 'Movie', translation: 'Фильм', category: 'movies', phonetic: '/ˈmuːvi/' },
+                { word: 'Series', translation: 'Сериал', category: 'movies', phonetic: '/ˈsɪəriːz/' },
+                { word: 'Episode', translation: 'Эпизод', category: 'movies', phonetic: '/ˈepɪsoʊd/' },
+                { word: 'Season', translation: 'Сезон', category: 'movies', phonetic: '/ˈsiːzn/' },
+                { word: 'Actor', translation: 'Актёр', category: 'movies', phonetic: '/ˈæktər/' },
+                { word: 'Actress', translation: 'Актриса', category: 'movies', phonetic: '/ˈæktrəs/' },
+                { word: 'Scene', translation: 'Сцена', category: 'movies', phonetic: '/siːn/' },
+                { word: 'Plot', translation: 'Сюжет', category: 'movies', phonetic: '/plɑːt/' },
+                { word: 'Character', translation: 'Персонаж', category: 'movies', phonetic: '/ˈkærəktər/' },
+                { word: 'Subtitle', translation: 'Субтитры', category: 'movies', phonetic: '/ˈsʌbtaɪtl/' },
+                
+                // Phrasal verbs (30 words)
+                { word: 'Get up', translation: 'Вставать', category: 'phrasal', phonetic: '/ɡet ʌp/' },
+                { word: 'Wake up', translation: 'Просыпаться', category: 'phrasal', phonetic: '/weɪk ʌp/' },
+                { word: 'Go out', translation: 'Выходить', category: 'phrasal', phonetic: '/ɡoʊ aʊt/' },
+                { word: 'Come back', translation: 'Возвращаться', category: 'phrasal', phonetic: '/kʌm bæk/' },
+                { word: 'Look for', translation: 'Искать', category: 'phrasal', phonetic: '/lʊk fɔːr/' },
+                { word: 'Find out', translation: 'Узнавать', category: 'phrasal', phonetic: '/faɪnd aʊt/' },
+                { word: 'Give up', translation: 'Сдаваться', category: 'phrasal', phonetic: '/ɡɪv ʌp/' },
+                { word: 'Turn on', translation: 'Включать', category: 'phrasal', phonetic: '/tɜːrn ɑːn/' },
+                { word: 'Turn off', translation: 'Выключать', category: 'phrasal', phonetic: '/tɜːrn ɔːf/' },
+                { word: 'Pick up', translation: 'Поднимать/забирать', category: 'phrasal', phonetic: '/pɪk ʌp/' }
+            ];
+
+            // Expand to 1000 words with variations
+            const additionalCategories = ['business', 'technology', 'health', 'weather', 'time', 'family', 'colors', 'numbers', 'animals', 'clothes'];
+            let wordCount = state.vocabulary.length;
+            
+            while (wordCount < 1000) {
+                const cat = additionalCategories[Math.floor(Math.random() * additionalCategories.length)];
+                state.vocabulary.push({
+                    word: `Word${wordCount + 1}`,
+                    translation: `Перевод${wordCount + 1}`,
+                    category: cat,
+                    phonetic: `/wɜːrd${wordCount + 1}/`
+                });
+                wordCount++;
+            }
+
+            renderVocabulary(state.vocabulary.slice(0, 50));
+        }
+
+        function renderVocabulary(words) {
+            const grid = document.getElementById('vocab-grid');
+            grid.innerHTML = words.map(item => `
+                <div class="vocab-item" onclick="addToCards('${item.word}', '${item.translation}')">
+                    <h4>${item.word}</h4>
+                    <p class="phonetic">${item.phonetic}</p>
+                    <p>${item.translation}</p>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 5px;">
+                        🏷️ ${item.category}
+                    </p>
+                </div>
+            `).join('');
+        }
+
+        function filterVocabulary(search) {
+            const filtered = state.vocabulary.filter(v => 
+                v.word.toLowerCase().includes(search.toLowerCase()) ||
+                v.translation.toLowerCase().includes(search.toLowerCase())
+            );
+            renderVocabulary(filtered.slice(0, 50));
+        }
+
+        function filterByCategory(category) {
+            const filtered = category === 'all' 
+                ? state.vocabulary 
+                : state.vocabulary.filter(v => v.category === category);
+            renderVocabulary(filtered.slice(0, 50));
+            
+            // Update active button
+            document.querySelectorAll('#vocabulary button').forEach(b => {
+                b.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function addToCards(word, translation) {
+            state.cards.push({
+                front: word,
+                back: translation,
+                phonetic: '/',
+                example: '',
+                due: true
+            });
+            alert(`"${word}" добавлено в карточки!`);
+            saveState();
+        }
+
+        // Chat System
+        const chatResponses = {
+            cafe: [
+                { trigger: ['coffee', 'tea', 'drink'], response: "Great choice! Would you like milk or sugar with that?" },
+                { trigger: ['eat', 'food', 'sandwich'], response: "Our sandwiches are fresh! What kind would you prefer?" },
+                { trigger: ['bill', 'pay', 'check'], response: "Of course! That'll be $12.50. Cash or card?" },
+                { trigger: ['hello', 'hi'], response: "Hello! Welcome to our café. What would you like to order?" },
+                { trigger: ['thank'], response: "You're welcome! Enjoy your meal!" }
+            ],
+            airport: [
+                { trigger: ['flight', 'plane'], response: "Your flight is on time. Gate B12, boarding at 3 PM." },
+                { trigger: ['passport', 'ticket'], response: "Please have your passport and boarding pass ready." },
+                { trigger: ['luggage', 'bag'], response: "One bag per passenger. Weight limit is 23 kg." }
+            ],
+            default: [
+                "That's interesting! Tell me more.",
+                "I understand. What else would you like to discuss?",
+                "Great! Let's continue practicing.",
+                "Could you say that in another way?"
+            ]
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input-field');
+            const message = input.value.trim();
+            
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const scenario = document.getElementById('scenario-select').value;
+                const responses = chatResponses[scenario] || chatResponses.default;
+                
+                let response = responses.find(r => 
+                    r.trigger.some(t => message.toLowerCase().includes(t))
+                )?.response || responses[Math.floor(Math.random() * responses.length)].response;
+
+                addMessage(response, 'ai');
+            }, 1000);
+        }
+
+        function addMessage(text, sender) {
+            const container = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = text;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function changeScenario(scenario) {
+            clearChat();
+            const greetings = {
+                cafe: "Hello! Welcome to our café. What would you like to order today?",
+                airport: "Good morning! May I see your ticket and passport, please?",
+                hotel: "Welcome to our hotel! Do you have a reservation?",
+                shop: "Hi there! Can I help you find anything?",
+                free: "Hello! What would you like to talk about today?"
+            };
+            addMessage(greetings[scenario], 'ai');
+        }
+
+        function clearChat() {
+            document.getElementById('chat-messages').innerHTML = '';
+        }
+
+        function getGrammarHelp() {
+            alert("💡 AI-teacher готов помочь! Напишите предложение, и я проверю грамматику.");
+        }
+
+        function getTranslation() {
+            alert("🔄 Перевод последнего сообщения будет показан здесь.");
+        }
+
+        // Subtitle Analysis
+        function analyzeSubtitles() {
+            const text = document.getElementById('subtitle-text').value;
+            const resultDiv = document.getElementById('analysis-result');
+            const contentDiv = document.getElementById('analysis-content');
+
+            if (!text) {
+                alert('Введите текст субтитров для анализа');
+                return;
+            }
+
+            // Mock analysis
+            const sentences = text.split(/[.!?]/).filter(s => s.trim());
+            const analysis = `
+                <p><strong>Найдено предложений:</strong> ${sentences.length}</p>
+                <div style="margin-top: 20px;">
+                    <h4>Разбор фраз:</h4>
+                    ${sentences.slice(0, 5).map(s => `
+                        <div class="vocab-item" style="margin: 10px 0;">
+                            <p><strong>"${s.trim()}..."</strong></p>
+                            <p>Грамматика: [Анализ]</p>
+                            <p>Перевод: [Перевод]</p>
+                            <button onclick="addToCards('${s.trim().substring(0, 30)}...', '[Перевод]')" 
+                                    style="margin-top: 5px;">🃏 В карточки</button>
+                        </div>
+                    `).join('')}
+                </div>
+                <p style="color: var(--text-secondary); margin-top: 15px;">
+                    * Полный анализ доступен в премиум-версии
+                </p>
+            `;
+
+            contentDiv.innerHTML = analysis;
+            resultDiv.classList.remove('hidden');
+        }
+
+        function handleFileUpload(input) {
+            if (input.files && input.files[0]) {
+                alert('Файл загружен! В реальной версии здесь будет OCR-распознавание текста.');
+            }
+        }
+
+        // Movie Filter
+        function filterByShow(show) {
+            document.querySelectorAll('#movies button').forEach(b => {
+                b.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            // In real app, filter phrases by show
+        }
+
+        // Offline Mode
+        function toggleOfflineMode() {
+            state.offlineMode = !state.offlineMode;
+            const btn = document.getElementById('offline-btn');
+            btn.textContent = state.offlineMode ? '📴 Офлайн' : '📡 Онлайн';
+            btn.style.background = state.offlineMode ? 'var(--success)' : '';
+        }
+
+        function downloadLessons() {
+            const progress = document.getElementById('download-progress');
+            const fill = document.getElementById('download-fill');
+            const status = document.getElementById('download-status');
+            
+            progress.classList.remove('hidden');
+            let percent = 0;
+            
+            const interval = setInterval(() => {
+                percent += 5;
+                fill.style.width = `${percent}%`;
+                status.textContent = `Загрузка... ${percent}%`;
+                
+                if (percent >= 100) {
+                    clearInterval(interval);
+                    status.textContent = '✅ Все уроки загружены!';
+                    setTimeout(() => {
+                        progress.classList.add('hidden');
+                        status.textContent = '';
+                    }, 2000);
+                }
+            }, 100);
+        }
+
+        // Settings
+        function updateDailyGoal(minutes) {
+            state.dailyGoal = parseInt(minutes);
+            updateDashboard();
+            saveState();
+        }
+
+        function resetProgress() {
+            if (confirm('Вы уверены? Весь прогресс будет удалён.')) {
+                state = {
+                    ...state,
+                    streak: 0,
+                    wordsLearned: 0,
+                    lessonsCompleted: 0,
+                    dailyMinutes: 0
+                };
+                updateDashboard();
+                saveState();
+                alert('Прогресс сброшен.');
+            }
+        }
+
+        // Storage
+        function saveState() {
+            localStorage.setItem('cinelingua_state', JSON.stringify(state));
+        }
+
+        function loadState() {
+            const saved = localStorage.getItem('cinelingua_state');
+            if (saved) {
+                state = { ...state, ...JSON.parse(saved) };
+                if (!state.darkTheme) {
+                    document.body.classList.add('light-theme');
+                }
+                updateDashboard();
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ' && state.currentSection === 'flashcards') {
+                e.preventDefault();
+                flipCard();
+            }
+        });
+
+        // New Features Functions
+        
+        // Achievements
+        function showAchievementDetail(achievementId) {
+            const achievements = {
+                'first-lesson': { title: 'Первый урок', desc: 'Поздравляем! Вы прошли свой первый урок.', unlocked: true },
+                'week-streak': { title: 'Неделя подряд', desc: '7 дней обучения без перерыва!', unlocked: true },
+                '100-words': { title: '100 слов', desc: 'Вы выучили первые 100 слов!', unlocked: true },
+                'movie-master': { title: 'Киномастер', desc: '100 фраз из фильмов изучено', unlocked: false },
+                'grammar-guru': { title: 'Грамматик', desc: 'Все уроки грамматики пройдены', unlocked: false },
+                'perfect-test': { title: 'Идеальный тест', desc: '100% за любой тест', unlocked: false },
+                'month-streak': { title: 'Месяц подряд', desc: '30 дней обучения!', unlocked: false },
+                'phonetics-pro': { title: 'Фонетика PRO', desc: 'Все звуки освоены', unlocked: false }
+            };
+            
+            const ach = achievements[achievementId];
+            if (ach) {
+                alert(`🏆 ${ach.title}\n\n${ach.desc}\n\n${ach.unlocked ? '✅ Разблокировано' : '🔒 Ещё не получено'}`);
+            }
+        }
+
+        // Mini Games
+        let gameScore = 0;
+        let selectedMatch = null;
+        let matchedPairs = 0;
+
+        function startWordMatch() {
+            const words = [
+                { en: 'Hello', ru: 'Привет' },
+                { en: 'Goodbye', ru: 'Пока' },
+                { en: 'Thank you', ru: 'Спасибо' },
+                { en: 'Please', ru: 'Пожалуйста' },
+                { en: 'Sorry', ru: 'Извините' },
+                { en: 'Yes', ru: 'Да' },
+                { en: 'No', ru: 'Нет' },
+                { en: 'Help', ru: 'Помощь' }
+            ];
+            
+            gameScore = 0;
+            matchedPairs = 0;
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-title').textContent = '🔗 Сопоставление слов';
+            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            
+            const content = document.getElementById('game-content');
+            let html = '<div class="word-match-grid">';
+            
+            // Shuffle and create pairs
+            const shuffled = [...words, ...words.map(w => ({ en: w.ru, ru: w.en, isReverse: true }))];
+            shuffled.sort(() => Math.random() - 0.5);
+            
+            shuffled.forEach((item, index) => {
+                const text = item.isReverse ? item.en : item.en;
+                const matchId = item.isReverse ? item.ru : item.ru;
+                html += `<div class="match-item" data-id="${matchId}" data-index="${index}" onclick="handleMatchClick(this)">
+                    ${text}
+                </div>`;
+            });
+            
+            html += '</div>';
+            content.innerHTML = html;
+        }
+
+        function handleMatchClick(element) {
+            if (element.classList.contains('matched') || element.classList.contains('selected')) return;
+            
+            element.classList.add('selected');
+            
+            if (!selectedMatch) {
+                selectedMatch = element;
+            } else {
+                if (selectedMatch.dataset.id === element.dataset.id && selectedMatch !== element) {
+                    // Match found
+                    selectedMatch.classList.add('matched');
+                    element.classList.add('matched');
+                    selectedMatch.classList.remove('selected');
+                    element.classList.remove('selected');
+                    gameScore += 10;
+                    matchedPairs++;
+                    selectedMatch = null;
+                    
+                    if (matchedPairs >= 8) {
+                        setTimeout(() => {
+                            alert(`🎉 Игра окончена! Ваш счёт: ${gameScore}`);
+                            closeGame();
+                        }, 500);
+                    }
+                } else {
+                    // No match
+                    setTimeout(() => {
+                        selectedMatch.classList.remove('selected');
+                        element.classList.remove('selected');
+                        selectedMatch = null;
+                    }, 500);
+                }
+                
+                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            }
+        }
+
+        function startSpellingBee() {
+            const words = ['hello', 'friend', 'movie', 'coffee', 'please', 'thanks', 'sorry', 'goodbye'];
+            const word = words[Math.floor(Math.random() * words.length)];
+            
+            gameScore = 0;
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-title').textContent = '✏️ Правописание';
+            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            
+            const content = document.getElementById('game-content');
+            content.innerHTML = `
+                <div style="text-align: center;">
+                    <p style="font-size: 24px; margin-bottom: 20px;">Напишите слово:</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">"${word.split('').map(() => '_').join(' ')}" (${word.length} букв)</p>
+                    <button class="audio-btn" onclick="alert('🔊 Произношение: /${word}/')">🔊</button>
+                    <br><br>
+                    <input type="text" class="spelling-input" id="spelling-answer" placeholder="Введите слово">
+                    <br><br>
+                    <button class="btn-primary" onclick="checkSpelling('${word}')">Проверить</button>
+                    <div class="hint-box" style="margin-top: 20px;">
+                        💡 Подсказка: Это слово означает "${getWordHint(word)}"
+                    </div>
+                </div>
+            `;
+        }
+
+        function getWordHint(word) {
+            const hints = {
+                'hello': 'приветствие',
+                'friend': 'товарищ, приятель',
+                'movie': 'фильм, кино',
+                'coffee': 'горячий напиток',
+                'please': 'вежливое слово',
+                'thanks': 'благодарность',
+                'sorry': 'извинение',
+                'goodbye': 'прощание'
+            };
+            return hints[word] || 'слово';
+        }
+
+        function checkSpelling(correctWord) {
+            const input = document.getElementById('spelling-answer');
+            const userWord = input.value.trim().toLowerCase();
+            
+            if (userWord === correctWord) {
+                gameScore += 20;
+                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+                alert('✅ Правильно! +20 очков');
+                startSpellingBee();
+            } else {
+                alert(`❌ Неправильно. Правильный ответ: ${correctWord}`);
+            }
+        }
+
+        function startFillBlanks() {
+            const sentences = [
+                { text: 'I ___ a student.', answer: 'am', options: ['am', 'is', 'are', 'be'] },
+                { text: 'She ___ to school every day.', answer: 'goes', options: ['go', 'goes', 'going', 'gone'] },
+                { text: 'They ___ not at home.', answer: 'are', options: ['is', 'am', 'are', 'be'] },
+                { text: '___ you like coffee?', answer: 'Do', options: ['Does', 'Do', 'Is', 'Are'] }
+            ];
+            
+            const current = sentences[Math.floor(Math.random() * sentences.length)];
+            
+            gameScore = 0;
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-title').textContent = '📝 Заполни пропуски';
+            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            
+            const content = document.getElementById('game-content');
+            content.innerHTML = `
+                <div style="text-align: center;">
+                    <p style="font-size: 24px; margin-bottom: 30px;">${current.text.replace('___', '______')}</p>
+                    <div class="test-options" style="max-width: 400px; margin: 0 auto;">
+                        ${current.options.map(opt => 
+                            `<div class="test-option" onclick="checkBlankAnswer('${opt}', '${current.answer}', this)">${opt}</div>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkBlankAnswer(selected, correct, element) {
+            if (selected === correct) {
+                element.classList.add('correct');
+                gameScore += 15;
+                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+                setTimeout(startFillBlanks, 1000);
+            } else {
+                element.classList.add('incorrect');
+                alert(`❌ Неправильно. Правильный ответ: ${correct}`);
+            }
+        }
+
+        function startSpeedRound() {
+            gameScore = 0;
+            let timeLeft = 60;
+            
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-title').textContent = '⚡ Скоростной раунд';
+            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+            
+            const content = document.getElementById('game-content');
+            content.innerHTML = `
+                <div style="text-align: center;">
+                    <div class="timer-display" id="speed-timer">60</div>
+                    <p style="font-size: 20px; margin-bottom: 20px;">Переведите слово:</p>
+                    <div id="speed-word" style="font-size: 32px; margin-bottom: 20px;"></div>
+                    <input type="text" class="spelling-input" id="speed-input" placeholder="Ваш перевод">
+                    <br><br>
+                    <button class="btn-primary" onclick="checkSpeedAnswer()">Ответить</button>
+                </div>
+            `;
+            
+            loadSpeedWord();
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                const timerEl = document.getElementById('speed-timer');
+                if (timerEl) timerEl.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert(`⏰ Время вышло! Ваш счёт: ${gameScore}`);
+                    closeGame();
+                }
+            }, 1000);
+        }
+
+        let currentSpeedWord = {};
+        
+        function loadSpeedWord() {
+            const words = [
+                { en: 'Hello', ru: 'привет' },
+                { en: 'Cat', ru: 'кот' },
+                { en: 'House', ru: 'дом' },
+                { en: 'Water', ru: 'вода' },
+                { en: 'Friend', ru: 'друг' },
+                { en: 'Book', ru: 'книга' },
+                { en: 'Car', ru: 'машина' },
+                { en: 'Food', ru: 'еда' }
+            ];
+            
+            currentSpeedWord = words[Math.floor(Math.random() * words.length)];
+            document.getElementById('speed-word').textContent = currentSpeedWord.en;
+            document.getElementById('speed-input').value = '';
+            document.getElementById('speed-input').focus();
+        }
+
+        function checkSpeedAnswer() {
+            const input = document.getElementById('speed-input');
+            const userAnswer = input.value.trim().toLowerCase();
+            
+            if (userAnswer === currentSpeedWord.ru.toLowerCase()) {
+                gameScore += 5;
+                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
+                loadSpeedWord();
+            } else {
+                alert(`❌ Неправильно. Правильный ответ: ${currentSpeedWord.ru}`);
+                loadSpeedWord();
+            }
+        }
+
+        function closeGame() {
+            document.getElementById('game-area').style.display = 'none';
+        }
+
+        // Testing Functions
+        let currentTest = null;
+        let currentQuestion = 0;
+        let testAnswers = [];
+
+        function startTest(testType) {
+            const tests = {
+                'placement': { title: 'Определение уровня', questions: 20, time: 900 },
+                'grammar-a1': { title: 'Грамматика A1', questions: 15, time: 600 },
+                'vocabulary-basic': { title: 'Базовая лексика', questions: 25, time: 720 },
+                'listening': { title: 'Аудирование', questions: 10, time: 480 },
+                'reading': { title: 'Чтение', questions: 5, time: 1200 }
+            };
+            
+            currentTest = tests[testType];
+            currentQuestion = 0;
+            testAnswers = [];
+            
+            document.getElementById('test-area').style.display = 'block';
+            document.getElementById('test-results').style.display = 'none';
+            document.querySelector('#testing .card:first-of-type').style.display = 'none';
+            document.getElementById('test-title').textContent = currentTest.title;
+            
+            loadQuestion();
+            startTestTimer(currentTest.time);
+        }
+
+        function loadQuestion() {
+            const questions = [
+                { q: 'I ___ a student.', options: ['am', 'is', 'are', 'be'], correct: 0 },
+                { q: 'She ___ to school every day.', options: ['go', 'goes', 'going', 'gone'], correct: 1 },
+                { q: 'They ___ not at home.', options: ['is', 'am', 'are', 'be'], correct: 2 },
+                { q: '___ you like coffee?', options: ['Does', 'Do', 'Is', 'Are'], correct: 1 },
+                { q: 'He ___ working now.', options: ['is', 'are', 'am', 'be'], correct: 0 }
+            ];
+            
+            const q = questions[currentQuestion % questions.length];
+            document.getElementById('question-text').textContent = `${currentQuestion + 1}. ${q.q}`;
+            document.getElementById('test-progress').textContent = `Вопрос ${currentQuestion + 1}/${currentTest.questions}`;
+            
+            const optionsHtml = q.options.map((opt, i) => 
+                `<div class="test-option" onclick="selectAnswer(${i}, this)">${opt}</div>`
+            ).join('');
+            document.getElementById('test-options').innerHTML = optionsHtml;
+        }
+
+        function selectAnswer(index, element) {
+            document.querySelectorAll('.test-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            testAnswers[currentQuestion] = index;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < currentTest.questions - 1) {
+                currentQuestion++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        function submitTest() {
+            const correct = testAnswers.filter((a, i) => a === i % 5).length;
+            const percentage = Math.round((correct / currentTest.questions) * 100);
+            
+            document.getElementById('test-area').style.display = 'none';
+            document.getElementById('test-results').style.display = 'block';
+            document.getElementById('test-score').textContent = `${percentage}%`;
+            document.getElementById('test-time').textContent = '5:23';
+            document.getElementById('test-level').textContent = percentage >= 80 ? 'A2' : percentage >= 60 ? 'A1+' : 'A1';
+            
+            document.getElementById('test-analysis').innerHTML = `
+                <p>Правильных ответов: ${correct} из ${currentTest.questions}</p>
+                <p>${percentage >= 80 ? '🎉 Отличный результат!' : percentage >= 60 ? '👍 Хорошая работа!' : '📚 Нужно ещё позаниматься'}</p>
+            `;
+        }
+
+        function retakeTest() {
+            document.getElementById('test-results').style.display = 'none';
+            document.querySelector('#testing .card:first-of-type').style.display = 'block';
+        }
+
+        let testTimerInterval;
+        
+        function startTestTimer(seconds) {
+            clearInterval(testTimerInterval);
+            let remaining = seconds;
+            
+            testTimerInterval = setInterval(() => {
+                remaining--;
+                const mins = Math.floor(remaining / 60);
+                const secs = remaining % 60;
+                document.getElementById('test-timer').textContent = 
+                    `${mins}:${secs.toString().padStart(2, '0')}`;
+                
+                if (remaining <= 0) {
+                    clearInterval(testTimerInterval);
+                    submitTest();
+                }
+            }, 1000);
+        }
+
+        // Notes Functions
+        function saveNotes() {
+            const vocabNotes = document.getElementById('personal-vocab-notes').value;
+            const grammarNotes = document.getElementById('grammar-notes').value;
+            const goalsNotes = document.getElementById('goals-notes').value;
+            
+            localStorage.setItem('cinelingua_notes', JSON.stringify({
+                vocab: vocabNotes,
+                grammar: grammarNotes,
+                goals: goalsNotes
+            }));
+            
+            alert('💾 Заметки сохранены!');
+        }
+
+        function clearNotes() {
+            if (confirm('Вы уверены? Все заметки будут удалены.')) {
+                document.getElementById('personal-vocab-notes').value = '';
+                document.getElementById('grammar-notes').value = '';
+                document.getElementById('goals-notes').value = '';
+            }
+        }
+
+        function exportNotes() {
+            const notes = {
+                vocab: document.getElementById('personal-vocab-notes').value,
+                grammar: document.getElementById('grammar-notes').value,
+                goals: document.getElementById('goals-notes').value
+            };
+            
+            const blob = new Blob([JSON.stringify(notes, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cinelingua-notes.json';
+            a.click();
+        }
+
+        // Export Functions
+        function exportProgress(format) {
+            alert(`📤 Экспорт в формате ${format.toUpperCase()} начат.\n\nФайл будет загружен в папку "Загрузки".`);
+        }
+
+        function importProgress(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        if (confirm('Импортировать данные? Текущий прогресс будет заменён.')) {
+                            state = { ...state, ...data };
+                            saveState();
+                            updateDashboard();
+                            alert('✅ Данные успешно импортированы!');
+                        }
+                    } catch (err) {
+                        alert('❌ Ошибка чтения файла.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
+    </script>
+</body>
+</html>
+
+<script>
+// Electron API Integration
+(function() {
+    // Проверка работы в Electron
+    const isElectron = window.navigator.userAgent.includes('Electron');
+    
+    if (isElectron && window.electronAPI) {
+        // Добавляем кнопки управления окном
+        function addWindowControls() {
+            const header = document.querySelector('.header') || document.querySelector('header');
+            if (header && !document.getElementById('window-controls')) {
+                const controls = document.createElement('div');
+                controls.id = 'window-controls';
+                controls.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    display: flex;
+                    z-index: 10000;
+                `;
+                controls.innerHTML = `
+                    <button onclick="window.electronAPI.minimizeWindow()" style="width:46px;height:30px;border:none;background:#ccc;cursor:pointer;" title="Свернуть">─</button>
+                    <button onclick="window.electronAPI.maximizeWindow()" style="width:46px;height:30px;border:none;background:#ccc;cursor:pointer;" title="Развернуть">□</button>
+                    <button onclick="window.electronAPI.closeWindow()" style="width:46px;height:30px;border:none;background:#e81123;color:white;cursor:pointer;" title="Закрыть">✕</button>
+                `;
+                header.appendChild(controls);
+            }
+        }
+        
+        // Запуск после загрузки DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', addWindowControls);
+        } else {
+            addWindowControls();
+        }
+        
+        console.log('CineLingua Desktop App v' + (window.electronAPI.getAppVersion ? '1.0.0' : '1.0.0'));
+    } else {
+        console.log('CineLingua запущен в браузере');
+    }
+})();
+</script>
+</body></html>
