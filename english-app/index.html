@@ -2658,6 +2658,342 @@
                     { type: 'choice', question: 'Цветы для женщин:', options: ["flowers for women", "women's flowers", "womens' flowers", "flowers of women"], correct: 0 }
                 ]
             },
+            'present-simple': {
+                title: 'Present Simple (Настоящее простое время)',
+                content: `
+                    <h2>Present Simple Tense</h2>
+                    <p>Present Simple используется для описания регулярных действий, фактов и общих истин.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Регулярные, повторяющиеся действия: <em>I go to school every day.</em></li>
+                        <li>Факты и общие истины: <em>The sun rises in the east.</em></li>
+                        <li>Расписания и графики: <em>The train leaves at 6 PM.</em></li>
+                        <li>Состояния и чувства: <em>I like chocolate.</em></li>
+                    </ul>
+
+                    <h3>Образование утвердительной формы:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Подлежащее</th>
+                            <th style="padding: 10px;">Глагол</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I / You / We / They</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">V (без окончаний)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I work, They play</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">He / She / It</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">V + s/es</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">He works, She watches</td>
+                        </tr>
+                    </table>
+
+                    <h3>Правила добавления -s/-es:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Обычно добавляем <strong>-s</strong>: work → works, play → plays</li>
+                        <li>После s, sh, ch, x, o добавляем <strong>-es</strong>: watch → watches, go → goes</li>
+                        <li>Если после согласной y, то y → <strong>-ies</strong>: study → studies</li>
+                    </ul>
+
+                    <h3>Отрицательная форма:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>I/You/We/They + <strong>do not (don't)</strong> + V: <em>I don't work.</em></li>
+                        <li>He/She/It + <strong>does not (doesn't)</strong> + V: <em>She doesn't work.</em></li>
+                    </ul>
+
+                    <h3>Вопросительная форма:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Do</strong> + I/you/we/they + V?: <em>Do you work?</em></li>
+                        <li><strong>Does</strong> + he/she/it + V?: <em>Does he work?</em></li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Маркеры времени:</strong> always (всегда), usually (обычно), often (часто), sometimes (иногда), never (никода), every day/week/month (каждый день/неделю/месяц), on Mondays (по понедельникам).
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'He ___ to school every day.', options: ['go', 'goes', 'going', 'to go'], correct: 1 },
+                    { type: 'choice', question: 'They ___ football on Sundays.', options: ['play', 'plays', 'playing', 'to play'], correct: 0 },
+                    { type: 'choice', question: 'She ___ coffee in the morning.', options: ['drink', 'drinks', 'drinking', 'to drink'], correct: 1 },
+                    { type: 'choice', question: 'I ___ not like tea.', options: ['do', 'does', 'am', 'is'], correct: 0 },
+                    { type: 'choice', question: '___ he work here?', options: ['Do', 'Does', 'Is', 'Are'], correct: 1 },
+                    { type: 'choice', question: 'We ___ TV every evening.', options: ['watch', 'watches', 'watching', 'to watch'], correct: 0 },
+                    { type: 'choice', question: 'My sister ___ in London.', options: ['live', 'lives', 'living', 'to live'], correct: 1 },
+                    { type: 'choice', question: 'The sun ___ in the east.', options: ['rise', 'rises', 'rising', 'to rise'], correct: 1 },
+                    { type: 'choice', question: '___ they speak English?', options: ['Do', 'Does', 'Is', 'Are'], correct: 0 },
+                    { type: 'choice', question: 'He ___ not play tennis.', options: ["don't", "doesn't", "isn't", "aren't"], correct: 1 }
+                ]
+            },
+            'past-simple': {
+                title: 'Past Simple (Прошедшее простое время)',
+                content: `
+                    <h2>Past Simple Tense</h2>
+                    <p>Past Simple используется для описания действий, которые произошли в прошлом и завершились.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Завершённые действия в прошлом: <em>I visited Paris last year.</em></li>
+                        <li>Серия последовательных действий: <em>He woke up, had breakfast and went to work.</em></li>
+                        <li>Факты о прошлом: <em>Shakespeare wrote many plays.</em></li>
+                    </ul>
+
+                    <h3>Образование утвердительной формы:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Тип глагола</th>
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Примеры</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Правильные глаголы</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">V + ed</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">work → worked, play → played</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Неправильные глаголы</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">2-я колонка таблицы</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">go → went, see → saw, do → did</td>
+                        </tr>
+                    </table>
+
+                    <h3>Правила добавления -ed:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Обычно добавляем <strong>-ed</strong>: work → worked</li>
+                        <li>Если глагол оканчивается на e, добавляем <strong>-d</strong>: live → lived</li>
+                        <li>Если после краткой гласной согласная, удваиваем: stop → stopped</li>
+                        <li>Если после согласной y, то y → <strong>-ied</strong>: study → studied</li>
+                    </ul>
+
+                    <h3>Отрицательная форма:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Подлежащее + <strong>did not (didn't)</strong> + V (инфинитив): <em>I didn't work yesterday.</em></li>
+                    </ul>
+
+                    <h3>Вопросительная форма:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Did</strong> + подлежащее + V (инфинитив)?: <em>Did you work yesterday?</em></li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Маркеры времени:</strong> yesterday (вчера), last week/month/year (на прошлой неделе/в прошлом месяце/в прошлом году), ago (тому назад), in 2010 (в 2010), when I was young (когда я был молодым).
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ to Paris last year.', options: ['go', 'went', 'gone', 'going'], correct: 1 },
+                    { type: 'choice', question: 'She ___ a book yesterday.', options: ['read', 'readed', 'reading', 'reads'], correct: 0 },
+                    { type: 'choice', question: 'They ___ football on Saturday.', options: ['play', 'played', 'playing', 'plays'], correct: 1 },
+                    { type: 'choice', question: 'He ___ not come to the party.', options: ['do', 'does', 'did', 'was'], correct: 2 },
+                    { type: 'choice', question: '___ you see him yesterday?', options: ['Do', 'Does', 'Did', 'Were'], correct: 2 },
+                    { type: 'choice', question: 'We ___ TV last night.', options: ['watch', 'watched', 'watching', 'watches'], correct: 1 },
+                    { type: 'choice', question: 'My brother ___ a car in 2020.', options: ['buy', 'buyed', 'bought', 'buying'], correct: 2 },
+                    { type: 'choice', question: 'The concert ___ at 8 PM.', options: ['start', 'started', 'starting', 'starts'], correct: 1 },
+                    { type: 'choice', question: '___ they arrive on time?', options: ['Do', 'Does', 'Did', 'Were'], correct: 2 },
+                    { type: 'choice', question: 'I ___ very tired yesterday.', options: ['am', 'was', 'were', 'be'], correct: 1 }
+                ]
+            },
+            'future-simple': {
+                title: 'Future Simple (Будущее простое время)',
+                content: `
+                    <h2>Future Simple Tense</h2>
+                    <p>Future Simple используется для описания действий, которые произойдут в будущем.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Спонтанные решения: <em>I'll help you!</em></li>
+                        <li>Предсказания без доказательств: <em>It will rain tomorrow.</em></li>
+                        <li>Обещания и предложения: <em>I'll call you later.</em></li>
+                        <li>Будущие факты: <em>He will be 30 next month.</em></li>
+                    </ul>
+
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Структура</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">will + V</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I will work, She will come</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">will not (won't) + V</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I won't go, He won't come</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Will + подлежащее + V?</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Will you help me?</td>
+                        </tr>
+                    </table>
+
+                    <h3>Примеры:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>I <strong>will call</strong> you tomorrow. — Я позвоню тебе завтра.</li>
+                        <li>She <strong>won't be</strong> late. — Она не опоздает.</li>
+                        <li><strong>Will</strong> you <strong>marry</strong> me? — Ты выйдешь за меня?</li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Альтернатива:</strong> Конструкция <strong>be going to</strong> используется для запланированных действий и предсказаний с доказательствами: <em>I'm going to visit my parents this weekend.</em> | <em>Look at those clouds! It's going to rain.</em>
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ help you.', options: ['will', 'am', 'do', 'have'], correct: 0 },
+                    { type: 'choice', question: 'She ___ come tomorrow.', options: ["won't", "don't", "doesn't", "isn't"], correct: 0 },
+                    { type: 'choice', question: '___ you marry me?', options: ['Will', 'Do', 'Are', 'Have'], correct: 0 },
+                    { type: 'choice', question: 'They ___ travel next summer.', options: ['will', 'are', 'do', 'have'], correct: 0 },
+                    { type: 'choice', question: 'He ___ not be late.', options: ['will', 'do', 'does', 'is'], correct: 0 },
+                    { type: 'choice', question: 'We ___ see you soon.', options: ['will', 'are', 'do', 'have'], correct: 0 },
+                    { type: 'choice', question: '___ it rain tomorrow?', options: ['Will', 'Does', 'Is', 'Do'], correct: 0 },
+                    { type: 'choice', question: 'I think she ___ win.', options: ['will', 'is', 'does', 'has'], correct: 0 },
+                    { type: 'choice', question: 'They ___ not agree.', options: ['will', 'do', 'does', 'are'], correct: 0 },
+                    { type: 'choice', question: '___ we meet at 5?', options: ['Will', 'Do', 'Are', 'Have'], correct: 0 }
+                ]
+            },
+            'present-continuous': {
+                title: 'Present Continuous (Настоящее длительное время)',
+                content: `
+                    <h2>Present Continuous Tense</h2>
+                    <p>Present Continuous используется для описания действий, происходящих в момент речи или вокруг него.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Действия в момент речи: <em>I am reading now.</em></li>
+                        <li>Временные ситуации: <em>He is staying at a hotel this week.</em></li>
+                        <li>Запланированные действия в будущем: <em>We are meeting them tomorrow.</em></li>
+                        <li>Раздражающие привычки (с always): <em>He is always interrupting me!</em></li>
+                    </ul>
+
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Структура</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">am/is/are + V-ing</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I am working, She is sleeping</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">am/is/are + not + V-ing</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I'm not joking, He isn't coming</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Am/Is/Are + подлежащее + V-ing?</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Are you listening?</td>
+                        </tr>
+                    </table>
+
+                    <h3>Правила добавления -ing:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Обычно добавляем <strong>-ing</strong>: work → working</li>
+                        <li>Если глагол оканчивается на e, убираем e: make → making</li>
+                        <li>Если после краткой гласной одна согласная, удваиваем: run → running</li>
+                        <li>Если ie, то меняется на y: lie → lying</li>
+                    </ul>
+
+                    <h3>Глаголы состояния (не используются в Continuous):</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Чувства: like, love, hate, prefer</li>
+                        <li>Мышление: know, understand, believe, think</li>
+                        <li>Владение: have, own, belong</li>
+                        <li>Восприятие: see, hear, smell, taste</li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Маркеры времени:</strong> now (сейчас), at the moment (в данный момент), today (сегодня), this week (на этой неделе), currently (в настоящее время), Look! (Смотри!), Listen! (Слушай!).
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ TV now.', options: ['watch', 'am watching', 'watches', 'watching'], correct: 1 },
+                    { type: 'choice', question: 'She ___ to music.', options: ['listen', 'is listening', 'listens', 'listening'], correct: 1 },
+                    { type: 'choice', question: 'They ___ football at the moment.', options: ['play', 'are playing', 'plays', 'playing'], correct: 1 },
+                    { type: 'choice', question: 'He ___ not sleeping.', options: ['do', 'does', 'is', 'are'], correct: 2 },
+                    { type: 'choice', question: '___ you studying?', options: ['Do', 'Does', 'Are', 'Is'], correct: 2 },
+                    { type: 'choice', question: 'We ___ dinner right now.', options: ['cook', 'are cooking', 'cooks', 'cooking'], correct: 1 },
+                    { type: 'choice', question: 'The baby ___.', options: ['cry', 'is crying', 'cries', 'crying'], correct: 1 },
+                    { type: 'choice', question: 'I ___ what you mean.', options: ["am not understanding", "don't understand", "not understand", "isn't understanding"], correct: 1 },
+                    { type: 'choice', question: '___ it raining?', options: ['Do', 'Does', 'Is', 'Are'], correct: 2 },
+                    { type: 'choice', question: 'They ___ at home today.', options: ['stay', 'are staying', 'stays', 'staying'], correct: 1 }
+                ]
+            },
+            'past-continuous': {
+                title: 'Past Continuous (Прошедшее длительное время)',
+                content: `
+                    <h2>Past Continuous Tense</h2>
+                    <p>Past Continuous используется для описания действий, которые длились в определённый момент в прошлом.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Действие в конкретный момент прошлого: <em>At 8 PM I was watching TV.</em></li>
+                        <li>Длительное действие, прерванное коротким: <em>I was reading when the phone rang.</em></li>
+                        <li>Два одновременных действия: <em>While I was cooking, he was cleaning.</em></li>
+                        <li>Описание обстановки в рассказе: <em>The sun was shining, birds were singing.</em></li>
+                    </ul>
+
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Структура</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">was/were + V-ing</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I was working, They were playing</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">was/were + not + V-ing</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I wasn't sleeping, They weren't listening</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Was/Were + подлежащее + V-ing?</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Were you studying?</td>
+                        </tr>
+                    </table>
+
+                    <h3>Was vs Were:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Was</strong>: I, he, she, it</li>
+                        <li><strong>Were</strong>: you, we, they</li>
+                    </ul>
+
+                    <h3>When vs While:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>When</strong> + Past Simple: <em>I was reading when he came.</em></li>
+                        <li><strong>While</strong> + Past Continuous: <em>While I was reading, he came.</em></li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Маркеры времени:</strong> at 5 PM yesterday (вчера в 5 вечера), while (в то время как), when (когда), all day/morning (весь день/утро), from...to (с...до).
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ TV at 8 PM yesterday.', options: ['watch', 'was watching', 'watched', 'am watching'], correct: 1 },
+                    { type: 'choice', question: 'They ___ when I arrived.', options: ['sleep', 'were sleeping', 'slept', 'are sleeping'], correct: 1 },
+                    { type: 'choice', question: 'She ___ all day.', options: ['study', 'was studying', 'studied', 'is studying'], correct: 1 },
+                    { type: 'choice', question: 'He ___ not listening.', options: ['did', 'was', 'were', 'is'], correct: 1 },
+                    { type: 'choice', question: '___ you playing?', options: ['Did', 'Was', 'Were', 'Are'], correct: 2 },
+                    { type: 'choice', question: 'We ___ dinner when he called.', options: ['have', 'were having', 'had', 'are having'], correct: 1 },
+                    { type: 'choice', question: 'While I ___, the phone rang.', options: ['cook', 'was cooking', 'cooked', 'am cooking'], correct: 1 },
+                    { type: 'choice', question: 'They ___ football all afternoon.', options: ['play', 'were playing', 'played', 'are playing'], correct: 1 },
+                    { type: 'choice', question: '___ she working at 9 AM?', options: ['Did', 'Was', 'Were', 'Is'], correct: 1 },
+                    { type: 'choice', question: 'I ___ what to do.', options: ['think', 'was thinking', 'thought', 'am thinking'], correct: 1 }
+                ]
+            },
         };
 
         function showGrammarTopic(topicId) {
