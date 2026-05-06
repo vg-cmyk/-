@@ -3122,6 +3122,73 @@
                     { type: 'choice', question: 'We ___ each other for years before we met.', options: ['have known', 'had known', 'knew', 'know'], correct: 1 }
                 ]
             },
+            'present-perfect-continuous': {
+                title: 'Present Perfect Continuous (Настоящее совершенное длительное время)',
+                content: `
+                    <h2>Present Perfect Continuous Tense</h2>
+                    <p>Present Perfect Continuous используется для описания действий, которые начались в прошлом и продолжаются до настоящего момента, или только что завершились.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Действие началось в прошлом и продолжается сейчас: <em>I have been studying English for 3 years.</em></li>
+                        <li>Действие только что завершилось с видимым результатом: <em>She is tired because she has been running.</em></li>
+                        <li>Подчёркивается длительность действия: <em>How long have you been waiting?</em></li>
+                        <li>Временные ситуации: <em>He has been living here since January.</em></li>
+                    </ul>
+
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Структура</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">have/has + been + V-ing</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I have been working, She has been studying</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">have/has + not + been + V-ing</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I haven't been sleeping, He hasn't been feeling well</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Have/Has + подлежащее + been + V-ing?</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Have you been waiting? Has she been crying?</td>
+                        </tr>
+                    </table>
+
+                    <h3>For vs Since:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>For</strong> + период времени: <em>for 2 hours, for 3 years, for a week</em></li>
+                        <li><strong>Since</strong> + точка отсчёта: <em>since morning, since 2020, since I was born</em></li>
+                    </ul>
+
+                    <h3>Глаголы состояния (не используются в Continuous):</h3>
+                    <p>love, like, hate, want, need, know, understand, believe, remember, forget, belong, own, seem</p>
+                    <p>Вместо Present Perfect Continuous используется Present Perfect: <em>I have known him for years.</em> (НЕ ~~I have been knowing~~)</p>
+
+                    <div class="cultural-note">
+                        <strong>Разница с Present Perfect:</strong><br>
+                        • Present Perfect: результат важен — <em>I have painted the room.</em> (комната покрашена)<br>
+                        • Present Perfect Continuous: процесс важен — <em>I have been painting the room.</em> (я красил комнату, возможно ещё не закончил)
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ English for 5 years.', options: ['have learned', 'have been learning', 'learn', 'am learning'], correct: 1 },
+                    { type: 'choice', question: 'She ___ here since 9 o\'clock.', options: ['has waited', 'has been waiting', 'waits', 'is waiting'], correct: 1 },
+                    { type: 'choice', question: 'How long ___ you ___ this job?', options: ['have / done', 'have / been doing', 'do / do', 'are / doing'], correct: 1 },
+                    { type: 'choice', question: 'They ___ football for 2 hours.', options: ['have played', 'have been playing', 'play', 'are playing'], correct: 1 },
+                    { type: 'choice', question: 'He ___ tired because he ___ all day.', options: ['is / has worked', 'is / has been working', 'was / worked', 'is / works'], correct: 1 },
+                    { type: 'choice', question: 'We ___ each other since childhood.', options: ['have known', 'have been knowing', 'know', 'are knowing'], correct: 0 },
+                    { type: 'choice', question: 'It ___ all morning.', options: ['has rained', 'has been raining', 'rains', 'is raining'], correct: 1 },
+                    { type: 'choice', question: '___ you ___ TV all evening?', options: ['Have / watched', 'Have / been watching', 'Do / watch', 'Are / watching'], correct: 1 },
+                    { type: 'choice', question: 'She ___ on this project since Monday.', options: ['has worked', 'has been working', 'works', 'is working'], correct: 1 },
+                    { type: 'choice', question: 'I ___ for you for an hour!', options: ['have waited', 'have been waiting', 'wait', 'am waiting'], correct: 1 }
+                ]
+            },
         };
 
         function showGrammarTopic(topicId) {
