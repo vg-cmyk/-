@@ -4293,6 +4293,144 @@
                     { type: 'choice', question: 'I ___ for you for an hour!', options: ['have waited', 'have been waiting', 'wait', 'am waiting'], correct: 1 }
                 ]
             },
+            'future-simple': {
+                title: 'Future Simple (Будущее простое время)',
+                content: `
+                    <h2>Future Simple Tense</h2>
+                    <p>Future Simple используется для описания действий, которые произойдут в будущем.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Спонтанные решения: <em>I'll answer the phone.</em></li>
+                        <li>Предсказания без очевидных доказательств: <em>I think it will rain tomorrow.</em></li>
+                        <li>Обещания и предложения: <em>I'll help you with your homework.</em></li>
+                        <li>Надежды и мнения о будущем: <em>I hope you'll come to the party.</em></li>
+                        <li>Факты о будущем: <em>The sun will rise at 6 AM tomorrow.</em></li>
+                    </ul>
+
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Структура</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">will + инфинитив без to</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I will work, She will study</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">will not (won't) + инфинитив</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I won't go, He won't come</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Will + подлежащее + инфинитив?</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Will you help me? Will they arrive soon?</td>
+                        </tr>
+                    </table>
+
+                    <h3>Краткие формы:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>I will</strong> → <strong>I'll</strong> [aɪl]</li>
+                        <li><strong>You will</strong> → <strong>You'll</strong> [juːl]</li>
+                        <li><strong>He/She/It will</strong> → <strong>He'll/She'll/It'll</strong> [hiːl/ʃiːl/ɪtl]</li>
+                        <li><strong>We will</strong> → <strong>We'll</strong> [wiːl]</li>
+                        <li><strong>They will</strong> → <strong>They'll</strong> [ðeɪl]</li>
+                        <li><strong>Will not</strong> → <strong>Won't</strong> [woʊnt]</li>
+                    </ul>
+
+                    <h3>Другие способы выражения будущего:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Be going to:</strong> планы и намерения — <em>I'm going to visit my parents this weekend.</em></li>
+                        <li><strong>Present Continuous:</strong> договорённости — <em>I'm meeting John at 5 PM.</em></li>
+                        <li><strong>Present Simple:</strong> расписания — <em>The train leaves at 9 AM.</em></li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Разница между will и going to:</strong><br>
+                        • <strong>Will:</strong> спонтанное решение в момент речи — "The phone is ringing. I'll get it!"<br>
+                        • <strong>Going to:</strong> запланированное заранее — "I'm going to buy a car next month."
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I think it ___ tomorrow.', options: ['will rain', 'rains', 'is raining', 'rain'], correct: 0 },
+                    { type: 'choice', question: '___ you help me with this bag?', options: ['Will', 'Do', 'Are', 'Have'], correct: 0 },
+                    { type: 'choice', question: 'She ___ call you later.', options: ["won't", "don't", "isn't", "hasn't"], correct: 0 },
+                    { type: 'choice', question: 'I promise I ___ late.', options: ["won't be", "am not", "don't be", "haven't been"], correct: 0 },
+                    { type: 'choice', question: '___ they come to the party?', options: ['Will', 'Do', 'Are', 'Have'], correct: 0 },
+                    { type: 'choice', question: 'We ___ you as soon as we arrive.', options: ['will call', 'call', 'are calling', 'have called'], correct: 0 },
+                    { type: 'choice', question: 'He probably ___ the job.', options: ['will get', 'gets', 'is getting', 'has gotten'], correct: 0 },
+                    { type: 'choice', question: "I'm sure you ___ the exam.", options: ['will pass', 'pass', 'are passing', 'have passed'], correct: 0 },
+                    { type: 'choice', question: '___ I open the window?', options: ['Will', 'Shall', 'Do', 'Am'], correct: 1 },
+                    { type: 'choice', question: 'They ___ married next year.', options: ['will get', 'get', 'are getting', 'have gotten'], correct: 0 }
+                ]
+            },
+            'future-continuous': {
+                title: 'Future Continuous (Будущее длительное время)',
+                content: `
+                    <h2>Future Continuous Tense</h2>
+                    <p>Future Continuous используется для описания действий, которые будут происходить в определённый момент в будущем.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Действие в процессе в определённый момент будущего: <em>At 8 PM tomorrow I'll be watching TV.</em></li>
+                        <li>Запланированные события в будущем: <em>We'll be staying at the Grand Hotel.</em></li>
+                        <li>Вежливые вопросы о планах: <em>Will you be using the car tonight?</em></li>
+                        <li>Предсказание о текущем моменте в будущем: <em>Don't call now, they'll be having dinner.</em></li>
+                    </ul>
+
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Структура</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">will be + V-ing</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I will be working, She will be sleeping</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">will not be + V-ing</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I won't be coming, He won't be working</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Will + подлежащее + be + V-ing?</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Will you be waiting? Will they be arriving?</td>
+                        </tr>
+                    </table>
+
+                    <h3>Сравнение Future Simple и Future Continuous:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Future Simple:</strong> факт или решение — <em>I'll work tomorrow.</em></li>
+                        <li><strong>Future Continuous:</strong> процесс в момент времени — <em>I'll be working at 3 PM tomorrow.</em></li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Вежливые вопросы:</strong> Future Continuous часто используется для вежливых вопросов о планах собеседника, чтобы не звучать навязчиво:<br>
+                        • <em>Will you be using the printer?</em> (вежливо)<br>
+                        • <em>Are you going to use the printer?</em> (более прямо)
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'At 9 PM tonight I ___ TV.', options: ['will watch', 'will be watching', 'watch', 'am watching'], correct: 1 },
+                    { type: 'choice', question: 'This time next week we ___ on the beach.', options: ['will lie', 'will be lying', 'lie', 'are lying'], correct: 1 },
+                    { type: 'choice', question: "___ you ___ the car tomorrow?", options: ['Will / use', 'Will / be using', 'Do / use', 'Are / using'], correct: 1 },
+                    { type: 'choice', question: "Don't call at 7, I ___ dinner.", options: ['will have', 'will be having', 'have', 'am having'], correct: 1 },
+                    { type: 'choice', question: 'They ___ in Paris this time next month.', options: ['will stay', 'will be staying', 'stay', 'are staying'], correct: 1 },
+                    { type: 'choice', question: 'He ___ for his exam all evening.', options: ['will study', 'will be studying', 'studies', 'is studying'], correct: 1 },
+                    { type: 'choice', question: 'We ___ home when you arrive.', options: ['will drive', 'will be driving', 'drive', 'are driving'], correct: 1 },
+                    { type: 'choice', question: "___ she ___ at the meeting?", options: ['Will / be', 'Will / be being', 'Is / being', 'Does / be'], correct: 0 },
+                    { type: 'choice', question: 'I ___ my homework at 5 PM.', options: ['will do', 'will be doing', 'do', 'am doing'], correct: 1 },
+                    { type: 'choice', question: 'They ___ football when we pass the field.', options: ['will play', 'will be playing', 'play', 'are playing'], correct: 1 }
+                ]
+            },
         };
 
         function showGrammarTopic(topicId) {
