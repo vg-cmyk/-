@@ -2151,6 +2151,48 @@
                         question: 'Как произносится /w/?',
                         options: ['Язык за зубами', 'Губы округлены', 'Язык на нёбе', 'Зубы сжаты'],
                         correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Какой звук в слове "mother"?',
+                        options: ['/θ/', '/ð/', '/m/', '/r/'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Выберите слово со звуком /θ/:',
+                        options: ['that', 'these', 'three', 'those'],
+                        correct: 2
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Какое слово содержит звук /w/?',
+                        options: ['red', 'water', 'bed', 'cat'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Выберите правильное произношение слова "very":',
+                        options: ['/ˈweri/', '/ˈveri/', '/ˈberi/', '/ˈzeri/'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'В каком слове НЕТ звука /θ/?',
+                        options: ['think', 'bath', 'this', 'thank'],
+                        correct: 2
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Как произносится звук /r/ в английском?',
+                        options: ['Язык касается нёба', 'Язык не касается нёба', 'Зубы сжаты', 'Губы растянуты'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Выберите слово со звуком /ð/:',
+                        options: ['bath', 'thin', 'father', 'thanks'],
+                        correct: 2
                     }
                 ]
             },
@@ -2202,6 +2244,54 @@
                         question: 'He ___ pizza.',
                         options: ['love', 'loves', 'loving', 'to love'],
                         correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'I ___ coffee in the morning.',
+                        options: ['drink', 'drinks', 'drinking', 'to drink'],
+                        correct: 0
+                    },
+                    {
+                        type: 'choice',
+                        question: 'My brother ___ at a bank.',
+                        options: ['work', 'works', 'working', 'to work'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'We ___ English every day.',
+                        options: ['study', 'studies', 'studying', 'to study'],
+                        correct: 0
+                    },
+                    {
+                        type: 'choice',
+                        question: 'The sun ___ in the east.',
+                        options: ['rise', 'rises', 'rising', 'to rise'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'She ___ her homework after dinner.',
+                        options: ['do', 'does', 'doing', 'to do'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'Cats ___ milk.',
+                        options: ['like', 'likes', 'liking', 'to like'],
+                        correct: 0
+                    },
+                    {
+                        type: 'choice',
+                        question: 'He usually ___ up at 7 AM.',
+                        options: ['get', 'gets', 'getting', 'to get'],
+                        correct: 1
+                    },
+                    {
+                        type: 'choice',
+                        question: 'They ___ football on weekends.',
+                        options: ['play', 'plays', 'playing', 'to play'],
+                        correct: 0
                     }
                 ]
             }
@@ -2329,7 +2419,19 @@
                         <br><em>It is raining. — Идёт дождь.</em>
                         <br><em>It is 5 o'clock. — Сейчас 5 часов.</em>
                     </div>
-                `
+                `,
+                exercises: [
+                    { type: 'choice', question: 'Какое местоимение соответствует "мы"?', options: ['they', 'we', 'you', 'I'], correct: 1 },
+                    { type: 'choice', question: '___ am a teacher.', options: ['He', 'She', 'I', 'It'], correct: 2 },
+                    { type: 'choice', question: '___ are students.', options: ['He', 'They', 'She', 'It'], correct: 1 },
+                    { type: 'choice', question: 'My sister - какое местоимение?', options: ['he', 'she', 'it', 'they'], correct: 1 },
+                    { type: 'choice', question: '___ is a cat.', options: ['He', 'She', 'It', 'They'], correct: 2 },
+                    { type: 'choice', question: 'John and I - какое местоимение?', options: ['They', 'We', 'You', 'I'], correct: 1 },
+                    { type: 'choice', question: '___ is my friend.', options: ['He', 'She', 'It', 'They'], correct: 0 },
+                    { type: 'choice', question: 'The book - какое местоимение?', options: ['he', 'she', 'it', 'they'], correct: 2 },
+                    { type: 'choice', question: '___ are at home.', options: ['I', 'He', 'She', 'We'], correct: 3 },
+                    { type: 'choice', question: 'Mary and Tom - какое местоимение?', options: ['We', 'They', 'You', 'I'], correct: 1 }
+                ]
             },
             'verb-to-be': {
                 title: 'Глагол to be (быть)',
@@ -2382,7 +2484,19 @@
                         <li><strong>Is</strong> she ready? — Она готова?</li>
                         <li><strong>Are</strong> you sure? — Ты уверен?</li>
                     </ul>
-                `
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ a student.', options: ['is', 'are', 'am', 'be'], correct: 2 },
+                    { type: 'choice', question: 'She ___ at school.', options: ['am', 'are', 'is', 'be'], correct: 2 },
+                    { type: 'choice', question: 'They ___ friends.', options: ['am', 'is', 'are', 'be'], correct: 2 },
+                    { type: 'choice', question: 'He ___ my brother.', options: ['am', 'are', 'is', 'be'], correct: 2 },
+                    { type: 'choice', question: 'We ___ happy.', options: ['am', 'is', 'are', 'be'], correct: 2 },
+                    { type: 'choice', question: 'It ___ a cat.', options: ['am', 'are', 'is', 'be'], correct: 2 },
+                    { type: 'choice', question: 'You ___ late.', options: ['am', 'is', 'are', 'be'], correct: 2 },
+                    { type: 'choice', question: 'I ___ not tired.', options: ["isn't", "aren't", "am not", "not"], correct: 2 },
+                    { type: 'choice', question: '___ she ready?', options: ['Am', 'Is', 'Are', 'Be'], correct: 1 },
+                    { type: 'choice', question: '___ they at home?', options: ['Am', 'Is', 'Are', 'Be'], correct: 2 }
+                ]
             }
         };
 
@@ -2401,12 +2515,19 @@
                 </div>
                 <div class="card" style="margin-top: 20px;">
                     <h3>Проверка знаний</h3>
-                    <p style="color: var(--text-secondary);">Упражнения для этой темы находятся в разработке.</p>
+                    <div id="exercise-container"></div>
                 </div>
             \`;
 
             document.getElementById('lesson-content-display').innerHTML = content;
             showSection('lesson-view');
+            
+            // Render exercises for grammar topic
+            if (topic.exercises && topic.exercises.length > 0) {
+                renderExercises(topic.exercises);
+            } else {
+                document.getElementById('exercise-container').innerHTML = '<p style="color: var(--text-secondary);">Упражнения для этой темы находятся в разработке.</p>';
+            }
         }
 
         // Flashcard System (SRS)
