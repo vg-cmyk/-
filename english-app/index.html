@@ -705,6 +705,7 @@
             <h3>Меню</h3>
             <div class="menu-item active" onclick="showSection('dashboard')">📊 Прогресс</div>
             <div class="menu-item" onclick="showSection('lessons')">📚 Уроки</div>
+            <div class="menu-item" onclick="showSection('grammar')">📖 Грамматика</div>
             <div class="menu-item" onclick="showSection('flashcards')">🃏 Карточки SRS</div>
             <div class="menu-item" onclick="showSection('vocabulary')">📖 Словарь (1000)</div>
             <div class="menu-item" onclick="showSection('practice')">💬 AI-собеседник</div>
@@ -828,6 +829,13 @@
                             <strong>Урок 12:</strong> Идиомы из сериалов
                         </div>
                     </div>
+                </div>
+
+                <div class="card" style="margin-top: 20px;">
+                    <h2 style="text-align: center; color: var(--accent);">📖 Перейти к полному справочнику грамматики</h2>
+                    <button class="btn-primary" onclick="showSection('grammar')" style="width: 100%; margin-top: 15px; font-size: 16px;">
+                        📚 Открыть раздел Грамматика
+                    </button>
                 </div>
             </section>
 
@@ -1093,6 +1101,420 @@
                     <h3>Результат анализа</h3>
                     <div id="analysis-content"></div>
                 </div>
+            </section>
+
+            <!-- Grammar Section -->
+            <section id="grammar" class="section">
+                <h1>📖 Полный справочник грамматики английского языка</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Все грамматические темы от A1 до C1 с примерами и упражнениями
+                </p>
+
+                <div class="card">
+                    <h2>🔤 Модуль 1: Основы (A1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('personal-pronouns')">
+                            <strong>1.1</strong> Личные местоимения (Personal Pronouns)
+                            <span class="phonetic">I, you, he, she, it, we, they</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('verb-to-be')">
+                            <strong>1.2</strong> Глагол to be (быть)
+                            <span class="phonetic">am, is, are, was, were</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('articles')">
+                            <strong>1.3</strong> Артикли (Articles)
+                            <span class="phonetic">a, an, the</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('plural-nouns')">
+                            <strong>1.4</strong> Множественное число существительных
+                            <span class="phonetic">cat → cats, box → boxes</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('possessive-case')">
+                            <strong>1.5</strong> Притяжательный падеж
+                            <span class="phonetic">John's book, children's toys</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('demonstrative-pronouns')">
+                            <strong>1.6</strong> Указательные местоимения
+                            <span class="phonetic">this, that, these, those</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('there-is-there-are')">
+                            <strong>1.7</strong> Конструкция There is / There are
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('have-has')">
+                            <strong>1.8</strong> Глагол have got / has got
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>⏰ Модуль 2: Времена группы Simple (A1-A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('present-simple')">
+                            <strong>2.1</strong> Present Simple - настоящее простое время
+                            <span class="phonetic">I work, He works</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('past-simple')">
+                            <strong>2.2</strong> Past Simple - прошедшее простое время
+                            <span class="phonetic">I worked, I went</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('future-simple')">
+                            <strong>2.3</strong> Future Simple - будущее простое время
+                            <span class="phonetic">I will work</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('regular-irregular-verbs')">
+                            <strong>2.4</strong> Правильные и неправильные глаголы
+                            <span class="phonetic">worked, went, seen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔄 Модуль 3: Времена группы Continuous (A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('present-continuous')">
+                            <strong>3.1</strong> Present Continuous - настоящее длительное
+                            <span class="phonetic">I am working now</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('past-continuous')">
+                            <strong>3.2</strong> Past Continuous - прошедшее длительное
+                            <span class="phonetic">I was working at 5 PM</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('future-continuous')">
+                            <strong>3.3</strong> Future Continuous - будущее длительное
+                            <span class="phonetic">I will be working tomorrow</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('simple-vs-continuous')">
+                            <strong>3.4</strong> Simple vs Continuous - разница времён
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>✅ Модуль 4: Времена группы Perfect (B1-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('present-perfect')">
+                            <strong>4.1</strong> Present Perfect - настоящее совершённое
+                            <span class="phonetic">I have worked, I have seen</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('past-perfect')">
+                            <strong>4.2</strong> Past Perfect - прошедшее совершённое
+                            <span class="phonetic">I had worked before...</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('future-perfect')">
+                            <strong>4.3</strong> Future Perfect - будущее совершённое
+                            <span class="phonetic">I will have worked by...</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('present-perfect-continuous')">
+                            <strong>4.4</strong> Present Perfect Continuous
+                            <span class="phonetic">I have been working for 2 hours</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('past-perfect-continuous')">
+                            <strong>4.5</strong> Past Perfect Continuous
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('future-perfect-continuous')">
+                            <strong>4.6</strong> Future Perfect Continuous
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📝 Модуль 5: Модальные глаголы (A2-B1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('modal-can-could')">
+                            <strong>5.1</strong> Can / Could - мочь, уметь
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-must-have-to')">
+                            <strong>5.2</strong> Must / Have to - долженствование
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-should-ought')">
+                            <strong>5.3</strong> Should / Ought to - совет
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-may-might')">
+                            <strong>5.4</strong> May / Might - вероятность
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-would')">
+                            <strong>5.5</strong> Would - условное наклонение
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('modal-need-dare')">
+                            <strong>5.6</strong> Need / Dare
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔣 Модуль 6: Пассивный залог (Passive Voice) (B1-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('passive-present')">
+                            <strong>6.1</strong> Passive Voice в Present Simple
+                            <span class="phonetic">The book is read</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('passive-past')">
+                            <strong>6.2</strong> Passive Voice в Past Simple
+                            <span class="phonetic">The book was read</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('passive-future')">
+                            <strong>6.3</strong> Passive Voice в Future Simple
+                            <span class="phonetic">The book will be read</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('passive-perfect')">
+                            <strong>6.4</strong> Passive Voice в Perfect tenses
+                            <span class="phonetic">The book has been read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>❓ Модуль 7: Вопросительные предложения (A1-B1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('general-questions')">
+                            <strong>7.1</strong> Общие вопросы (Yes/No questions)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('special-questions')">
+                            <strong>7.2</strong> Специальные вопросы (Wh- questions)
+                            <span class="phonetic">what, where, when, why, who, how</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('alternative-questions')">
+                            <strong>7.3</strong> Альтернативные вопросы
+                            <span class="phonetic">Tea or coffee?</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('tag-questions')">
+                            <strong>7.4</strong> Разделительные вопросы (Question tags)
+                            <span class="phonetic">You like it, don't you?</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('indirect-questions')">
+                            <strong>7.5</strong> Косвенные вопросы (Indirect questions)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🚫 Модуль 8: Отрицания и императив (A1-A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('negation-simple')">
+                            <strong>8.1</strong> Отрицания в Simple tenses
+                            <span class="phonetic">don't, doesn't, didn't</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('negation-perfect')">
+                            <strong>8.2</strong> Отрицания в Perfect tenses
+                            <span class="phonetic">haven't, hasn't, hadn't</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('imperative')">
+                            <strong>8.3</strong> Повелительное наклонение (Imperative)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('neither-either')">
+                            <strong>8.4</strong> Neither / Either / So do I
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📊 Модуль 9: Степени сравнения прилагательных (A1-A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('comparative-adjectives')">
+                            <strong>9.1</strong> Сравнительная степень
+                            <span class="phonetic">bigger, more interesting</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('superlative-adjectives')">
+                            <strong>9.2</strong> Превосходная степень
+                            <span class="phonetic">the biggest, the most interesting</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('irregular-comparison')">
+                            <strong>9.3</strong> Исключения
+                            <span class="phonetic">good → better → the best</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('as-as')">
+                            <strong>9.4</strong> Конструкции as...as, not so...as
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔗 Модуль 10: Условные предложения (Conditionals) (A2-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('conditional-zero')">
+                            <strong>10.1</strong> Zero Conditional - реальные условия
+                            <span class="phonetic">If you heat ice, it melts</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('conditional-first')">
+                            <strong>10.2</strong> First Conditional - вероятные условия
+                            <span class="phonetic">If it rains, I'll stay home</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('conditional-second')">
+                            <strong>10.3</strong> Second Conditional - маловероятные условия
+                            <span class="phonetic">If I won, I would travel</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('conditional-third')">
+                            <strong>10.4</strong> Third Conditional - нереальные условия в прошлом
+                            <span class="phonetic">If I had known, I would have come</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('mixed-conditionals')">
+                            <strong>10.5</strong> Mixed Conditionals - смешанные типы
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('wish-if-only')">
+                            <strong>10.6</strong> I wish / If only
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🗣️ Модуль 11: Косвенная речь (Reported Speech) (B1-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('reported-statements')">
+                            <strong>11.1</strong> Косвенные утверждения
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('reported-questions')">
+                            <strong>11.2</strong> Косвенные вопросы
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('reported-commands')">
+                            <strong>11.3</strong> Косвенные приказы и просьбы
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('sequence-of-tenses')">
+                            <strong>11.4</strong> Согласование времён
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📛 Модуль 12: Герундий и инфинитив (B1-B2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('gerund')">
+                            <strong>12.1</strong> Герундий (Gerund)
+                            <span class="phonetic">I enjoy reading</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('infinitive')">
+                            <strong>12.2</strong> Инфинитив (Infinitive)
+                            <span class="phonetic">I want to read</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('gerund-vs-infinitive')">
+                            <strong>12.3</strong> Герундий vs Инфинитив
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('participle')">
+                            <strong>12.4</strong> Причастия (Participles)
+                            <span class="phonetic">interesting, interested</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔢 Модуль 13: Числительные и количество (A1-A2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('cardinal-numbers')">
+                            <strong>13.1</strong> Количественные числительные
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('ordinal-numbers')">
+                            <strong>13.2</strong> Порядковые числительные
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('countable-uncountable')">
+                            <strong>13.3</strong> Исчисляемые и неисчисляемые существительные
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('quantifiers')">
+                            <strong>13.4</strong> Слова количества
+                            <span class="phonetic">some, any, much, many, few, little</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔤 Модуль 14: Предлоги (Prepositions) (A1-B1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('prepositions-time')">
+                            <strong>14.1</strong> Предлоги времени
+                            <span class="phonetic">in, on, at, for, since</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('prepositions-place')">
+                            <strong>14.2</strong> Предлоги места
+                            <span class="phonetic">in, on, at, under, over, between</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('prepositions-direction')">
+                            <strong>14.3</strong> Предлоги направления
+                            <span class="phonetic">to, into, out of, through</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-prepositions')">
+                            <strong>14.4</strong> Предлоги в фразовых глаголах
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎭 Модуль 15: Фразовые глаголы (Phrasal Verbs) (B1-C1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-get')">
+                            <strong>15.1</strong> Phrasal verbs с GET
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-take')">
+                            <strong>15.2</strong> Phrasal verbs с TAKE
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-make')">
+                            <strong>15.3</strong> Phrasal verbs с MAKE
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-do')">
+                            <strong>15.4</strong> Phrasal verbs с DO
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-go')">
+                            <strong>15.5</strong> Phrasal verbs с GO
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('phrasal-verbs-come')">
+                            <strong>15.6</strong> Phrasal verbs с COME
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🏗️ Модуль 16: Сложные конструкции (B2-C1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('complex-object')">
+                            <strong>16.1</strong> Complex Object (сложное дополнение)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('complex-subject')">
+                            <strong>16.2</strong> Complex Subject (сложное подлежащее)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('for-to-infinitive')">
+                            <strong>16.3</strong> For + to Infinitive
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('absolute-construction')">
+                            <strong>16.4</strong> Absolute Construction
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📜 Модуль 17: Инверсия и эмфаза (C1-C2)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('inversion')">
+                            <strong>17.1</strong> Инверсия (Inversion)
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('emphasis')">
+                            <strong>17.2</strong> Эмфатические конструкции
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('cleft-sentences')">
+                            <strong>17.3</strong> Расщеплённые предложения (Cleft sentences)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔗 Модуль 18: Средства связи (Linking Words) (B1-C1)</h2>
+                    <div class="lesson-content">
+                        <div class="menu-item" onclick="showGrammarTopic('linking-addition')">
+                            <strong>18.1</strong> Добавление информации
+                            <span class="phonetic">moreover, furthermore, in addition</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('linking-contrast')">
+                            <strong>18.2</strong> Противопоставление
+                            <span class="phonetic">however, nevertheless, on the other hand</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('linking-result')">
+                            <strong>18.3</strong> Результат и следствие
+                            <span class="phonetic">therefore, consequently, as a result</span>
+                        </div>
+                        <div class="menu-item" onclick="showGrammarTopic('linking-purpose')">
+                            <strong>18.4</strong> Цель
+                            <span class="phonetic">in order to, so as to</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="showSection('lessons')" style="margin-top: 20px;">← Назад к урокам</button>
             </section>
 
             <!-- Culture Section -->
@@ -1859,6 +2281,132 @@
             updateDashboard();
             showSection('dashboard');
             saveState();
+        }
+
+        // Grammar Topics Content
+        const grammarTopics = {
+            'personal-pronouns': {
+                title: 'Личные местоимения (Personal Pronouns)',
+                content: `
+                    <h2>Личные местоимения в английском языке</h2>
+                    <p>Личные местоимения заменяют существительные и указывают на лицо, предмет или явление.</p>
+                    
+                    <h3>Таблица личных местоимений:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Лицо</th>
+                            <th style="padding: 10px;">Единственное число</th>
+                            <th style="padding: 10px;">Множественное число</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">1-е</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I (я)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">we (мы)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">2-е</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">you (ты, вы)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">you (вы)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">3-е</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">he (он), she (она), it (оно)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">they (они)</td>
+                        </tr>
+                    </table>
+
+                    <h3>Примеры использования:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>I</strong> am a student. — Я студент.</li>
+                        <li><strong>She</strong> works in an office. — Она работает в офисе.</li>
+                        <li><strong>They</strong> live in London. — Они живут в Лондоне.</li>
+                        <li><strong>We</strong> are friends. — Мы друзья.</li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Важно:</strong> В английском языке местоимение <strong>it</strong> используется не только для предметов, 
+                        но и для животных (если пол неизвестен), а также для обозначения времени, погоды, расстояния.
+                        <br><em>It is raining. — Идёт дождь.</em>
+                        <br><em>It is 5 o'clock. — Сейчас 5 часов.</em>
+                    </div>
+                `
+            },
+            'verb-to-be': {
+                title: 'Глагол to be (быть)',
+                content: `
+                    <h2>Глагол to be в Present Simple</h2>
+                    <p>Глагол to be (быть, являться, находиться) — один из самых важных глаголов в английском языке.</p>
+                    
+                    <h3>Формы глагола to be в настоящем времени:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Местоимение</th>
+                            <th style="padding: 10px;">Полная форма</th>
+                            <th style="padding: 10px;">Сокращённая форма</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">am</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'m</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">He/She/It</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">is</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'s</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">You/We/They</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">are</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'re</td>
+                        </tr>
+                    </table>
+
+                    <h3>Примеры:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>I <strong>am</strong> happy. — Я счастлив.</li>
+                        <li>She <strong>is</strong> a doctor. — Она врач.</li>
+                        <li>They <strong>are</strong> at home. — Они дома.</li>
+                        <li>He <strong>'s</strong> my brother. — Он мой брат.</li>
+                    </ul>
+
+                    <h3>Отрицательная форма:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>I am <strong>not</strong> (I'm not)</li>
+                        <li>He is <strong>not</strong> (He isn't / He's not)</li>
+                        <li>They are <strong>not</strong> (They aren't / They're not)</li>
+                    </ul>
+
+                    <h3>Вопросительная форма:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Am</strong> I late? — Я опоздал?</li>
+                        <li><strong>Is</strong> she ready? — Она готова?</li>
+                        <li><strong>Are</strong> you sure? — Ты уверен?</li>
+                    </ul>
+                `
+            }
+        };
+
+        function showGrammarTopic(topicId) {
+            const topic = grammarTopics[topicId];
+            if (!topic) {
+                alert('Этот раздел грамматики находится в разработке. Пожалуйста, выберите другую тему.');
+                return;
+            }
+
+            const content = \`
+                <button onclick="showSection('grammar')" style="margin-bottom: 20px;">← Назад к списку тем</button>
+                <h1>\${topic.title}</h1>
+                <div class="card lesson-content">
+                    \${topic.content}
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <h3>Проверка знаний</h3>
+                    <p style="color: var(--text-secondary);">Упражнения для этой темы находятся в разработке.</p>
+                </div>
+            \`;
+
+            document.getElementById('lesson-content-display').innerHTML = content;
+            showSection('lesson-view');
         }
 
         // Flashcard System (SRS)
