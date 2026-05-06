@@ -2497,7 +2497,167 @@
                     { type: 'choice', question: '___ she ready?', options: ['Am', 'Is', 'Are', 'Be'], correct: 1 },
                     { type: 'choice', question: '___ they at home?', options: ['Am', 'Is', 'Are', 'Be'], correct: 2 }
                 ]
-            }
+            },
+            'articles': {
+                title: 'Артикли (Articles)',
+                content: `
+                    <h2>Артикли в английском языке</h2>
+                    <p>Артикли — это служебные слова, которые употребляются перед существительными.</p>
+                    
+                    <h3>Виды артиклей:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Артикль</th>
+                            <th style="padding: 10px;">Название</th>
+                            <th style="padding: 10px;">Употребление</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">a / an</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Неопределённый</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Первое упоминание, один из многих</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">the</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Определённый</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Конкретный предмет, повторное упоминание</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">– (нулевой)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Нулевой</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Имена собственные, названия, множественное число в общем смысле</td>
+                        </tr>
+                    </table>
+
+                    <h3>Правила использования:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>a</strong> + согласный звук: <em>a book, a cat, a university</em></li>
+                        <li><strong>an</strong> + гласный звук: <em>an apple, an hour, an MP3 player</em></li>
+                        <li><strong>the</strong> + конкретный предмет: <em>the book on the table</em></li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Запомните:</strong> Артикли не используются с именами собственными, названиями стран (кроме тех, что во множественном числе: the USA, the Netherlands), языками, днями недели и месяцами.
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I have ___ cat.', options: ['a', 'an', 'the', '-'], correct: 0 },
+                    { type: 'choice', question: 'She is ___ doctor.', options: ['a', 'an', 'the', '-'], correct: 0 },
+                    { type: 'choice', question: '___ sun is big.', options: ['A', 'An', 'The', '-'], correct: 2 },
+                    { type: 'choice', question: 'He lives in ___ London.', options: ['a', 'an', 'the', '-'], correct: 3 },
+                    { type: 'choice', question: 'This is ___ interesting book.', options: ['a', 'an', 'the', '-'], correct: 1 },
+                    { type: 'choice', question: '___ Earth goes around ___ Sun.', options: ['The...the', 'A...a', '-...-', 'An...a'], correct: 0 },
+                    { type: 'choice', question: 'I need ___ umbrella.', options: ['a', 'an', 'the', '-'], correct: 1 },
+                    { type: 'choice', question: '___ dogs are friendly animals.', options: ['A', 'An', 'The', '-'], correct: 3 },
+                    { type: 'choice', question: 'Can you close ___ door?', options: ['a', 'an', 'the', '-'], correct: 2 },
+                    { type: 'choice', question: 'She speaks ___ English.', options: ['a', 'an', 'the', '-'], correct: 3 }
+                ]
+            },
+            'plural-nouns': {
+                title: 'Множественное число существительных',
+                content: `
+                    <h2>Множественное число существительных</h2>
+                    <p>Большинство английских существительных образуют множественное число добавлением окончания -s.</p>
+                    
+                    <h3>Основные правила:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Правило</th>
+                            <th style="padding: 10px;">Примеры</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">+ s (обычно)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">cat → cats, book → books</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">+ es (после s, sh, ch, x, o)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">bus → buses, box → boxes, tomato → tomatoes</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">y → ies (после согласной)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">city → cities, baby → babies</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">f/fe → ves</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">leaf → leaves, wife → wives</td>
+                        </tr>
+                    </table>
+
+                    <h3>Исключения (неправильные формы):</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>man → men, woman → women</li>
+                        <li>child → children</li>
+                        <li>foot → feet, tooth → teeth</li>
+                        <li>mouse → mice, goose → geese</li>
+                        <li>sheep → sheep, fish → fish (не изменяются)</li>
+                    </ul>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'Множественное число от "cat":', options: ['cats', 'cat', 'cates', 'cati'], correct: 0 },
+                    { type: 'choice', question: 'Множественное число от "box":', options: ['boxs', 'boxes', 'boxies', 'boxen'], correct: 1 },
+                    { type: 'choice', question: 'Множественное число от "city":', options: ['citys', 'cities', 'cityes', 'citie'], correct: 1 },
+                    { type: 'choice', question: 'Множественное число от "man":', options: ['mans', 'men', 'min', 'menes'], correct: 1 },
+                    { type: 'choice', question: 'Множественное число от "child":', options: ['childs', 'children', 'childes', 'childer'], correct: 1 },
+                    { type: 'choice', question: 'Множественное число от "sheep":', options: ['sheeps', 'sheep', 'sheepen', 'sheepes'], correct: 1 },
+                    { type: 'choice', question: 'Множественное число от "wife":', options: ['wifes', 'wives', 'wive', 'wiefes'], correct: 1 },
+                    { type: 'choice', question: 'Множественное число от "tooth":', options: ['tooths', 'teeth', 'teethe', 'tothen'], correct: 1 },
+                    { type: 'choice', question: 'Множественное число от "bus":', options: ['buss', 'buses', 'busies', 'bus'], correct: 1 },
+                    { type: 'choice', question: 'Множественное число от "fish":', options: ['fishs', 'fishes', 'fish', 'both fishes and fish'], correct: 3 }
+                ]
+            },
+            'possessive-case': {
+                title: 'Притяжательный падеж',
+                content: `
+                    <h2>Притяжательный падеж (Possessive Case)</h2>
+                    <p>Притяжательный падеж показывает принадлежность предмета.</p>
+                    
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Тип существительного</th>
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Примеры</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Единственное число</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'s</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">John's car, the dog's tail</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Множественное на -s</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">students' books, parents' house</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Множественное без -s</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">'s</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">children's toys, men's room</td>
+                        </tr>
+                    </table>
+
+                    <h3>Примеры:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>This is <strong>Mary's</strong> bag. — Это сумка Мэри.</li>
+                        <li>The <strong>dog's</strong> bowl is empty. — Миска собаки пуста.</li>
+                        <li>My <strong>parents'</strong> house is big. — Дом моих родителей большой.</li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Важно:</strong> Притяжательный падеж обычно используется с одушевлёнными существительными. Для неодушевлённых чаще используется конструкция с <strong>of</strong>: <em>the door of the room</em> (дверь комнаты).
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'Это книга Джона:', options: ["John book", "John's book", "books of John", "book John's"], correct: 1 },
+                    { type: 'choice', question: 'Игрушки детей:', options: ["childrens' toys", "children's toys", "children toys", "toys of childrens"], correct: 1 },
+                    { type: 'choice', question: 'Дом моих родителей:', options: ["my parents's house", "my parents house", "my parents' house", "house of my parents"], correct: 2 },
+                    { type: 'choice', question: 'Хвост кошки:', options: ["the cat tail", "the cat's tail", "tail of the cat's", "the cats' tail"], correct: 1 },
+                    { type: 'choice', question: 'Комната мужчин:', options: ["mens' room", "men's room", "men room", "room of men"], correct: 1 },
+                    { type: 'choice', question: 'Машина моей сестры:', options: ["my sister car", "my sister's car", "car of my sister", "my sisters' car"], correct: 1 },
+                    { type: 'choice', question: 'Учеников книги:', options: ["the students' books", "the students books", "the student's books", "books of the student"], correct: 0 },
+                    { type: 'choice', question: 'День матери:', options: ["Mothers Day", "Mother's Day", "Day of Mother", "Mothers' Day"], correct: 1 },
+                    { type: 'choice', question: 'Нога человека:', options: ["the man foot", "the man's foot", "the mans' foot", "foot of the mans"], correct: 1 },
+                    { type: 'choice', question: 'Цветы для женщин:', options: ["flowers for women", "women's flowers", "womens' flowers", "flowers of women"], correct: 0 }
+                ]
+            },
         };
 
         function showGrammarTopic(topicId) {
