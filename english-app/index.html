@@ -2507,17 +2507,17 @@
                 return;
             }
 
-            const content = \`
+            const content = `
                 <button onclick="showSection('grammar')" style="margin-bottom: 20px;">← Назад к списку тем</button>
-                <h1>\${topic.title}</h1>
+                <h1>${topic.title}</h1>
                 <div class="card lesson-content">
-                    \${topic.content}
+                    ${topic.content}
                 </div>
                 <div class="card" style="margin-top: 20px;">
                     <h3>Проверка знаний</h3>
                     <div id="exercise-container"></div>
                 </div>
-            \`;
+            `;
 
             document.getElementById('lesson-content-display').innerHTML = content;
             showSection('lesson-view');
