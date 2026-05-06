@@ -4431,933 +4431,115 @@
                     { type: 'choice', question: 'They ___ football when we pass the field.', options: ['will play', 'will be playing', 'play', 'are playing'], correct: 1 }
                 ]
             },
-        };
+            16: {
+                title: 'Past Perfect Continuous (Прошедшее совершенное длительное время)',
+                content: `
+                    <h2>Past Perfect Continuous Tense</h2>
+                    <p>Прошедшее совершенное длительное время используется для действий, которые:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Начались в прошлом и продолжались до другого момента в прошлом</li>
+                        <li>Подчеркивают длительность действия до определенного момента в прошлом</li>
+                        <li>Объясняют причину чего-то в прошлом</li>
+                    </ul>
 
-        function showGrammarTopic(topicId) {
-            const topic = grammarTopics[topicId];
-            if (!topic) {
-                alert('Этот раздел грамматики находится в разработке. Пожалуйста, выберите другую тему.');
-                return;
-            }
-
-            const content = `
-                <button onclick="showSection('grammar')" style="margin-bottom: 20px;">← Назад к списку тем</button>
-                <h1>${topic.title}</h1>
-                <div class="card lesson-content">
-                    ${topic.content}
-                </div>
-                <div class="card" style="margin-top: 20px;">
-                    <h3>Проверка знаний</h3>
-                    <div id="exercise-container"></div>
-                </div>
-            `;
-
-            document.getElementById('lesson-content-display').innerHTML = content;
-            showSection('lesson-view');
-            
-            // Render exercises for grammar topic
-            if (topic.exercises && topic.exercises.length > 0) {
-                renderExercises(topic.exercises);
-            } else {
-                document.getElementById('exercise-container').innerHTML = '<p style="color: var(--text-secondary);">Упражнения для этой темы находятся в разработке.</p>';
-            }
-        }
-
-        // Flashcard System (SRS)
-        function initializeCards() {
-            state.cards = [
-                { front: 'Hello', back: 'Привет, Здравствуйте', phonetic: '/həˈloʊ/', example: '"Hello, how are you?"', due: true },
-                { front: 'Goodbye', back: 'До свидания', phonetic: '/ɡʊdˈbaɪ/', example: '"Goodbye, see you tomorrow!"', due: true },
-                { front: 'Thank you', back: 'Спасибо', phonetic: '/ˈθæŋk juː/', example: '"Thank you for your help."', due: true },
-                { front: 'Please', back: 'Пожалуйста (просьба)', phonetic: '/pliːz/', example: '"Can I have water, please?"', due: false },
-                { front: 'Sorry', back: 'Извините, Жаль', phonetic: '/ˈsɔːri/', example: '"I\'m sorry for being late."', due: true },
-                { front: 'Excuse me', back: 'Извините (привлечь внимание)', phonetic: '/ɪkˈskjuːz miː/', example: '"Excuse me, where is the bathroom?"', due: true },
-                { front: 'How are you?', back: 'Как дела?', phonetic: '/haʊ ɑːr juː/', example: '"Hi! How are you?"', due: false },
-                { front: 'Nice to meet you', back: 'Приятно познакомиться', phonetic: '/naɪs tuː miːt juː/', example: '"Nice to meet you, John."', due: true }
-            ];
-            updateFlashcard();
-        }
-
-        function updateFlashcard() {
-            const card = state.cards[state.currentCard];
-            if (!card) return;
-
-            document.getElementById('card-front').textContent = card.front;
-            document.getElementById('card-phonetic').textContent = card.phonetic || '';
-            document.getElementById('card-back').textContent = card.back;
-            document.getElementById('card-example').textContent = card.example || '';
-            document.getElementById('card-current').textContent = state.currentCard + 1;
-            document.getElementById('card-total').textContent = state.cards.filter(c => c.due).length;
-
-            document.getElementById('current-flashcard').classList.remove('flipped');
-        }
-
-        function flipCard() {
-            document.getElementById('current-flashcard').classList.toggle('flipped');
-        }
-
-        function rateCard(difficulty) {
-            // SRS algorithm simulation
-            const card = state.cards[state.currentCard];
-            
-            if (difficulty === 'easy') {
-                card.due = false; // Remove from today's queue
-            } else if (difficulty === 'good') {
-                // Schedule for tomorrow
-                card.due = false;
-            } else {
-                // Hard - show again soon
-                card.due = true;
-            }
-
-            state.currentCard++;
-            
-            if (state.currentCard >= state.cards.filter(c => c.due).length) {
-                alert('🎉 Все карточки на сегодня пройдены!');
-                state.currentCard = 0;
-                showSection('dashboard');
-            } else {
-                updateFlashcard();
-            }
-
-            saveState();
-        }
-
-        function startFlashcardSession() {
-            state.currentCard = 0;
-            showSection('flashcards');
-            updateFlashcard();
-        }
-
-        // Vocabulary System
-        function initializeVocabulary() {
-            state.vocabulary = [
-                // Greetings (20 words)
-                { word: 'Hello', translation: 'Привет', category: 'greetings', phonetic: '/həˈloʊ/' },
-                { word: 'Goodbye', translation: 'До свидания', category: 'greetings', phonetic: '/ɡʊdˈbaɪ/' },
-                { word: 'Hi', translation: 'Привет (неформально)', category: 'greetings', phonetic: '/haɪ/' },
-                { word: 'Bye', translation: 'Пока', category: 'greetings', phonetic: '/baɪ/' },
-                { word: 'Good morning', translation: 'Доброе утро', category: 'greetings', phonetic: '/ɡʊd ˈmɔːrnɪŋ/' },
-                { word: 'Good afternoon', translation: 'Добрый день', category: 'greetings', phonetic: '/ɡʊd ˌæftərˈnuːn/' },
-                { word: 'Good evening', translation: 'Добрый вечер', category: 'greetings', phonetic: '/ɡʊd ˈiːvnɪŋ/' },
-                { word: 'Good night', translation: 'Спокойной ночи', category: 'greetings', phonetic: '/ɡʊd naɪt/' },
-                { word: 'Welcome', translation: 'Добро пожаловать', category: 'greetings', phonetic: '/ˈwelkəm/' },
-                { word: 'See you', translation: 'Увидимся', category: 'greetings', phonetic: '/siː juː/' },
-                
-                // Emotions (30 words)
-                { word: 'Happy', translation: 'Счастливый', category: 'emotions', phonetic: '/ˈhæpi/' },
-                { word: 'Sad', translation: 'Грустный', category: 'emotions', phonetic: '/sæd/' },
-                { word: 'Angry', translation: 'Злой', category: 'emotions', phonetic: '/ˈæŋɡri/' },
-                { word: 'Excited', translation: 'Взволнованный', category: 'emotions', phonetic: '/ɪkˈsaɪtɪd/' },
-                { word: 'Nervous', translation: 'Нервный', category: 'emotions', phonetic: '/ˈnɜːrvəs/' },
-                { word: 'Scared', translation: 'Напуганный', category: 'emotions', phonetic: '/skerd/' },
-                { word: 'Surprised', translation: 'Удивлённый', category: 'emotions', phonetic: '/sərˈpraɪzd/' },
-                { word: 'Tired', translation: 'Уставший', category: 'emotions', phonetic: '/ˈtaɪərd/' },
-                { word: 'Bored', translation: 'Скучающий', category: 'emotions', phonetic: '/bɔːrd/' },
-                { word: 'Confused', translation: 'Запутавшийся', category: 'emotions', phonetic: '/kənˈfjuːzd/' },
-                
-                // Travel (30 words)
-                { word: 'Airport', translation: 'Аэропорт', category: 'travel', phonetic: '/ˈerpɔːrt/' },
-                { word: 'Ticket', translation: 'Билет', category: 'travel', phonetic: '/ˈtɪkɪt/' },
-                { word: 'Passport', translation: 'Паспорт', category: 'travel', phonetic: '/ˈpæspɔːrt/' },
-                { word: 'Hotel', translation: 'Отель', category: 'travel', phonetic: '/hoʊˈtel/' },
-                { word: 'Reservation', translation: 'Бронирование', category: 'travel', phonetic: '/ˌrezərˈveɪʃn/' },
-                { word: 'Flight', translation: 'Рейс', category: 'travel', phonetic: '/flaɪt/' },
-                { word: 'Boarding pass', translation: 'Посадочный талон', category: 'travel', phonetic: '/ˈbɔːrdɪŋ pæs/' },
-                { word: 'Luggage', translation: 'Багаж', category: 'travel', phonetic: '/ˈlʌɡɪdʒ/' },
-                { word: 'Suitcase', translation: 'Чемодан', category: 'travel', phonetic: '/ˈsuːtkeɪs/' },
-                { word: 'Taxi', translation: 'Такси', category: 'travel', phonetic: '/ˈtæksi/' },
-                
-                // Food (30 words)
-                { word: 'Restaurant', translation: 'Ресторан', category: 'food', phonetic: '/ˈrestrɑːnt/' },
-                { word: 'Menu', translation: 'Меню', category: 'food', phonetic: '/ˈmenjuː/' },
-                { word: 'Order', translation: 'Заказ', category: 'food', phonetic: '/ˈɔːrdər/' },
-                { word: 'Bill', translation: 'Счёт', category: 'food', phonetic: '/bɪl/' },
-                { word: 'Tip', translation: 'Чаевые', category: 'food', phonetic: '/tɪp/' },
-                { word: 'Delicious', translation: 'Вкусный', category: 'food', phonetic: '/dɪˈlɪʃəs/' },
-                { word: 'Breakfast', translation: 'Завтрак', category: 'food', phonetic: '/ˈbrekfəst/' },
-                { word: 'Lunch', translation: 'Обед', category: 'food', phonetic: '/lʌntʃ/' },
-                { word: 'Dinner', translation: 'Ужин', category: 'food', phonetic: '/ˈdɪnər/' },
-                { word: 'Water', translation: 'Вода', category: 'food', phonetic: '/ˈwɔːtər/' },
-                
-                // Movies (30 words)
-                { word: 'Movie', translation: 'Фильм', category: 'movies', phonetic: '/ˈmuːvi/' },
-                { word: 'Series', translation: 'Сериал', category: 'movies', phonetic: '/ˈsɪəriːz/' },
-                { word: 'Episode', translation: 'Эпизод', category: 'movies', phonetic: '/ˈepɪsoʊd/' },
-                { word: 'Season', translation: 'Сезон', category: 'movies', phonetic: '/ˈsiːzn/' },
-                { word: 'Actor', translation: 'Актёр', category: 'movies', phonetic: '/ˈæktər/' },
-                { word: 'Actress', translation: 'Актриса', category: 'movies', phonetic: '/ˈæktrəs/' },
-                { word: 'Scene', translation: 'Сцена', category: 'movies', phonetic: '/siːn/' },
-                { word: 'Plot', translation: 'Сюжет', category: 'movies', phonetic: '/plɑːt/' },
-                { word: 'Character', translation: 'Персонаж', category: 'movies', phonetic: '/ˈkærəktər/' },
-                { word: 'Subtitle', translation: 'Субтитры', category: 'movies', phonetic: '/ˈsʌbtaɪtl/' },
-                
-                // Phrasal verbs (30 words)
-                { word: 'Get up', translation: 'Вставать', category: 'phrasal', phonetic: '/ɡet ʌp/' },
-                { word: 'Wake up', translation: 'Просыпаться', category: 'phrasal', phonetic: '/weɪk ʌp/' },
-                { word: 'Go out', translation: 'Выходить', category: 'phrasal', phonetic: '/ɡoʊ aʊt/' },
-                { word: 'Come back', translation: 'Возвращаться', category: 'phrasal', phonetic: '/kʌm bæk/' },
-                { word: 'Look for', translation: 'Искать', category: 'phrasal', phonetic: '/lʊk fɔːr/' },
-                { word: 'Find out', translation: 'Узнавать', category: 'phrasal', phonetic: '/faɪnd aʊt/' },
-                { word: 'Give up', translation: 'Сдаваться', category: 'phrasal', phonetic: '/ɡɪv ʌp/' },
-                { word: 'Turn on', translation: 'Включать', category: 'phrasal', phonetic: '/tɜːrn ɑːn/' },
-                { word: 'Turn off', translation: 'Выключать', category: 'phrasal', phonetic: '/tɜːrn ɔːf/' },
-                { word: 'Pick up', translation: 'Поднимать/забирать', category: 'phrasal', phonetic: '/pɪk ʌp/' }
-            ];
-
-            // Expand to 1000 words with variations
-            const additionalCategories = ['business', 'technology', 'health', 'weather', 'time', 'family', 'colors', 'numbers', 'animals', 'clothes'];
-            let wordCount = state.vocabulary.length;
-            
-            while (wordCount < 1000) {
-                const cat = additionalCategories[Math.floor(Math.random() * additionalCategories.length)];
-                state.vocabulary.push({
-                    word: `Word${wordCount + 1}`,
-                    translation: `Перевод${wordCount + 1}`,
-                    category: cat,
-                    phonetic: `/wɜːrd${wordCount + 1}/`
-                });
-                wordCount++;
-            }
-
-            renderVocabulary(state.vocabulary.slice(0, 50));
-        }
-
-        function renderVocabulary(words) {
-            const grid = document.getElementById('vocab-grid');
-            grid.innerHTML = words.map(item => `
-                <div class="vocab-item" onclick="addToCards('${item.word}', '${item.translation}')">
-                    <h4>${item.word}</h4>
-                    <p class="phonetic">${item.phonetic}</p>
-                    <p>${item.translation}</p>
-                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 5px;">
-                        🏷️ ${item.category}
-                    </p>
-                </div>
-            `).join('');
-        }
-
-        function filterVocabulary(search) {
-            const filtered = state.vocabulary.filter(v => 
-                v.word.toLowerCase().includes(search.toLowerCase()) ||
-                v.translation.toLowerCase().includes(search.toLowerCase())
-            );
-            renderVocabulary(filtered.slice(0, 50));
-        }
-
-        function filterByCategory(category) {
-            const filtered = category === 'all' 
-                ? state.vocabulary 
-                : state.vocabulary.filter(v => v.category === category);
-            renderVocabulary(filtered.slice(0, 50));
-            
-            // Update active button
-            document.querySelectorAll('#vocabulary button').forEach(b => {
-                b.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
-        function addToCards(word, translation) {
-            state.cards.push({
-                front: word,
-                back: translation,
-                phonetic: '/',
-                example: '',
-                due: true
-            });
-            alert(`"${word}" добавлено в карточки!`);
-            saveState();
-        }
-
-        // Chat System
-        const chatResponses = {
-            cafe: [
-                { trigger: ['coffee', 'tea', 'drink'], response: "Great choice! Would you like milk or sugar with that?" },
-                { trigger: ['eat', 'food', 'sandwich'], response: "Our sandwiches are fresh! What kind would you prefer?" },
-                { trigger: ['bill', 'pay', 'check'], response: "Of course! That'll be $12.50. Cash or card?" },
-                { trigger: ['hello', 'hi'], response: "Hello! Welcome to our café. What would you like to order?" },
-                { trigger: ['thank'], response: "You're welcome! Enjoy your meal!" }
-            ],
-            airport: [
-                { trigger: ['flight', 'plane'], response: "Your flight is on time. Gate B12, boarding at 3 PM." },
-                { trigger: ['passport', 'ticket'], response: "Please have your passport and boarding pass ready." },
-                { trigger: ['luggage', 'bag'], response: "One bag per passenger. Weight limit is 23 kg." }
-            ],
-            default: [
-                "That's interesting! Tell me more.",
-                "I understand. What else would you like to discuss?",
-                "Great! Let's continue practicing.",
-                "Could you say that in another way?"
-            ]
-        };
-
-        function sendMessage() {
-            const input = document.getElementById('chat-input-field');
-            const message = input.value.trim();
-            
-            if (!message) return;
-
-            // Add user message
-            addMessage(message, 'user');
-            input.value = '';
-
-            // Simulate AI response
-            setTimeout(() => {
-                const scenario = document.getElementById('scenario-select').value;
-                const responses = chatResponses[scenario] || chatResponses.default;
-                
-                let response = responses.find(r => 
-                    r.trigger.some(t => message.toLowerCase().includes(t))
-                )?.response || responses[Math.floor(Math.random() * responses.length)].response;
-
-                addMessage(response, 'ai');
-            }, 1000);
-        }
-
-        function addMessage(text, sender) {
-            const container = document.getElementById('chat-messages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}`;
-            messageDiv.textContent = text;
-            container.appendChild(messageDiv);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function changeScenario(scenario) {
-            clearChat();
-            const greetings = {
-                cafe: "Hello! Welcome to our café. What would you like to order today?",
-                airport: "Good morning! May I see your ticket and passport, please?",
-                hotel: "Welcome to our hotel! Do you have a reservation?",
-                shop: "Hi there! Can I help you find anything?",
-                free: "Hello! What would you like to talk about today?"
-            };
-            addMessage(greetings[scenario], 'ai');
-        }
-
-        function clearChat() {
-            document.getElementById('chat-messages').innerHTML = '';
-        }
-
-        function getGrammarHelp() {
-            alert("💡 AI-teacher готов помочь! Напишите предложение, и я проверю грамматику.");
-        }
-
-        function getTranslation() {
-            alert("🔄 Перевод последнего сообщения будет показан здесь.");
-        }
-
-        // Subtitle Analysis
-        function analyzeSubtitles() {
-            const text = document.getElementById('subtitle-text').value;
-            const resultDiv = document.getElementById('analysis-result');
-            const contentDiv = document.getElementById('analysis-content');
-
-            if (!text) {
-                alert('Введите текст субтитров для анализа');
-                return;
-            }
-
-            // Mock analysis
-            const sentences = text.split(/[.!?]/).filter(s => s.trim());
-            const analysis = `
-                <p><strong>Найдено предложений:</strong> ${sentences.length}</p>
-                <div style="margin-top: 20px;">
-                    <h4>Разбор фраз:</h4>
-                    ${sentences.slice(0, 5).map(s => `
-                        <div class="vocab-item" style="margin: 10px 0;">
-                            <p><strong>"${s.trim()}..."</strong></p>
-                            <p>Грамматика: [Анализ]</p>
-                            <p>Перевод: [Перевод]</p>
-                            <button onclick="addToCards('${s.trim().substring(0, 30)}...', '[Перевод]')" 
-                                    style="margin-top: 5px;">🃏 В карточки</button>
-                        </div>
-                    `).join('')}
-                </div>
-                <p style="color: var(--text-secondary); margin-top: 15px;">
-                    * Полный анализ доступен в премиум-версии
-                </p>
-            `;
-
-            contentDiv.innerHTML = analysis;
-            resultDiv.classList.remove('hidden');
-        }
-
-        function handleFileUpload(input) {
-            if (input.files && input.files[0]) {
-                alert('Файл загружен! В реальной версии здесь будет OCR-распознавание текста.');
-            }
-        }
-
-        // Movie Filter
-        function filterByShow(show) {
-            document.querySelectorAll('#movies button').forEach(b => {
-                b.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            // In real app, filter phrases by show
-        }
-
-        // Offline Mode
-        function toggleOfflineMode() {
-            state.offlineMode = !state.offlineMode;
-            const btn = document.getElementById('offline-btn');
-            btn.textContent = state.offlineMode ? '📴 Офлайн' : '📡 Онлайн';
-            btn.style.background = state.offlineMode ? 'var(--success)' : '';
-        }
-
-        function downloadLessons() {
-            const progress = document.getElementById('download-progress');
-            const fill = document.getElementById('download-fill');
-            const status = document.getElementById('download-status');
-            
-            progress.classList.remove('hidden');
-            let percent = 0;
-            
-            const interval = setInterval(() => {
-                percent += 5;
-                fill.style.width = `${percent}%`;
-                status.textContent = `Загрузка... ${percent}%`;
-                
-                if (percent >= 100) {
-                    clearInterval(interval);
-                    status.textContent = '✅ Все уроки загружены!';
-                    setTimeout(() => {
-                        progress.classList.add('hidden');
-                        status.textContent = '';
-                    }, 2000);
-                }
-            }, 100);
-        }
-
-        // Settings
-        function updateDailyGoal(minutes) {
-            state.dailyGoal = parseInt(minutes);
-            updateDashboard();
-            saveState();
-        }
-
-        function resetProgress() {
-            if (confirm('Вы уверены? Весь прогресс будет удалён.')) {
-                state = {
-                    ...state,
-                    streak: 0,
-                    wordsLearned: 0,
-                    lessonsCompleted: 0,
-                    dailyMinutes: 0
-                };
-                updateDashboard();
-                saveState();
-                alert('Прогресс сброшен.');
-            }
-        }
-
-        // Storage
-        function saveState() {
-            localStorage.setItem('cinelingua_state', JSON.stringify(state));
-        }
-
-        function loadState() {
-            const saved = localStorage.getItem('cinelingua_state');
-            if (saved) {
-                state = { ...state, ...JSON.parse(saved) };
-                if (!state.darkTheme) {
-                    document.body.classList.add('light-theme');
-                }
-                updateDashboard();
-            }
-        }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.key === ' ' && state.currentSection === 'flashcards') {
-                e.preventDefault();
-                flipCard();
-            }
-        });
-
-        // New Features Functions
-        
-        // Achievements
-        function showAchievementDetail(achievementId) {
-            const achievements = {
-                'first-lesson': { title: 'Первый урок', desc: 'Поздравляем! Вы прошли свой первый урок.', unlocked: true },
-                'week-streak': { title: 'Неделя подряд', desc: '7 дней обучения без перерыва!', unlocked: true },
-                '100-words': { title: '100 слов', desc: 'Вы выучили первые 100 слов!', unlocked: true },
-                'movie-master': { title: 'Киномастер', desc: '100 фраз из фильмов изучено', unlocked: false },
-                'grammar-guru': { title: 'Грамматик', desc: 'Все уроки грамматики пройдены', unlocked: false },
-                'perfect-test': { title: 'Идеальный тест', desc: '100% за любой тест', unlocked: false },
-                'month-streak': { title: 'Месяц подряд', desc: '30 дней обучения!', unlocked: false },
-                'phonetics-pro': { title: 'Фонетика PRO', desc: 'Все звуки освоены', unlocked: false }
-            };
-            
-            const ach = achievements[achievementId];
-            if (ach) {
-                alert(`🏆 ${ach.title}\n\n${ach.desc}\n\n${ach.unlocked ? '✅ Разблокировано' : '🔒 Ещё не получено'}`);
-            }
-        }
-
-        // Mini Games
-        let gameScore = 0;
-        let selectedMatch = null;
-        let matchedPairs = 0;
-
-        function startWordMatch() {
-            const words = [
-                { en: 'Hello', ru: 'Привет' },
-                { en: 'Goodbye', ru: 'Пока' },
-                { en: 'Thank you', ru: 'Спасибо' },
-                { en: 'Please', ru: 'Пожалуйста' },
-                { en: 'Sorry', ru: 'Извините' },
-                { en: 'Yes', ru: 'Да' },
-                { en: 'No', ru: 'Нет' },
-                { en: 'Help', ru: 'Помощь' }
-            ];
-            
-            gameScore = 0;
-            matchedPairs = 0;
-            document.getElementById('game-area').style.display = 'block';
-            document.getElementById('game-title').textContent = '🔗 Сопоставление слов';
-            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
-            
-            const content = document.getElementById('game-content');
-            let html = '<div class="word-match-grid">';
-            
-            // Shuffle and create pairs
-            const shuffled = [...words, ...words.map(w => ({ en: w.ru, ru: w.en, isReverse: true }))];
-            shuffled.sort(() => Math.random() - 0.5);
-            
-            shuffled.forEach((item, index) => {
-                const text = item.isReverse ? item.en : item.en;
-                const matchId = item.isReverse ? item.ru : item.ru;
-                html += `<div class="match-item" data-id="${matchId}" data-index="${index}" onclick="handleMatchClick(this)">
-                    ${text}
-                </div>`;
-            });
-            
-            html += '</div>';
-            content.innerHTML = html;
-        }
-
-        function handleMatchClick(element) {
-            if (element.classList.contains('matched') || element.classList.contains('selected')) return;
-            
-            element.classList.add('selected');
-            
-            if (!selectedMatch) {
-                selectedMatch = element;
-            } else {
-                if (selectedMatch.dataset.id === element.dataset.id && selectedMatch !== element) {
-                    // Match found
-                    selectedMatch.classList.add('matched');
-                    element.classList.add('matched');
-                    selectedMatch.classList.remove('selected');
-                    element.classList.remove('selected');
-                    gameScore += 10;
-                    matchedPairs++;
-                    selectedMatch = null;
+                    <h3>Образование:</h3>
+                    <p><strong>had been + глагол-ing</strong></p>
                     
-                    if (matchedPairs >= 8) {
-                        setTimeout(() => {
-                            alert(`🎉 Игра окончена! Ваш счёт: ${gameScore}`);
-                            closeGame();
-                        }, 500);
-                    }
-                } else {
-                    // No match
-                    setTimeout(() => {
-                        selectedMatch.classList.remove('selected');
-                        element.classList.remove('selected');
-                        selectedMatch = null;
-                    }, 500);
-                }
-                
-                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
-            }
-        }
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 12px; border: 1px solid var(--border);">Тип предложения</th>
+                            <th style="padding: 12px; border: 1px solid var(--border);">Формула</th>
+                            <th style="padding: 12px; border: 1px solid var(--border);">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">I/You/He/She/It/We/They + had been + V-ing</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">I had been waiting for 2 hours</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">... + had not (hadn't) been + V-ing</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">She hadn't been sleeping well</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">Had + ... + been + V-ing?</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">Had you been working long?</td>
+                        </tr>
+                    </table>
 
-        function startSpellingBee() {
-            const words = ['hello', 'friend', 'movie', 'coffee', 'please', 'thanks', 'sorry', 'goodbye'];
-            const word = words[Math.floor(Math.random() * words.length)];
-            
-            gameScore = 0;
-            document.getElementById('game-area').style.display = 'block';
-            document.getElementById('game-title').textContent = '✏️ Правописание';
-            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
-            
-            const content = document.getElementById('game-content');
-            content.innerHTML = `
-                <div style="text-align: center;">
-                    <p style="font-size: 24px; margin-bottom: 20px;">Напишите слово:</p>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px;">"${word.split('').map(() => '_').join(' ')}" (${word.length} букв)</p>
-                    <button class="audio-btn" onclick="alert('🔊 Произношение: /${word}/')">🔊</button>
-                    <br><br>
-                    <input type="text" class="spelling-input" id="spelling-answer" placeholder="Введите слово">
-                    <br><br>
-                    <button class="btn-primary" onclick="checkSpelling('${word}')">Проверить</button>
-                    <div class="hint-box" style="margin-top: 20px;">
-                        💡 Подсказка: Это слово означает "${getWordHint(word)}"
+                    <h3>Маркеры времени:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>for</strong> (в течение): for 2 hours, for a week, for years</li>
+                        <li><strong>since</strong> (с): since morning, since 2010, since childhood</li>
+                        <li><strong>before</strong> (перед): before he arrived, before the meeting</li>
+                        <li><strong>when</strong> (когда): when she came, when it happened</li>
+                    </ul>
+
+                    <h3>Примеры использования:</h3>
+                    <div class="card" style="margin: 15px 0;">
+                        <p><strong>1. Длительность до момента в прошлом:</strong></p>
+                        <p>• He <span class="highlight">had been studying</span> English for 5 years before he moved to London.</p>
+                        <p>• They <span class="highlight">had been traveling</span> around Asia since January.</p>
                     </div>
-                </div>
-            `;
-        }
 
-        function getWordHint(word) {
-            const hints = {
-                'hello': 'приветствие',
-                'friend': 'товарищ, приятель',
-                'movie': 'фильм, кино',
-                'coffee': 'горячий напиток',
-                'please': 'вежливое слово',
-                'thanks': 'благодарность',
-                'sorry': 'извинение',
-                'goodbye': 'прощание'
-            };
-            return hints[word] || 'слово';
-        }
-
-        function checkSpelling(correctWord) {
-            const input = document.getElementById('spelling-answer');
-            const userWord = input.value.trim().toLowerCase();
-            
-            if (userWord === correctWord) {
-                gameScore += 20;
-                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
-                alert('✅ Правильно! +20 очков');
-                startSpellingBee();
-            } else {
-                alert(`❌ Неправильно. Правильный ответ: ${correctWord}`);
-            }
-        }
-
-        function startFillBlanks() {
-            const sentences = [
-                { text: 'I ___ a student.', answer: 'am', options: ['am', 'is', 'are', 'be'] },
-                { text: 'She ___ to school every day.', answer: 'goes', options: ['go', 'goes', 'going', 'gone'] },
-                { text: 'They ___ not at home.', answer: 'are', options: ['is', 'am', 'are', 'be'] },
-                { text: '___ you like coffee?', answer: 'Do', options: ['Does', 'Do', 'Is', 'Are'] }
-            ];
-            
-            const current = sentences[Math.floor(Math.random() * sentences.length)];
-            
-            gameScore = 0;
-            document.getElementById('game-area').style.display = 'block';
-            document.getElementById('game-title').textContent = '📝 Заполни пропуски';
-            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
-            
-            const content = document.getElementById('game-content');
-            content.innerHTML = `
-                <div style="text-align: center;">
-                    <p style="font-size: 24px; margin-bottom: 30px;">${current.text.replace('___', '______')}</p>
-                    <div class="test-options" style="max-width: 400px; margin: 0 auto;">
-                        ${current.options.map(opt => 
-                            `<div class="test-option" onclick="checkBlankAnswer('${opt}', '${current.answer}', this)">${opt}</div>`
-                        ).join('')}
+                    <div class="card" style="margin: 15px 0;">
+                        <p><strong>2. Причина чего-то в прошлом:</strong></p>
+                        <p>• She was tired because she <span class="highlight">had been working</span> all day.</p>
+                        <p>• His eyes were red — he <span class="highlight">had been crying</span>.</p>
                     </div>
-                </div>
-            `;
-        }
 
-        function checkBlankAnswer(selected, correct, element) {
-            if (selected === correct) {
-                element.classList.add('correct');
-                gameScore += 15;
-                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
-                setTimeout(startFillBlanks, 1000);
-            } else {
-                element.classList.add('incorrect');
-                alert(`❌ Неправильно. Правильный ответ: ${correct}`);
-            }
-        }
+                    <div class="cultural-note">
+                        <strong>Из фильмов:</strong> "I <em>had been hoping</em> you'd say that!" (The Princess Bride)<br>
+                        Обратите внимание: действие надежды началось раньше и продолжалось до момента речи.
+                    </div>
 
-        function startSpeedRound() {
-            gameScore = 0;
-            let timeLeft = 60;
-            
-            document.getElementById('game-area').style.display = 'block';
-            document.getElementById('game-title').textContent = '⚡ Скоростной раунд';
-            document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
-            
-            const content = document.getElementById('game-content');
-            content.innerHTML = `
-                <div style="text-align: center;">
-                    <div class="timer-display" id="speed-timer">60</div>
-                    <p style="font-size: 20px; margin-bottom: 20px;">Переведите слово:</p>
-                    <div id="speed-word" style="font-size: 32px; margin-bottom: 20px;"></div>
-                    <input type="text" class="spelling-input" id="speed-input" placeholder="Ваш перевод">
-                    <br><br>
-                    <button class="btn-primary" onclick="checkSpeedAnswer()">Ответить</button>
-                </div>
-            `;
-            
-            loadSpeedWord();
-            
-            const timer = setInterval(() => {
-                timeLeft--;
-                const timerEl = document.getElementById('speed-timer');
-                if (timerEl) timerEl.textContent = timeLeft;
-                
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    alert(`⏰ Время вышло! Ваш счёт: ${gameScore}`);
-                    closeGame();
-                }
-            }, 1000);
-        }
+                    <h3>Сравнение с Past Perfect:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--bg-card);">
+                            <th style="padding: 12px; border: 1px solid var(--border);">Past Perfect</th>
+                            <th style="padding: 12px; border: 1px solid var(--border);">Past Perfect Continuous</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--border);">Завершенное действие</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">Длительное действие</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--border);">I had read the book</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">I had been reading the book</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--border);">(прочитал полностью)</td>
+                            <td style="padding: 12px; border: 1px solid var(--border);">(читал какое-то время)</td>
+                        </tr>
+                    </table>
 
-        let currentSpeedWord = {};
-        
-        function loadSpeedWord() {
-            const words = [
-                { en: 'Hello', ru: 'привет' },
-                { en: 'Cat', ru: 'кот' },
-                { en: 'House', ru: 'дом' },
-                { en: 'Water', ru: 'вода' },
-                { en: 'Friend', ru: 'друг' },
-                { en: 'Book', ru: 'книга' },
-                { en: 'Car', ru: 'машина' },
-                { en: 'Food', ru: 'еда' }
-            ];
-            
-            currentSpeedWord = words[Math.floor(Math.random() * words.length)];
-            document.getElementById('speed-word').textContent = currentSpeedWord.en;
-            document.getElementById('speed-input').value = '';
-            document.getElementById('speed-input').focus();
-        }
+                    <h3>Типичные ошибки:</h3>
+                    <div class="card" style="margin: 15px 0; border-left: 4px solid var(--accent);">
+                        <p>❌ <strong>Неправильно:</strong> I had been knowing him for years.</p>
+                        <p>✅ <strong>Правильно:</strong> I had known him for years.</p>
+                        <p><em>(Глаголы состояния не используются в Continuous!)</em></p>
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'She was exhausted because she ___ for 12 hours.', options: ['had worked', 'had been working', 'worked', 'was working'], correct: 1 },
+                    { type: 'choice', question: 'How long ___ you ___ before you found the solution?', options: ['had / been thinking', 'did / think', 'have / been thinking', 'were / thinking'], correct: 0 },
+                    { type: 'choice', question: 'They ___ married for 10 years before they had children.', options: ['had been', 'had been being', 'were', 'have been'], correct: 0 },
+                    { type: 'choice', question: 'His hands were dirty because he ___ in the garden.', options: ['had worked', 'had been working', 'worked', 'was working'], correct: 1 },
+                    { type: 'choice', question: '___ she ___ English before she moved to the UK?', options: ['Had / been learning', 'Did / learn', 'Has / learned', 'Was / learning'], correct: 0 },
+                    { type: 'choice', question: 'I ___ about you before you called.', options: ['had thought', 'had been thinking', 'thought', 'was thinking'], correct: 1 },
+                    { type: 'choice', question: 'We ___ for the bus for 30 minutes when it finally arrived.', options: ['had waited', 'had been waiting', 'waited', 'were waiting'], correct: 1 },
+                    { type: 'choice', question: 'He failed the test because he ___.', options: ['hadn\'t studied', 'hadn\'t been studying', 'didn\'t study', 'wasn\'t studying'], correct: 1 },
+                    { type: 'choice', question: 'How long ___ they ___ together before they got married?', options: ['had / been dating', 'did / date', 'have / dated', 'were / dating'], correct: 0 },
+                    { type: 'choice', question: 'The ground was wet because it ___ all night.', options: ['had rained', 'had been raining', 'rained', 'was raining'], correct: 1 }
+                ]
+            },
+ 
 
-        function checkSpeedAnswer() {
-            const input = document.getElementById('speed-input');
-            const userAnswer = input.value.trim().toLowerCase();
-            
-            if (userAnswer === currentSpeedWord.ru.toLowerCase()) {
-                gameScore += 5;
-                document.getElementById('game-score').textContent = `Счёт: ${gameScore}`;
-                loadSpeedWord();
-            } else {
-                alert(`❌ Неправильно. Правильный ответ: ${currentSpeedWord.ru}`);
-                loadSpeedWord();
-            }
-        }
-
-        function closeGame() {
-            document.getElementById('game-area').style.display = 'none';
-        }
-
-        // Testing Functions
-        let currentTest = null;
-        let currentQuestion = 0;
-        let testAnswers = [];
-
-        function startTest(testType) {
-            const tests = {
-                'placement': { title: 'Определение уровня', questions: 20, time: 900 },
-                'grammar-a1': { title: 'Грамматика A1', questions: 15, time: 600 },
-                'vocabulary-basic': { title: 'Базовая лексика', questions: 25, time: 720 },
-                'listening': { title: 'Аудирование', questions: 10, time: 480 },
-                'reading': { title: 'Чтение', questions: 5, time: 1200 }
-            };
-            
-            currentTest = tests[testType];
-            currentQuestion = 0;
-            testAnswers = [];
-            
-            document.getElementById('test-area').style.display = 'block';
-            document.getElementById('test-results').style.display = 'none';
-            document.querySelector('#testing .card:first-of-type').style.display = 'none';
-            document.getElementById('test-title').textContent = currentTest.title;
-            
-            loadQuestion();
-            startTestTimer(currentTest.time);
-        }
-
-        function loadQuestion() {
-            const questions = [
-                { q: 'I ___ a student.', options: ['am', 'is', 'are', 'be'], correct: 0 },
-                { q: 'She ___ to school every day.', options: ['go', 'goes', 'going', 'gone'], correct: 1 },
-                { q: 'They ___ not at home.', options: ['is', 'am', 'are', 'be'], correct: 2 },
-                { q: '___ you like coffee?', options: ['Does', 'Do', 'Is', 'Are'], correct: 1 },
-                { q: 'He ___ working now.', options: ['is', 'are', 'am', 'be'], correct: 0 }
-            ];
-            
-            const q = questions[currentQuestion % questions.length];
-            document.getElementById('question-text').textContent = `${currentQuestion + 1}. ${q.q}`;
-            document.getElementById('test-progress').textContent = `Вопрос ${currentQuestion + 1}/${currentTest.questions}`;
-            
-            const optionsHtml = q.options.map((opt, i) => 
-                `<div class="test-option" onclick="selectAnswer(${i}, this)">${opt}</div>`
-            ).join('');
-            document.getElementById('test-options').innerHTML = optionsHtml;
-        }
-
-        function selectAnswer(index, element) {
-            document.querySelectorAll('.test-option').forEach(el => el.classList.remove('selected'));
-            element.classList.add('selected');
-            testAnswers[currentQuestion] = index;
-        }
-
-        function nextQuestion() {
-            if (currentQuestion < currentTest.questions - 1) {
-                currentQuestion++;
-                loadQuestion();
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                loadQuestion();
-            }
-        }
-
-        function submitTest() {
-            const correct = testAnswers.filter((a, i) => a === i % 5).length;
-            const percentage = Math.round((correct / currentTest.questions) * 100);
-            
-            document.getElementById('test-area').style.display = 'none';
-            document.getElementById('test-results').style.display = 'block';
-            document.getElementById('test-score').textContent = `${percentage}%`;
-            document.getElementById('test-time').textContent = '5:23';
-            document.getElementById('test-level').textContent = percentage >= 80 ? 'A2' : percentage >= 60 ? 'A1+' : 'A1';
-            
-            document.getElementById('test-analysis').innerHTML = `
-                <p>Правильных ответов: ${correct} из ${currentTest.questions}</p>
-                <p>${percentage >= 80 ? '🎉 Отличный результат!' : percentage >= 60 ? '👍 Хорошая работа!' : '📚 Нужно ещё позаниматься'}</p>
-            `;
-        }
-
-        function retakeTest() {
-            document.getElementById('test-results').style.display = 'none';
-            document.querySelector('#testing .card:first-of-type').style.display = 'block';
-        }
-
-        let testTimerInterval;
-        
-        function startTestTimer(seconds) {
-            clearInterval(testTimerInterval);
-            let remaining = seconds;
-            
-            testTimerInterval = setInterval(() => {
-                remaining--;
-                const mins = Math.floor(remaining / 60);
-                const secs = remaining % 60;
-                document.getElementById('test-timer').textContent = 
-                    `${mins}:${secs.toString().padStart(2, '0')}`;
-                
-                if (remaining <= 0) {
-                    clearInterval(testTimerInterval);
-                    submitTest();
-                }
-            }, 1000);
-        }
-
-        // Notes Functions
-        function saveNotes() {
-            const vocabNotes = document.getElementById('personal-vocab-notes').value;
-            const grammarNotes = document.getElementById('grammar-notes').value;
-            const goalsNotes = document.getElementById('goals-notes').value;
-            
-            localStorage.setItem('cinelingua_notes', JSON.stringify({
-                vocab: vocabNotes,
-                grammar: grammarNotes,
-                goals: goalsNotes
-            }));
-            
-            alert('💾 Заметки сохранены!');
-        }
-
-        function clearNotes() {
-            if (confirm('Вы уверены? Все заметки будут удалены.')) {
-                document.getElementById('personal-vocab-notes').value = '';
-                document.getElementById('grammar-notes').value = '';
-                document.getElementById('goals-notes').value = '';
-            }
-        }
-
-        function exportNotes() {
-            const notes = {
-                vocab: document.getElementById('personal-vocab-notes').value,
-                grammar: document.getElementById('grammar-notes').value,
-                goals: document.getElementById('goals-notes').value
-            };
-            
-            const blob = new Blob([JSON.stringify(notes, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'cinelingua-notes.json';
-            a.click();
-        }
-
-        // Export Functions
-        function exportProgress(format) {
-            alert(`📤 Экспорт в формате ${format.toUpperCase()} начат.\n\nФайл будет загружен в папку "Загрузки".`);
-        }
-
-        function importProgress(input) {
-            const file = input.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    try {
-                        const data = JSON.parse(e.target.result);
-                        if (confirm('Импортировать данные? Текущий прогресс будет заменён.')) {
-                            state = { ...state, ...data };
-                            saveState();
-                            updateDashboard();
-                            alert('✅ Данные успешно импортированы!');
-                        }
-                    } catch (err) {
-                        alert('❌ Ошибка чтения файла.');
-                    }
-                };
-                reader.readAsText(file);
-            }
-        }
-    </script>
-</body>
-</html>
-
-<script>
-// Electron API Integration
-(function() {
-    // Проверка работы в Electron
-    const isElectron = window.navigator.userAgent.includes('Electron');
-    
-    if (isElectron && window.electronAPI) {
-        // Добавляем кнопки управления окном
-        function addWindowControls() {
-            const header = document.querySelector('.header') || document.querySelector('header');
-            if (header && !document.getElementById('window-controls')) {
-                const controls = document.createElement('div');
-                controls.id = 'window-controls';
-                controls.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    right: 0;
-                    display: flex;
-                    z-index: 10000;
-                `;
-                controls.innerHTML = `
-                    <button onclick="window.electronAPI.minimizeWindow()" style="width:46px;height:30px;border:none;background:#ccc;cursor:pointer;" title="Свернуть">─</button>
-                    <button onclick="window.electronAPI.maximizeWindow()" style="width:46px;height:30px;border:none;background:#ccc;cursor:pointer;" title="Развернуть">□</button>
-                    <button onclick="window.electronAPI.closeWindow()" style="width:46px;height:30px;border:none;background:#e81123;color:white;cursor:pointer;" title="Закрыть">✕</button>
-                `;
-                header.appendChild(controls);
-            }
-        }
-        
-        // Запуск после загрузки DOM
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', addWindowControls);
-        } else {
-            addWindowControls();
-        }
-        
-        console.log('CineLingua Desktop App v' + (window.electronAPI.getAppVersion ? '1.0.0' : '1.0.0'));
-    } else {
-        console.log('CineLingua запущен в браузере');
-    }
-})();
-</script>
-</body></html>
+            // ========== УРОК 16: Модальные глаголы can/could/may/might ==========
+            16: {
+                title: "Урок 16: Модальные глаголы - can, could, may, might",
+                content: `<h2>Модальные глаголы</h2><p>can, could, may, might</p>`,
+                exercises: [{ type: 'choice', question: 'I ___ swim.', options: ['can', 'may', 'must', 'should'], correct: 0 }]
+            },
+        };
