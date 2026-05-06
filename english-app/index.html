@@ -2994,6 +2994,134 @@
                     { type: 'choice', question: 'I ___ what to do.', options: ['think', 'was thinking', 'thought', 'am thinking'], correct: 1 }
                 ]
             },
+            'present-perfect': {
+                title: 'Present Perfect (Настоящее совершенное время)',
+                content: `
+                    <h2>Present Perfect Tense</h2>
+                    <p>Present Perfect используется для описания действий, которые произошли в прошлом, но имеют связь с настоящим моментом.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Действие произошло в неопределённое время в прошлом: <em>I have visited Paris.</em></li>
+                        <li>Действие началось в прошлом и продолжается до сих пор: <em>She has lived here for 5 years.</em></li>
+                        <li>Результат действия важен сейчас: <em>I have lost my keys (и сейчас не могу войти).</em></li>
+                        <li>Опыт жизни к настоящему моменту: <em>Have you ever been to Japan?</em></li>
+                    </ul>
+
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Структура</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">have/has + V3 (past participle)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I have worked, She has finished</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">have/has + not + V3</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I haven't seen, He hasn't arrived</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Have/Has + подлежащее + V3?</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Have you eaten? Has she called?</td>
+                        </tr>
+                    </table>
+
+                    <h3>Have vs Has:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Have</strong>: I, you, we, they</li>
+                        <li><strong>Has</strong>: he, she, it</li>
+                    </ul>
+
+                    <h3>Правильные и неправильные глаголы:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Правильные:</strong> work → worked, play → played (окончание -ed)</li>
+                        <li><strong>Неправильные:</strong> go → gone, see → seen, eat → eaten (3-я форма из таблицы)</li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Маркеры времени:</strong> already (уже), yet (ещё нет/уже?), just (только что), ever (когда-либо), never (никогда), for (в течение), since (с тех пор как), recently (недавно).
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ my homework.', options: ['have finish', 'have finished', 'has finished', 'finished'], correct: 1 },
+                    { type: 'choice', question: 'She ___ to Paris.', options: ['have been', 'has been', 'was', 'is'], correct: 1 },
+                    { type: 'choice', question: '___ you ever ___ sushi?', options: ['Have / eaten', 'Has / eaten', 'Did / eat', 'Do / eat'], correct: 0 },
+                    { type: 'choice', question: 'He ___ his keys.', options: ['have lost', 'has lost', 'lost', 'loses'], correct: 1 },
+                    { type: 'choice', question: 'We ___ them yet.', options: ["haven't seen", "hasn't seen", "didn't see", "don't see"], correct: 0 },
+                    { type: 'choice', question: 'They ___ here since 2010.', options: ['have lived', 'has lived', 'lived', 'live'], correct: 0 },
+                    { type: 'choice', question: 'I ___ just ___ breakfast.', options: ['have / had', 'has / had', 'had / had', 'have / have'], correct: 0 },
+                    { type: 'choice', question: '___ she ___ the news?', options: ['Have / heard', 'Has / heard', 'Did / hear', 'Does / hear'], correct: 1 },
+                    { type: 'choice', question: 'He ___ never ___ to China.', options: ['have / been', 'has / been', 'was / being', 'is / been'], correct: 1 },
+                    { type: 'choice', question: 'We ___ each other for years.', options: ['have known', 'has known', 'knew', 'know'], correct: 0 }
+                ]
+            },
+            'past-perfect': {
+                title: 'Past Perfect (Прошедшее совершенное время)',
+                content: `
+                    <h2>Past Perfect Tense</h2>
+                    <p>Past Perfect используется для описания действий, которые произошли до другого момента в прошлом.</p>
+
+                    <h3>Когда используется:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Действие произошло до другого действия в прошлом: <em>I had finished my homework before he arrived.</em></li>
+                        <li>Действие завершилось до определённого момента в прошлом: <em>By 5 PM she had left.</em></li>
+                        <li>Причина результата в прошлом: <em>He was tired because he had worked all day.</em></li>
+                        <li>В условных предложениях 3-го типа: <em>If I had known, I would have come.</em></li>
+                    </ul>
+
+                    <h3>Образование:</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background: var(--accent); color: white;">
+                            <th style="padding: 10px;">Форма</th>
+                            <th style="padding: 10px;">Структура</th>
+                            <th style="padding: 10px;">Пример</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Утверждение</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">had + V3 (past participle)</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I had worked, She had finished</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Отрицание</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">had + not + V3</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">I hadn't seen, He hadn't arrived</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Вопрос</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Had + подлежащее + V3?</td>
+                            <td style="padding: 10px; border: 1px solid var(--border);">Had you eaten? Had she called?</td>
+                        </tr>
+                    </table>
+
+                    <h3>Before vs After:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Before</strong> + Past Simple: <em>I had finished before he came.</em></li>
+                        <li><strong>After</strong> + Past Perfect: <em>After I had finished, he came.</em></li>
+                    </ul>
+
+                    <div class="cultural-note">
+                        <strong>Маркеры времени:</strong> by (к), by the time (к тому времени как), before (до того как), after (после того как), already (уже), just (только что), never (никогда).
+                    </div>
+                `,
+                exercises: [
+                    { type: 'choice', question: 'I ___ my homework before he arrived.', options: ['have finished', 'had finished', 'finished', 'finish'], correct: 1 },
+                    { type: 'choice', question: 'She ___ to Paris before 2020.', options: ['has been', 'had been', 'was', 'is'], correct: 1 },
+                    { type: 'choice', question: '___ you ever ___ sushi before?', options: ['Have / eaten', 'Had / eaten', 'Did / eat', 'Do / eat'], correct: 1 },
+                    { type: 'choice', question: 'He ___ his keys before he left.', options: ['have lost', 'had lost', 'lost', 'loses'], correct: 1 },
+                    { type: 'choice', question: 'We ___ them before the meeting.', options: ["haven't seen", "hadn't seen", "didn't see", "don't see"], correct: 1 },
+                    { type: 'choice', question: 'They ___ here for 5 years by 2010.', options: ['have lived', 'had lived', 'lived', 'live'], correct: 1 },
+                    { type: 'choice', question: 'I ___ just ___ breakfast when he called.', options: ['have / had', 'had / had', 'had / have', 'have / have'], correct: 1 },
+                    { type: 'choice', question: '___ she ___ the news before?', options: ['Have / heard', 'Had / heard', 'Did / hear', 'Does / hear'], correct: 1 },
+                    { type: 'choice', question: 'He ___ never ___ to China before last year.', options: ['have / been', 'had / been', 'was / being', 'is / been'], correct: 1 },
+                    { type: 'choice', question: 'We ___ each other for years before we met.', options: ['have known', 'had known', 'knew', 'know'], correct: 1 }
+                ]
+            },
         };
 
         function showGrammarTopic(topicId) {
